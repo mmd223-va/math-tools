@@ -1,0 +1,596 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ابزارهای ریاضی</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 75px 15px 30px;
+            background: #f1f5fb;
+            color: #253247;
+            font-family: Vazirmatn, Tahoma, sans-serif;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 25px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px #17255412;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        h1, h2 {
+            color: #2457c5;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 29px;
+        }
+
+        h2 {
+            font-size: 23px;
+        }
+
+        p {
+            line-height: 1.9;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        button, input {
+            font-family: inherit;
+        }
+
+        button {
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        .menu-button {
+            display: block;
+            width: 100%;
+            margin: 12px 0;
+            padding: 16px;
+            background: #e8efff;
+            color: #2457c5;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .menu-button:hover {
+            background: #d8e4ff;
+        }
+
+        .back-button {
+            margin-bottom: 15px;
+            padding: 10px 16px;
+            background: #64748b;
+            color: white;
+            font-size: 14px;
+        }
+
+        .action-button {
+            margin: 8px 0;
+            padding: 12px 20px;
+            background: #2457c5;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .action-button:hover {
+            background: #1946a5;
+        }
+
+        #themeButton {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            margin: 0;
+            padding: 10px 14px;
+            background: #e8efff;
+            color: #2457c5;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #00000020;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            margin: 12px 0;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 9px;
+            background: white;
+            color: #253247;
+            font-size: 16px;
+        }
+
+        .result {
+            margin-top: 18px;
+            padding: 15px;
+            background: #eff6ff;
+            border-radius: 10px;
+            line-height: 2;
+            overflow-wrap: anywhere;
+        }
+
+        .error {
+            background: #fff0f0;
+            color: #b42318;
+        }
+
+        .prime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+            gap: 7px;
+            margin-top: 15px;
+        }
+
+        .number-cell {
+            padding: 10px 5px;
+            text-align: center;
+            background: #e5e7eb;
+            color: #334155;
+            border-radius: 7px;
+        }
+
+        .number-cell.prime {
+            background: #d1fae5;
+            color: #065f46;
+            font-weight: 700;
+        }
+
+        .number-cell.not-prime {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        body.dark {
+            background: #121826;
+            color: #e5e7eb;
+        }
+
+        body.dark .container {
+            background: #1e293b;
+            color: #e5e7eb;
+            box-shadow: 0 8px 30px #00000030;
+        }
+
+        body.dark h1,
+        body.dark h2 {
+            color: #93b4ff;
+        }
+
+        body.dark input {
+            background: #273449;
+            color: white;
+            border-color: #64748b;
+        }
+
+        body.dark .menu-button {
+            background: #334155;
+            color: #e0eaff;
+        }
+
+        body.dark .menu-button:hover {
+            background: #475569;
+        }
+
+        body.dark .back-button {
+            background: #475569;
+            color: white;
+        }
+
+        body.dark #themeButton {
+            background: #334155;
+            color: #e0eaff;
+        }
+
+        body.dark .result {
+            background: #273449;
+            color: #e5e7eb;
+        }
+
+        body.dark .result.error {
+            background: #492b35;
+            color: #fecaca;
+        }
+
+        body.dark .number-cell {
+            background: #334155;
+            color: #e5e7eb;
+        }
+
+        body.dark .number-cell.prime {
+            background: #14532d;
+            color: #bbf7d0;
+        }
+
+        body.dark .number-cell.not-prime {
+            background: #7f1d1d;
+            color: #fecaca;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 17px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .menu-button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button id="themeButton" type="button" onclick="toggleTheme()">
+        🌙 حالت تاریک
+    </button>
+
+    <main class="container">
+
+        <!-- صفحه اصلی -->
+        <section id="home" class="page active">
+            <h1>ابزارهای ریاضی</h1>
+            <p>ابزار موردنظرت را انتخاب کن.</p>
+
+            <button class="menu-button" onclick="showPage('sieve')">
+                غربال اراتستن
+            </button>
+
+            <button class="menu-button" onclick="showPage('gcd')">
+                محاسبه ب.م.م و ک.م.م
+            </button>
+
+            <button class="menu-button" onclick="showPage('prime')">
+                تشخیص عدد اول
+            </button>
+        </section>
+
+        <!-- غربال اراتستن -->
+        <section id="sieve" class="page">
+            <button class="back-button" onclick="showPage('home')">
+                ← بازگشت به صفحه اصلی
+            </button>
+
+            <h2>غربال اراتستن</h2>
+            <p>یک عدد صحیح بین ۲ تا ۱۰۰۰۰ وارد کن تا اعداد اول را پیدا کنیم.</p>
+
+            <input type="number" id="sieveLimit"
+                   min="2" max="10000" step="1"
+                   placeholder="مثلاً 30">
+
+            <button class="action-button" onclick="runSieve()">
+                پیدا کردن اعداد اول
+            </button>
+
+            <div id="sieveResult" class="result" hidden></div>
+            <div id="sieveGrid" class="prime-grid"></div>
+        </section>
+
+        <!-- ب.م.م و ک.م.م -->
+        <section id="gcd" class="page">
+            <button class="back-button" onclick="showPage('home')">
+                ← بازگشت به صفحه اصلی
+            </button>
+
+            <h2>محاسبه ب.م.م و ک.م.م</h2>
+            <p>دو عدد صحیح نامنفی وارد کن؛ حداقل یکی باید بزرگ‌تر از صفر باشد.</p>
+
+            <input type="number" id="num1" min="0" step="1"
+                   placeholder="عدد اول">
+
+            <input type="number" id="num2" min="0" step="1"
+                   placeholder="عدد دوم">
+
+            <button class="action-button" onclick="calculateGcdLcm()">
+                محاسبه
+            </button>
+
+            <div id="gcdResult" class="result" hidden></div>
+        </section>
+
+        <!-- تشخیص عدد اول -->
+        <section id="prime" class="page">
+            <button class="back-button" onclick="showPage('home')">
+                ← بازگشت به صفحه اصلی
+            </button>
+
+            <h2>تشخیص عدد اول</h2>
+            <p>یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.</p>
+
+            <input type="number" id="primeNumber"
+                   min="2" step="1" placeholder="مثلاً 17">
+
+            <button class="action-button" onclick="checkPrime()">
+                بررسی عدد
+            </button>
+
+            <div id="primeResult" class="result" hidden></div>
+        </section>
+
+    </main>
+
+    <script>
+        // تغییر صفحه
+        function showPage(pageId) {
+            const pages = document.querySelectorAll(".page");
+
+            pages.forEach(function(page) {
+                page.classList.remove("active");
+            });
+
+            const selectedPage = document.getElementById(pageId);
+
+            if (selectedPage) {
+                selectedPage.classList.add("active");
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        // حالت تاریک و روشن
+        function updateThemeButton() {
+            const button = document.getElementById("themeButton");
+            const isDark = document.body.classList.contains("dark");
+
+            button.textContent = isDark
+                ? "☀️ حالت روشن"
+                : "🌙 حالت تاریک";
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.classList.toggle("dark");
+
+            try {
+                localStorage.setItem("siteTheme", isDark ? "dark" : "light");
+            } catch (error) {
+                // سایت بدون ذخیره‌سازی هم قابل استفاده است.
+            }
+
+            updateThemeButton();
+        }
+
+        function loadSavedTheme() {
+            let savedTheme = "light";
+
+            try {
+                savedTheme = localStorage.getItem("siteTheme") || "light";
+            } catch (error) {
+                // در صورت نبود دسترسی، حالت روشن استفاده می‌شود.
+            }
+
+            document.body.classList.toggle("dark", savedTheme === "dark");
+            updateThemeButton();
+        }
+
+        // اعتبارسنجی عدد صحیح
+        function readInteger(inputId, min, max) {
+            const input = document.getElementById(inputId);
+            const rawValue = input.value.trim();
+
+            if (rawValue === "") {
+                return { error: "لطفاً عدد را وارد کن." };
+            }
+
+            const value = Number(rawValue);
+
+            if (!Number.isSafeInteger(value)) {
+                return { error: "لطفاً یک عدد صحیح معتبر وارد کن." };
+            }
+
+            if (value < min || value > max) {
+                return {
+                    error: "عدد باید بین " + min + " و " + max + " باشد."
+                };
+            }
+
+            return { value: value };
+        }
+
+        function showResult(elementId, message, isError) {
+            const element = document.getElementById(elementId);
+
+            element.hidden = false;
+            element.classList.toggle("error", Boolean(isError));
+            element.textContent = message;
+        }
+
+        // غربال اراتستن
+        function runSieve() {
+            const parsed = readInteger("sieveLimit", 2, 10000);
+
+            const result = document.getElementById("sieveResult");
+            const grid = document.getElementById("sieveGrid");
+            grid.replaceChildren();
+
+            if (parsed.error) {
+                showResult("sieveResult", parsed.error, true);
+                return;
+            }
+
+            const limit = parsed.value;
+            const isPrime = new Array(limit + 1).fill(true);
+
+            isPrime[0] = false;
+            isPrime[1] = false;
+
+            for (let p = 2; p * p <= limit; p++) {
+                if (isPrime[p]) {
+                    for (let multiple = p * p;
+                         multiple <= limit;
+                         multiple += p) {
+                        isPrime[multiple] = false;
+                    }
+                }
+            }
+
+            const primes = [];
+
+            for (let n = 2; n <= limit; n++) {
+                const cell = document.createElement("div");
+                cell.className = "number-cell";
+                cell.textContent = n;
+
+                if (isPrime[n]) {
+                    primes.push(n);
+                    cell.classList.add("prime");
+                } else {
+                    cell.classList.add("not-prime");
+                }
+
+                grid.appendChild(cell);
+            }
+
+            result.hidden = false;
+            result.classList.remove("error");
+            result.textContent =
+                "تعداد اعداد اول تا " + limit + ": " + primes.length +
+                " | اعداد اول: " + primes.join("، ");
+        }
+
+        // ب.م.م با الگوریتم اقلیدس
+        function gcd(a, b) {
+            while (b !== 0) {
+                const remainder = a % b;
+                a = b;
+                b = remainder;
+            }
+
+            return a;
+        }
+
+        // ب.م.م و ک.م.م
+        function calculateGcdLcm() {
+            const first = readInteger("num1", 0, Number.MAX_SAFE_INTEGER);
+            const second = readInteger("num2", 0, Number.MAX_SAFE_INTEGER);
+
+            if (first.error) {
+                showResult("gcdResult", first.error, true);
+                return;
+            }
+
+            if (second.error) {
+                showResult("gcdResult", second.error, true);
+                return;
+            }
+
+            const a = first.value;
+            const b = second.value;
+
+            if (a === 0 && b === 0) {
+                showResult(
+                    "gcdResult",
+                    "برای صفر و صفر، ب.م.م و ک.م.م در این محاسبه تعریف نمی‌شوند.",
+                    true
+                );
+                return;
+            }
+
+            const greatestCommonDivisor = gcd(a, b);
+            const leastCommonMultiple =
+                a === 0 || b === 0
+                    ? 0
+                    : (a / greatestCommonDivisor) * b;
+
+            showResult(
+                "gcdResult",
+                "ب.م.م = " + greatestCommonDivisor +
+                "\nک.م.م = " + leastCommonMultiple,
+                false
+            );
+
+            document.getElementById("gcdResult").style.whiteSpace = "pre-line";
+        }
+
+        // تشخیص عدد اول
+        function isPrimeNumber(n) {
+            if (n < 2) {
+                return false;
+            }
+
+            if (n === 2) {
+                return true;
+            }
+
+            if (n % 2 === 0) {
+                return false;
+            }
+
+            for (let divisor = 3;
+                 divisor <= Math.floor(Math.sqrt(n));
+                 divisor += 2) {
+                if (n % divisor === 0) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function checkPrime() {
+            const parsed = readInteger(
+                "primeNumber", 2, Number.MAX_SAFE_INTEGER
+            );
+
+            if (parsed.error) {
+                showResult("primeResult", parsed.error, true);
+                return;
+            }
+
+            const number = parsed.value;
+
+            if (isPrimeNumber(number)) {
+                showResult(
+                    "primeResult",
+                    number + " یک عدد اول است.",
+                    false
+                );
+            } else {
+                showResult(
+                    "primeResult",
+                    number + " عدد اول نیست؛ عددی مرکب است.",
+                    false
+                );
+            }
+        }
+
+        // اجرا هنگام بارگذاری صفحه
+        loadSavedTheme();
+    </script>
+</body>
+</html>
