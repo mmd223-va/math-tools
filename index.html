@@ -858,6 +858,34 @@ body.dark .result {
   }
 }
 
+/* واضح‌تر شدن ورودی‌ها و پیام‌های خطا */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+button:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 3px;
+}
+
+.error {
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 12px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+input::placeholder {
+  opacity: 0.75;
+}
+
 </style>
 </head>
 <body>
