@@ -1,856 +1,678 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ابزارهای ریاضی</title>
-  <style>
-    @font-face {
-    font-family: "Vazirmatn";
-    src: url("./Vazirmatn[wght].ttf") format("truetype");
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
-} * 
-{
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            padding: 75px 15px 30px;
-            background: #f1f5fb;
-            color: #253247;
-            font-family: Vazirmatn, Tahoma, sans-serif;
-            transition: background 0.25s, color 0.25s;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 650px;
-            margin: 0 auto;
-            padding: 25px;
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 8px 30px #17255412;
-            transition: background 0.25s, color 0.25s;
-        }
-
-        h1, h2 {
-            color: #2457c5;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 29px;
-        }
-
-        h2 {
-            font-size: 23px;
-        }
-
-        p {
-            line-height: 1.9;
-        }
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        button, input {
-            font-family: inherit;
-        }
-
-        button {
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-        }
-
-        button:hover {
-            transform: translateY(-1px);
-        }
-
-        .menu-button {
-            display: block;
-            width: 100%;
-            margin: 12px 0;
-            padding: 16px;
-            background: #e8efff;
-            color: #2457c5;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .menu-button:hover {
-            background: #d8e4ff;
-        }
-
-        .back-button {
-            margin-bottom: 15px;
-            padding: 10px 16px;
-            background: #64748b;
-            color: white;
-            font-size: 14px;
-        }
-
-        .action-button {
-            margin: 8px 0;
-            padding: 12px 20px;
-            background: #2457c5;
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-        }
-
-        .action-button:hover {
-            background: #1946a5;
-        }
-
-        #themeButton {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            z-index: 1000;
-            margin: 0;
-            padding: 10px 14px;
-            background: #e8efff;
-            color: #2457c5;
-            font-size: 14px;
-            font-weight: 700;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px #00000020;
-        }
-
-        input {
-            display: block;
-            width: 100%;
-            margin: 12px 0;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 9px;
-            background: white;
-            color: #253247;
-            font-size: 16px;
-        }
-
-        .result {
-            margin-top: 18px;
-            padding: 15px;
-            background: #eff6ff;
-            border-radius: 10px;
-            line-height: 2;
-            overflow-wrap: anywhere;
-        }
-
-        .error {
-            background: #fff0f0;
-            color: #b42318;
-        }
-
-        .prime-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
-            gap: 7px;
-            margin-top: 15px;
-        }
-
-        .number-cell {
-            padding: 10px 5px;
-            text-align: center;
-            background: #e5e7eb;
-            color: #334155;
-            border-radius: 7px;
-        }
-
-        .number-cell.prime {
-            background: #d1fae5;
-            color: #065f46;
-            font-weight: 700;
-        }
-
-        .number-cell.not-prime {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        body.dark {
-            background: #121826;
-            color: #e5e7eb;
-        }
-
-        body.dark .container {
-            background: #1e293b;
-            color: #e5e7eb;
-            box-shadow: 0 8px 30px #00000030;
-        }
-
-        body.dark h1,
-        body.dark h2 {
-            color: #93b4ff;
-        }
-
-        body.dark input {
-            background: #273449;
-            color: white;
-            border-color: #64748b;
-        }
-
-        body.dark .menu-button {
-            background: #334155;
-            color: #e0eaff;
-        }
-
-        body.dark .menu-button:hover {
-            background: #475569;
-        }
-
-        body.dark .back-button {
-            background: #475569;
-            color: white;
-        }
-
-        body.dark #themeButton {
-            background: #334155;
-            color: #e0eaff;
-        }
-
-        body.dark .result {
-            background: #273449;
-            color: #e5e7eb;
-        }
-
-        body.dark .result.error {
-            background: #492b35;
-            color: #fecaca;
-        }
-
-        body.dark .number-cell {
-            background: #334155;
-            color: #e5e7eb;
-        }
-
-        body.dark .number-cell.prime {
-            background: #14532d;
-            color: #bbf7d0;
-        }
-
-        body.dark .number-cell.not-prime {
-            background: #7f1d1d;
-            color: #fecaca;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 17px;
-            }
-
-            h1 {
-                font-size: 25px;
-            }
-
-            .menu-button {
-                font-size: 16px;
-            }
-        }
-   
-        input, button, textarea, select {
-    font-family: "Vazirmatn", sans-serif;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ابزارهای ریاضی</title>
+<style>
+@font-face {
+  font-family: Vazirmatn;
+  src: url("./Vazirmatn[wght].ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
 }
-   
 
-/* ظاهر درخت تجزیه */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 75px 15px 30px;
+  background: #f1f5fb;
+  color: #253247;
+  font-family: Vazirmatn, Tahoma, sans-serif;
+  transition: .25s;
+}
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  padding: 25px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px #17255412;
+}
+
+h1, h2 { text-align: center; color: #2457c5; }
+h1 { font-size: 29px; }
+h2 { font-size: 23px; }
+p { line-height: 1.9; }
+
+.page { display: none; }
+.page.active { display: block; }
+
+button, input { font: inherit; }
+
+button {
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+
+button:hover { transform: translateY(-1px); }
+
+.menu-button {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  padding: 16px;
+  background: #e8efff;
+  color: #2457c5;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.menu-button:hover { background: #d8e4ff; }
+
+.back-button {
+  margin-bottom: 15px;
+  padding: 10px 16px;
+  background: #64748b;
+  color: white;
+}
+
+.action-button {
+  margin: 8px 0;
+  padding: 12px 20px;
+  background: #2457c5;
+  color: white;
+  font-weight: 700;
+}
+
+.action-button:hover { background: #1946a5; }
+
+#themeButton {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  padding: 10px 14px;
+  background: #e8efff;
+  color: #2457c5;
+  font-weight: 700;
+  box-shadow: 0 3px 10px #0002;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: white;
+  color: #253247;
+  font-size: 16px;
+}
+
+.result {
+  margin-top: 18px;
+  padding: 15px;
+  background: #eff6ff;
+  border-radius: 10px;
+  line-height: 2;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.error { background: #fff0f0; color: #b42318; }
+
+.prime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+  gap: 7px;
+  margin-top: 15px;
+}
+
+.number-cell {
+  padding: 10px 5px;
+  text-align: center;
+  background: #e5e7eb;
+  color: #334155;
+  border-radius: 7px;
+}
+
+.number-cell.prime {
+  background: #d1fae5;
+  color: #065f46;
+  font-weight: 700;
+}
+
+.number-cell.not-prime {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* خروجی تجزیه و درخت عوامل اول */
+#factorResult {
+  padding: 0;
+  background: transparent;
+  white-space: normal;
+}
+
+.factor-final, .factor-tree {
+  margin-top: 18px;
+  padding: 18px 12px;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  background: #f8fbff;
+  text-align: center;
+}
+
+.factor-final h3, .factor-tree h3 {
+  margin: 0 0 16px;
+  color: #2457c5;
+}
+
+.factor-equation {
+  direction: ltr;
+  font-size: 23px;
+  font-weight: 700;
+  color: #1d4ed8;
+  overflow-wrap: anywhere;
+}
+
+/* درخت با موقعیت‌دهی دقیق و خطوط SVG */
 .factor-tree {
-    margin-top: 18px;
-    padding: 20px 10px;
-    border: 1px solid #bfdbfe;
-    border-radius: 12px;
-    text-align: center;
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
-.factor-tree h3 {
-    margin-bottom: 20px;
+.tree-canvas {
+  position: relative;
+  margin: 0 auto;
+  min-width: 100%;
 }
 
-.factor-tree ul {
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
+.tree-canvas svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
 }
 
-.factor-tree li {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 12px;
-    position: relative;
+.tree-line {
+  stroke: #94a3b8;
+  stroke-width: 2;
+  fill: none;
 }
 
-.factor-tree li > ul {
-    position: relative;
-    padding-top: 24px;
-}
-
-/* خط عمودی زیر عدد والد */
-.factor-tree li > ul::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    height: 24px;
-    border-left: 2px solid #94a3b8;
-}
-
-/* خط افقی بین دو فرزند */
-.factor-tree li > ul > li::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    border-top: 2px solid #94a3b8;
-}
-
-.factor-tree li > ul > li:first-child::before {
-    left: 50%;
-    width: 50%;
-}
-
-.factor-tree li > ul > li:last-child::before {
-    width: 50%;
-}
-
-.factor-tree li > ul > li:only-child::before {
-    display: none;
-}
-
-.tree-node,
-.tree-leaf {
-    display: inline-block;
-    min-width: 38px;
-    padding: 7px 12px;
-    border-radius: 8px;
-    font-weight: bold;
-    position: relative;
-    z-index: 1;
+.tree-node, .tree-leaf {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  min-width: 40px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
+  z-index: 1;
 }
 
 .tree-node {
-    background: #dbeafe;
-    color: #1d4ed8;
+  background: #dbeafe;
+  color: #1d4ed8;
 }
 
 .tree-leaf {
-    background: #d1fae5;
-    color: #065f46;
-    border: 1px solid #6ee7b7;
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
 }
 
+body.dark {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+body.dark .container { background: #1e293b; }
+body.dark h1, body.dark h2 { color: #93b4ff; }
+
+body.dark input {
+  background: #334155;
+  color: white;
+  border-color: #475569;
+}
+
+body.dark .result { background: #334155; color: #e2e8f0; }
+body.dark .menu-button { background: #334155; color: #bfdbfe; }
+body.dark .number-cell { background: #334155; color: #e2e8f0; }
+body.dark .number-cell.prime { background: #14532d; color: #bbf7d0; }
+body.dark .number-cell.not-prime { background: #7f1d1d; color: #fecaca; }
+
+body.dark .factor-final,
 body.dark .factor-tree {
-    border-color: #475569;
+  background: #1e293b;
+  border-color: #475569;
 }
 
-body.dark .tree-node {
-    background: #334155;
-    color: #dbeafe;
+body.dark .factor-final h3,
+body.dark .factor-tree h3,
+body.dark .factor-equation {
+  color: #93b4ff;
 }
 
-body.dark .tree-leaf {
-    background: #14532d;
-    color: #bbf7d0;
+body.dark .tree-node { background: #334155; color: #dbeafe; }
+body.dark .tree-leaf { background: #14532d; color: #bbf7d0; }
+body.dark .tree-line { stroke: #64748b; }
+
+@media (max-width: 500px) {
+  .container { padding: 16px; }
+  h1 { font-size: 25px; }
+  .factor-equation { font-size: 19px; }
 }
 </style>
 </head>
-
 <body>
-    <button id="themeButton" type="button" onclick="toggleTheme()">
-        🌙 حالت تاریک
-    </button>
 
-    <main class="container">
-
-        <!-- صفحه اصلی -->
-        <section id="home" class="page active">
-            <h1>ابزارهای ریاضی</h1>
-            <p>ابزار موردنظرت را انتخاب کن.</p>
-
-            <button class="menu-button" onclick="showPage('sieve')">
-                غربال اراتستن
-            </button>
-
-            <button class="menu-button" onclick="showPage('gcd')">
-                محاسبه ب.م.م و ک.م.م
-            </button>
-
-            <button class="menu-button" onclick="showPage('prime')">
-                تشخیص عدد اول
-           </button>
-      <button 
-          class="menu-button" onclick="showPage('factorization')">
-    تجزیه عدد به عوامل اول
-</button> 
-        </section>
-<!-- تجزیه عدد به عوامل اول -->
-<section id="factorization" class="page">
-    <button class="back-button" onclick="showPage('home')">
-        ← بازگشت به صفحه اصلی
-    </button>
-
-    <h2>تجزیه عدد به عوامل اول</h2>
-    <p>یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.</p>
-
-    <input
-        type="number"
-        id="factorNumber"
-        min="2"
-        step="1"
-        placeholder="مثلاً 60"
-    >
-
-    
-<button class="action-button" onclick="factorizeNumber()">
-    تجزیه عدد
+<button id="themeButton" type="button" onclick="toggleTheme()">
+  🌙 حالت تاریک
 </button>
 
+<main class="container">
 
-    <div id="factorResult" hidden></div>
+<section id="home" class="page active">
+  <h1>ابزارهای ریاضی</h1>
+  <p>ابزار موردنظرت را انتخاب کن.</p>
+  <button class="menu-button" onclick="showPage('sieve')">غربال اراتستن</button>
+  <button class="menu-button" onclick="showPage('gcd')">محاسبه ب.م.م و ک.م.م</button>
+  <button class="menu-button" onclick="showPage('prime')">تشخیص عدد اول</button>
+  <button class="menu-button" onclick="showPage('factorization')">تجزیه عدد به عوامل اول</button>
 </section>
-        <!-- غربال اراتستن -->
-        <section id="sieve" class="page">
-            <button class="back-button" onclick="showPage('home')">
-                ← بازگشت به صفحه اصلی
-            </button>
 
-            <h2>غربال اراتستن</h2>
-            <p>یک عدد صحیح بین ۲ تا ۱۰۰۰۰ وارد کن تا اعداد اول را پیدا کنیم.</p>
-
-            <input type="number" id="sieveLimit"
-                   min="2" max="10000" step="1"
-                   placeholder="مثلاً 30">
-
-            <button class="action-button" onclick="runSieve()">
-                پیدا کردن اعداد اول
-            </button>
-
-            <div id="sieveResult" class="result" hidden></div>
-            <div id="sieveGrid" class="prime-grid"></div>
-        </section>
-
-        <!-- ب.م.م و ک.م.م -->
-        <section id="gcd" class="page">
-            <button class="back-button" onclick="showPage('home')">
-                ← بازگشت به صفحه اصلی
-            </button>
-
-            <h2>محاسبه ب.م.م و ک.م.م</h2>
-            <p>دو عدد صحیح نامنفی وارد کن؛ حداقل یکی باید بزرگ‌تر از صفر باشد.</p>
-
-            <input type="number" id="num1" min="0" step="1"
-                   placeholder="عدد اول">
-
-            <input type="number" id="num2" min="0" step="1"
-                   placeholder="عدد دوم">
-
-            <button class="action-button" onclick="calculateGcdLcm()">
-                محاسبه
-            </button>
-
-            <div id="gcdResult" class="result" hidden></div>
-        </section>
-
-        <!-- تشخیص عدد اول -->
-        <section id="prime" class="page">
-            <button class="back-button" onclick="showPage('home')">
-                ← بازگشت به صفحه اصلی
-            </button>
-
-            <h2>تشخیص عدد اول</h2>
-            <p>یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.</p>
-
-            <input type="number" id="primeNumber"
-                   min="2" step="1" placeholder="مثلاً 17">
-
-            <button class="action-button" onclick="checkPrime()">
-                بررسی عدد
-            </button>
-
-            <div id="primeResult" class="result" hidden></div>
-        </section>
-
-    </main>
-
-    <script>
-        // تغییر صفحه
-        function showPage(pageId) {
-            const pages = document.querySelectorAll(".page");
-
-            pages.forEach(function(page) {
-                page.classList.remove("active");
-            });
-
-            const selectedPage = document.getElementById(pageId);
-
-            if (selectedPage) {
-                selectedPage.classList.add("active");
-            }
-
-            window.scrollTo(0, 0);
-        }
-
-        // حالت تاریک و روشن
-        function updateThemeButton() {
-            const button = document.getElementById("themeButton");
-            const isDark = document.body.classList.contains("dark");
-
-            button.textContent = isDark
-                ? "☀️ حالت روشن"
-                : "🌙 حالت تاریک";
-        }
-
-        function toggleTheme() {
-            const isDark = document.body.classList.toggle("dark");
-
-            try {
-                localStorage.setItem("siteTheme", isDark ? "dark" : "light");
-            } catch (error) {
-                // سایت بدون ذخیره‌سازی هم قابل استفاده است.
-            }
-
-            updateThemeButton();
-        }
-
-        function loadSavedTheme() {
-            let savedTheme = "light";
-
-            try {
-                savedTheme = localStorage.getItem("siteTheme") || "light";
-            } catch (error) {
-                // در صورت نبود دسترسی، حالت روشن استفاده می‌شود.
-            }
-
-            document.body.classList.toggle("dark", savedTheme === "dark");
-            updateThemeButton();
-        }
-
-        // اعتبارسنجی عدد صحیح
-        function readInteger(inputId, min, max) {
-            const input = document.getElementById(inputId);
-            const rawValue = input.value.trim();
-
-            if (rawValue === "") {
-                return { error: "لطفاً عدد را وارد کن." };
-            }
-
-            const value = Number(rawValue);
-
-            if (!Number.isSafeInteger(value)) {
-                return { error: "لطفاً یک عدد صحیح معتبر وارد کن." };
-            }
-
-            if (value < min || value > max) {
-                return {
-                    error: "عدد باید بین " + min + " و " + max + " باشد."
-                };
-            }
-
-            return { value: value };
-        }
-
-        function showResult(elementId, message, isError) {
-            const element = document.getElementById(elementId);
-
-            element.hidden = false;
-            element.classList.toggle("error", Boolean(isError));
-            element.textContent = message;
-        }
-
-        // غربال اراتستن
-        function runSieve() {
-            const parsed = readInteger("sieveLimit", 2, 10000);
-
-            const result = document.getElementById("sieveResult");
-            const grid = document.getElementById("sieveGrid");
-            grid.replaceChildren();
-
-            if (parsed.error) {
-                showResult("sieveResult", parsed.error, true);
-                return;
-            }
-
-            const limit = parsed.value;
-            const isPrime = new Array(limit + 1).fill(true);
-
-            isPrime[0] = false;
-            isPrime[1] = false;
-
-            for (let p = 2; p * p <= limit; p++) {
-                if (isPrime[p]) {
-                    for (let multiple = p * p;
-                         multiple <= limit;
-                         multiple += p) {
-                        isPrime[multiple] = false;
-                    }
-                }
-            }
-
-            const primes = [];
-
-            for (let n = 2; n <= limit; n++) {
-                const cell = document.createElement("div");
-                cell.className = "number-cell";
-                cell.textContent = n;
-
-                if (isPrime[n]) {
-                    primes.push(n);
-                    cell.classList.add("prime");
-                } else {
-                    cell.classList.add("not-prime");
-                }
-
-                grid.appendChild(cell);
-            }
-
-            result.hidden = false;
-            result.classList.remove("error");
-            result.textContent =
-                "تعداد اعداد اول تا " + limit + ": " + primes.length +
-                " | اعداد اول: " + primes.join("، ");
-        }
-
-        // ب.م.م با الگوریتم اقلیدس
-        function gcd(a, b) {
-            while (b !== 0) {
-                const remainder = a % b;
-                a = b;
-                b = remainder;
-            }
-
-            return a;
-        }
-
-        // ب.م.م و ک.م.م
-        function calculateGcdLcm() {
-            const first = readInteger("num1", 0, Number.MAX_SAFE_INTEGER);
-            const second = readInteger("num2", 0, Number.MAX_SAFE_INTEGER);
-
-            if (first.error) {
-                showResult("gcdResult", first.error, true);
-                return;
-            }
-
-            if (second.error) {
-                showResult("gcdResult", second.error, true);
-                return;
-            }
-
-            const a = first.value;
-            const b = second.value;
-
-            if (a === 0 && b === 0) {
-                showResult(
-                    "gcdResult",
-                    "برای صفر و صفر، ب.م.م و ک.م.م در این محاسبه تعریف نمی‌شوند.",
-                    true
-                );
-                return;
-            }
-
-            const greatestCommonDivisor = gcd(a, b);
-            const leastCommonMultiple =
-                a === 0 || b === 0
-                    ? 0
-                    : (a / greatestCommonDivisor) * b;
-
-            showResult(
-                "gcdResult",
-                "ب.م.م = " + greatestCommonDivisor +
-                "\nک.م.م = " + leastCommonMultiple,
-                false
-            );
-
-            document.getElementById("gcdResult").style.whiteSpace = "pre-line";
-        }
-
-        // تشخیص عدد اول
-        function isPrimeNumber(n) {
-            if (n < 2) {
-                return false;
-            }
-
-            if (n === 2) {
-                return true;
-            }
-
-            if (n % 2 === 0) {
-                return false;
-            }
-
-            for (let divisor = 3;
-                 divisor <= Math.floor(Math.sqrt(n));
-                 divisor += 2) {
-                if (n % divisor === 0) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        function checkPrime() {
-            const parsed = readInteger(
-                "primeNumber", 2, Number.MAX_SAFE_INTEGER
-            );
-
-            if (parsed.error) {
-                showResult("primeResult", parsed.error, true);
-                return;
-            }
-
-            const number = parsed.value;
-
-            if (isPrimeNumber(number)) {
-                showResult(
-                    "primeResult",
-                    number + " یک عدد اول است.",
-                    false
-                );
-            } else {
-                showResult(
-                    "primeResult",
-                    number + " عدد اول نیست؛ عددی مرکب است.",
-                    false
-                );
-            }
-        }
-
-        // اجرا هنگام بارگذاری صفحه
-        loadSavedTheme();
-
-
-function factorizeNumber() {
-    const input = document.getElementById("factorNumber");
-    const result = document.getElementById("factorResult");
-    const number = Number(input.value);
-
-    if (
-        input.value.trim() === "" ||
-        !Number.isSafeInteger(number) ||
-        number < 2
-    ) {
-        result.hidden = false;
-        result.textContent =
-            "لطفاً یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.";
-        return;
-    }
-
-    // محاسبه عوامل اول
-    let n = number;
-    const factors = [];
-
-    for (let divisor = 2; divisor * divisor <= n; divisor++) {
-        while (n % divisor === 0) {
-            factors.push(divisor);
-            n /= divisor;
-        }
-    }
-
-    if (n > 1) {
-        factors.push(n);
-    }
-
-    // نمایش توان عوامل تکراری
-    const powers = {};
-
-    for (const factor of factors) {
-        powers[factor] = (powers[factor] || 0) + 1;
-    }
-
-    const compact = Object.entries(powers)
-        .map(([factor, power]) =>
-            power === 1
-                ? factor
-                : `${factor}<sup>${power}</sup>`
-        )
-        .join(" × ");
-
-    // ساخت درخت تجزیه
-    function buildTree(value) {
-        for (let divisor = 2; divisor * divisor <= value; divisor++) {
-            if (value % divisor === 0) {
-                return {
-                    value: value,
-                    left: buildTree(divisor),
-                    right: buildTree(value / divisor)
-                };
-            }
-        }
-
-        return {
-            value: value,
-            left: null,
-            right: null
-        };
-    }
-
-    // تبدیل درخت به HTML
-    function drawTree(node) {
-        if (node.left === null && node.right === null) {
-            return `
-                <li>
-                    <span class="tree-leaf">${node.value}</span>
-                </li>
-            `;
-        }
-
-        return `
-            <li>
-                <span class="tree-node">${node.value}</span>
-                <ul>
-                    ${drawTree(node.left)}
-                    ${drawTree(node.right)}
-                </ul>
-            </li>
-        `;
-    }
-
-    const tree = buildTree(number);
-
-    // نمایش نتیجه و درخت
-    result.hidden = false;
-    result.classList.remove("error");
-
-    result.innerHTML = `
-        <div class="factor-final">
-            <h3>تجزیه به عوامل اول</h3>
-            <div class="factor-equation" dir="ltr">
-                ${compact}
-            </div>
-        </div>
-
-        <div class="factor-tree">
-            <h3>درخت تجزیه</h3>
-            <ul>${drawTree(tree)}</ul>
-        </div>
-    `;
+<section id="factorization" class="page">
+  <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
+  <h2>تجزیه عدد به عوامل اول</h2>
+  <p>یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.</p>
+  <input type="number" id="factorNumber" min="2" step="1" placeholder="مثلاً 60">
+  <button class="action-button" onclick="factorizeNumber()">تجزیه عدد</button>
+  <div id="factorResult" hidden></div>
+</section>
+
+<section id="sieve" class="page">
+  <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
+  <h2>غربال اراتستن</h2>
+  <p>یک عدد صحیح بین ۲ تا ۱۰۰۰۰ وارد کن تا اعداد اول را پیدا کنیم.</p>
+  <input type="number" id="sieveLimit" min="2" max="10000" step="1" placeholder="مثلاً 30">
+  <button class="action-button" onclick="runSieve()">پیدا کردن اعداد اول</button>
+  <div id="sieveResult" class="result" hidden></div>
+  <div id="sieveGrid" class="prime-grid"></div>
+</section>
+
+<section id="gcd" class="page">
+  <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
+  <h2>محاسبه ب.م.م و ک.م.م</h2>
+  <p>دو عدد صحیح نامنفی وارد کن؛ حداقل یکی باید بزرگ‌تر از صفر باشد.</p>
+  <input type="number" id="num1" min="0" step="1" placeholder="عدد اول">
+  <input type="number" id="num2" min="0" step="1" placeholder="عدد دوم">
+  <button class="action-button" onclick="calculateGcdLcm()">محاسبه</button>
+  <div id="gcdResult" class="result" hidden></div>
+</section>
+
+<section id="prime" class="page">
+  <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
+  <h2>تشخیص عدد اول</h2>
+  <p>یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.</p>
+  <input type="number" id="primeNumber" min="2" step="1" placeholder="مثلاً 17">
+  <button class="action-button" onclick="checkPrime()">بررسی عدد</button>
+  <div id="primeResult" class="result" hidden></div>
+</section>
+
+</main>
+<script>
+function showPage(pageId) {
+  document.querySelectorAll(".page").forEach(page =>
+    page.classList.remove("active")
+  );
+  const selected = document.getElementById(pageId);
+  if (selected) selected.classList.add("active");
+  window.scrollTo(0, 0);
 }
 
-    </script>
+function updateThemeButton() {
+  const button = document.getElementById("themeButton");
+  button.textContent = document.body.classList.contains("dark")
+    ? "☀️ حالت روشن"
+    : "🌙 حالت تاریک";
+}
+
+function toggleTheme() {
+  const isDark = document.body.classList.toggle("dark");
+  try {
+    localStorage.setItem("siteTheme", isDark ? "dark" : "light");
+  } catch (error) {}
+  updateThemeButton();
+}
+
+function loadSavedTheme() {
+  let saved = "light";
+  try {
+    saved = localStorage.getItem("siteTheme") || "light";
+  } catch (error) {}
+  document.body.classList.toggle("dark", saved === "dark");
+  updateThemeButton();
+}
+
+function readInteger(inputId, min, max) {
+  const raw = document.getElementById(inputId).value.trim();
+
+  if (raw === "") return { error: "لطفاً عدد را وارد کن." };
+
+  const value = Number(raw);
+
+  if (!Number.isSafeInteger(value))
+    return { error: "لطفاً یک عدد صحیح معتبر وارد کن." };
+
+  if (value < min || value > max)
+    return { error: "عدد باید بین " + min + " و " + max + " باشد." };
+
+  return { value };
+}
+
+function showResult(elementId, message, isError) {
+  const element = document.getElementById(elementId);
+  element.hidden = false;
+  element.classList.toggle("error", Boolean(isError));
+  element.textContent = message;
+}
+
+function runSieve() {
+  const parsed = readInteger("sieveLimit", 2, 10000);
+  const result = document.getElementById("sieveResult");
+  const grid = document.getElementById("sieveGrid");
+
+  grid.replaceChildren();
+
+  if (parsed.error) {
+    showResult("sieveResult", parsed.error, true);
+    return;
+  }
+
+  const limit = parsed.value;
+  const isPrime = new Array(limit + 1).fill(true);
+  isPrime[0] = false;
+  isPrime[1] = false;
+
+  for (let p = 2; p * p <= limit; p++) {
+    if (isPrime[p]) {
+      for (let m = p * p; m <= limit; m += p) {
+        isPrime[m] = false;
+      }
+    }
+  }
+
+  const primes = [];
+
+  for (let n = 2; n <= limit; n++) {
+    const cell = document.createElement("div");
+    cell.className = "number-cell";
+    cell.textContent = n;
+
+    if (isPrime[n]) {
+      primes.push(n);
+      cell.classList.add("prime");
+    } else {
+      cell.classList.add("not-prime");
+    }
+
+    grid.appendChild(cell);
+  }
+
+  result.hidden = false;
+  result.classList.remove("error");
+  result.textContent =
+    "تعداد اعداد اول تا " + limit + ": " + primes.length +
+    " | اعداد اول: " + primes.join("، ");
+}
+
+function gcd(a, b) {
+  while (b !== 0) {
+    const r = a % b;
+    a = b;
+    b = r;
+  }
+  return a;
+}
+
+function calculateGcdLcm() {
+  const first = readInteger("num1", 0, Number.MAX_SAFE_INTEGER);
+  const second = readInteger("num2", 0, Number.MAX_SAFE_INTEGER);
+
+  if (first.error) {
+    showResult("gcdResult", first.error, true);
+    return;
+  }
+
+  if (second.error) {
+    showResult("gcdResult", second.error, true);
+    return;
+  }
+
+  const a = first.value;
+  const b = second.value;
+
+  if (a === 0 && b === 0) {
+    showResult(
+      "gcdResult",
+      "برای صفر و صفر، ب.م.م و ک.م.م در این محاسبه تعریف نمی‌شوند.",
+      true
+    );
+    return;
+  }
+
+  const g = gcd(a, b);
+  const l = a === 0 || b === 0 ? 0 : (a / g) * b;
+
+  showResult("gcdResult", "ب.م.م = " + g + "\nک.م.م = " + l, false);
+}
+
+function isPrimeNumber(n) {
+  if (n < 2) return false;
+  if (n === 2) return true;
+  if (n % 2 === 0) return false;
+
+  for (let d = 3; d <= Math.floor(Math.sqrt(n)); d += 2) {
+    if (n % d === 0) return false;
+  }
+
+  return true;
+}
+
+function checkPrime() {
+  const parsed = readInteger("primeNumber", 2, Number.MAX_SAFE_INTEGER);
+
+  if (parsed.error) {
+    showResult("primeResult", parsed.error, true);
+    return;
+  }
+
+  const n = parsed.value;
+
+  showResult(
+    "primeResult",
+    isPrimeNumber(n)
+      ? n + " یک عدد اول است."
+      : n + " عدد اول نیست؛ عددی مرکب است.",
+    false
+  );
+}
+
+/* ساخت درخت تجزیه */
+function buildTree(value) {
+  for (let divisor = 2; divisor * divisor <= value; divisor++) {
+    if (value % divisor === 0) {
+      return {
+        value,
+        left: buildTree(divisor),
+        right: buildTree(value / divisor)
+      };
+    }
+  }
+
+  return { value, left: null, right: null };
+}
+
+/* چیدن گره‌ها بر اساس تعداد برگ‌ها */
+function layoutTree(root) {
+  let nextLeaf = 0;
+  const nodes = [];
+  const edges = [];
+  const horizontalGap = 76;
+  const verticalGap = 82;
+  const margin = 35;
+
+  function place(node, depth) {
+    let x;
+
+    if (!node.left && !node.right) {
+      x = nextLeaf * horizontalGap + margin;
+      nextLeaf++;
+    } else {
+      const left = place(node.left, depth + 1);
+      const right = place(node.right, depth + 1);
+      x = (left.x + right.x) / 2;
+
+      edges.push({
+        x1: x,
+        y1: depth * verticalGap + 28,
+        x2: left.x,
+        y2: (depth + 1) * verticalGap + 28
+      });
+
+      edges.push({
+        x1: x,
+        y1: depth * verticalGap + 28,
+        x2: right.x,
+        y2: (depth + 1) * verticalGap + 28
+      });
+    }
+
+    const item = {
+      value: node.value,
+      x,
+      y: depth * verticalGap + 28,
+      leaf: !node.left && !node.right
+    };
+
+    nodes.push(item);
+    return item;
+  }
+
+  place(root, 0);
+
+  return {
+    nodes,
+    edges,
+    width: Math.max(horizontalGap, nextLeaf * horizontalGap) + margin * 2,
+    height: Math.max(...nodes.map(node => node.y)) + 45
+  };
+}
+
+function drawFactorTree(number) {
+  const tree = buildTree(number);
+  const layout = layoutTree(tree);
+  const canvas = document.createElement("div");
+
+  canvas.className = "tree-canvas";
+  canvas.style.width = layout.width + "px";
+  canvas.style.height = layout.height + "px";
+
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("viewBox", `0 0 ${layout.width} ${layout.height}`);
+  svg.setAttribute("aria-hidden", "true");
+
+  layout.edges.forEach(edge => {
+    const line = document.createElementNS(svgNS, "line");
+    line.setAttribute("x1", edge.x1);
+    line.setAttribute("y1", edge.y1);
+    line.setAttribute("x2", edge.x2);
+    line.setAttribute("y2", edge.y2);
+    line.setAttribute("class", "tree-line");
+    svg.appendChild(line);
+  });
+
+  canvas.appendChild(svg);
+
+  layout.nodes.forEach(node => {
+    const element = document.createElement("span");
+    element.className = node.leaf ? "tree-leaf" : "tree-node";
+    element.textContent = node.value;
+    element.style.left = node.x + "px";
+    element.style.top = node.y + "px";
+    canvas.appendChild(element);
+  });
+
+  return canvas;
+}
+
+function factorizeNumber() {
+  const input = document.getElementById("factorNumber");
+  const result = document.getElementById("factorResult");
+  const raw = input.value.trim();
+  const number = Number(raw);
+
+  if (raw === "" || !Number.isSafeInteger(number) || number < 2) {
+    result.hidden = false;
+    result.classList.add("error");
+    result.textContent =
+      "لطفاً یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.";
+    return;
+  }
+
+  const factors = [];
+  let remaining = number;
+
+  for (let divisor = 2; divisor * divisor <= remaining; divisor++) {
+    while (remaining % divisor === 0) {
+      factors.push(divisor);
+      remaining /= divisor;
+    }
+  }
+
+  if (remaining > 1) factors.push(remaining);
+
+  const powers = {};
+
+  for (const factor of factors) {
+    powers[factor] = (powers[factor] || 0) + 1;
+  }
+
+  const compact = Object.entries(powers)
+    .map(([factor, power]) =>
+      power === 1 ? factor : `${factor}<sup>${power}</sup>`
+    )
+    .join(" × ");
+
+  result.hidden = false;
+  result.classList.remove("error");
+  result.replaceChildren();
+
+  const finalBox = document.createElement("div");
+  finalBox.className = "factor-final";
+
+  const finalTitle = document.createElement("h3");
+  finalTitle.textContent = "تجزیه به عوامل اول";
+
+  const equation = document.createElement("div");
+  equation.className = "factor-equation";
+  equation.dir = "ltr";
+  equation.innerHTML = compact;
+
+  finalBox.append(finalTitle, equation);
+
+  const treeBox = document.createElement("div");
+  treeBox.className = "factor-tree";
+
+  const treeTitle = document.createElement("h3");
+  treeTitle.textContent = "درخت تجزیه";
+
+  treeBox.append(treeTitle, drawFactorTree(number));
+  result.append(finalBox, treeBox);
+}
+
+loadSavedTheme();
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
