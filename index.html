@@ -1124,11 +1124,11 @@ input::placeholder {
 
 <section id="calculator" class="page">
   <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
-  <h2>ماشین‌حساب پیشرفته</h2>
+  <h2>ماشین‌حساب</h2>
   <p>عبارت دلخواهت را با چند عدد، پرانتز و عملگرهای ریاضی وارد کن.</p>
   <div class="calculator-shell">
     <label for="calculatorDisplay">عبارت ریاضی</label>
-    <input id="calculatorDisplay" class="calculator-display" type="text" inputmode="decimal" autocomplete="off" placeholder="مثلاً (12 + 3) ÷ 2" aria-label="عبارت ریاضی" onkeydown="if(event.key==='Enter'){event.preventDefault();calculateBasic();}" oninput="sanitizeCalculatorInput(this)">
+    <input id="calculatorDisplay" class="calculator-display" type="text" inputmode="decimal" autocomplete="off" placeholder="مثلاً (12 + 3) ÷ 2" aria-label="عبارت ریاضی" onkeydown="if(event.key==='Escape'){event.preventDefault();clearCalculator();} else if(event.key==='Enter'){event.preventDefault();calculateBasic();}" oninput="sanitizeCalculatorInput(this)">
     <div class="calculator-keypad">
       <button type="button" class="calc-key calc-function" onclick="calculatorInsert('(')">(</button>
       <button type="button" class="calc-key calc-function" onclick="calculatorInsert(')')">)</button>
@@ -1215,18 +1215,24 @@ function showPage(pageId) {
 }
 
 function sanitizeCalculatorInput(display) {
-  const allowed = "0123456789.+−×÷()%²^√ ";
+  const original = display.value;
+  const originalCaret = display.selectionStart ?? original.length;
+  const allowed = "0123456789.+−×÷()%⁰¹²³⁴⁵⁶⁷⁸⁹⁻^√ ";
   let cleaned = "";
-  for (const char of display.value.replace(/-/g, "−").replace(/\*/g, "×").replace(/\//g, "÷")) {
+  for (const char of original.replace(/-/g, "−").replace(/\*/g, "×").replace(/\//g, "÷")) {
     if (!allowed.includes(char)) continue;
-    const isOperator = "＋−×÷^%".includes(char) || char === "+";
     const previous = cleaned.trimEnd().slice(-1);
+    const isOperator = "+−×÷^%".includes(char);
     const previousIsOperator = "+−×÷^%".includes(previous);
-    if (isOperator && previousIsOperator) continue;
+    // Minus is allowed as a sign at the beginning, after an opening parenthesis,
+    // or after another operator (for example 5×−2).
+    if (isOperator && previousIsOperator && !(char === "−" && "+×÷^".includes(previous))) continue;
     cleaned += char;
   }
-  if (display.value !== cleaned) {
-    const caret = Math.min(display.selectionStart ?? cleaned.length, cleaned.length);
+  // Convert an exponent typed after ^ into superscript digits.
+  cleaned = cleaned.replace(/\^(−?)(\d+)/g, (_, sign, digits) => sign + [...digits].map(d => "⁰¹²³⁴⁵⁶⁷⁸⁹"[Number(d)]).join(""));
+  if (original !== cleaned) {
+    const caret = Math.min(originalCaret, cleaned.length);
     display.value = cleaned;
     display.setSelectionRange(caret, caret);
   }
@@ -1262,7 +1268,7 @@ function clearCalculator() {
 function calculateBasic() {
   const display = document.getElementById("calculatorDisplay");
   const result = document.getElementById("calculatorResult");
-  const expression = display.value.trim().replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/²/g, "^2").replace(/√/g, "sqrt").replace(/,/g, ".");
+  const expression = display.value.trim().replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, "^" + "$1").replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, d => String("⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(d))).replace(/√/g, "sqrt").replace(/,/g, ".");
   result.hidden = false; result.classList.remove("error");
   if (!expression) { result.classList.add("error"); result.textContent = "لطفاً یک عبارت ریاضی وارد کن."; return; }
   try {
