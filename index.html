@@ -1067,6 +1067,7 @@ input::placeholder {
 
 </main>
 <script>
+
 function showPage(pageId) {
   document.querySelectorAll(".page").forEach(page => {
     page.classList.remove("active");
@@ -1078,16 +1079,46 @@ function showPage(pageId) {
     selected.classList.add("active");
   }
 
-  // پاک کردن نتیجه غربال هنگام خروج از ابزار
+  // پاک کردن نتیجه‌های ابزارها هنگام خروج از هر ابزار
+  if (pageId !== "factorization") {
+    const result = document.getElementById("factorResult");
+    result.hidden = true;
+    result.replaceChildren();
+    result.classList.remove("error");
+  }
+
+  if (pageId !== "fractions") {
+    const result = document.getElementById("fraction-result");
+    result.hidden = true;
+    result.replaceChildren();
+    result.classList.remove("error");
+  }
+
   if (pageId !== "sieve") {
-    document.getElementById("sieveResult").hidden = true;
-    document.getElementById("sieveResult").textContent = "";
-    document.getElementById("sieveResult").classList.remove("error");
+    const result = document.getElementById("sieveResult");
+    result.hidden = true;
+    result.textContent = "";
+    result.classList.remove("error");
     document.getElementById("sieveGrid").replaceChildren();
+  }
+
+  if (pageId !== "gcd") {
+    const result = document.getElementById("gcdResult");
+    result.hidden = true;
+    result.textContent = "";
+    result.classList.remove("error");
+  }
+
+  if (pageId !== "prime") {
+    const result = document.getElementById("primeResult");
+    result.hidden = true;
+    result.textContent = "";
+    result.classList.remove("error");
   }
 
   window.scrollTo(0, 0);
 }
+
   const selected = document.getElementById(pageId);
   if (selected) selected.classList.add("active");
   window.scrollTo(0, 0);
