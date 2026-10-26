@@ -849,18 +849,7 @@ body.dark .result {
       <h2>جعبه‌ابزار ریاضی</h2>
       <p>ابزار موردنیازت را انتخاب کن.</p>
     </div>
-    <span class="tool-count">۴ ابزار</span>
- 
-<button class="tool-card card-blue"
-  onclick="showPage('fractions')">
-  <span class="tool-icon">½</span>
-  <span class="tool-title">محاسبهٔ کسرها</span>
-  <span class="tool-description">
-    جمع، تفریق، ضرب و تقسیم کسرها با ساده‌سازی جواب
-  </span>
-  <span class="tool-link">باز کردن ابزار ←</span>
-</button>
-
+    <span class="tool-count">5 ابزار</span>
   </div>
 
   <div class="tool-grid">
@@ -874,7 +863,15 @@ body.dark .result {
       </span>
       <span class="tool-link">باز کردن ابزار ←</span>
     </button>
-
+<button class="tool-card card-blue"
+  onclick="showPage('fractions')">
+  <span class="tool-icon">½</span>
+  <span class="tool-title">محاسبهٔ کسرها</span>
+  <span class="tool-description">
+    جمع، تفریق، ضرب و تقسیم کسرها با ساده‌سازی جواب
+  </span>
+  <span class="tool-link">باز کردن ابزار ←</span>
+</button>
     <button class="tool-card card-blue"
       onclick="showPage('sieve')">
       <span class="tool-icon">#</span>
@@ -938,18 +935,18 @@ body.dark .result {
   <div class="input-group">
     <label>کسر اول</label>
     <div class="fraction-input">
-      <input id="num1" type="number" placeholder="صورت" />
+      <input id="fraction-num1" type="number" placeholder="صورت" />
       <span>―</span>
-      <input id="den1" type="number" placeholder="مخرج" />
+      <input id="fraction-den1" type="number" placeholder="مخرج" />
     </div>
   </div>
 
   <div class="input-group">
     <label>کسر دوم</label>
     <div class="fraction-input">
-      <input id="num2" type="number" placeholder="صورت" />
+      <input id="fraction-num2" type="number" placeholder="صورت" />
       <span>―</span>
-      <input id="den2" type="number" placeholder="مخرج" />
+      <input id="fraction-den2" type="number" placeholder="مخرج" />
     </div>
   </div>
 
