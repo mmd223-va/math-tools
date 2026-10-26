@@ -1590,7 +1590,9 @@ const d2 = Number(document.getElementById("fraction-den2").value);
 
   const operation = document.getElementById("fraction-operation").value;
   const result = document.getElementById("fraction-result");
-
+result.replaceChildren();
+result.classList.remove("error");
+result.hidden = true;
   const inputs = ["fraction-num1", "fraction-den1", "fraction-num2", "fraction-den2"];
 
   if (inputs.some(id => document.getElementById(id).value.trim() === "")) {
