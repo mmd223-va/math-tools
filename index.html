@@ -640,6 +640,7 @@ body.dark .tool-count {
 .tool-card {
   display: flex;
   min-width: 0;
+  min-height: 218px;
   flex-direction: column;
   align-items: flex-start;
   padding: 22px;
@@ -668,8 +669,36 @@ body.dark .tool-card:hover {
   border-color: #818cf8;
 }
 
+.tool-title {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.tool-description {
+  display: block;
+  margin-bottom: 16px;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+body.dark .tool-description { color: #cbd5e1; }
+
+.tool-link {
+  display: block;
+  margin-top: auto;
+  font-size: 13px;
+  font-weight: 800;
+  color: #2457c5;
+}
+
+body.dark .tool-link { color: #a5b4fc; }
+
 .tool-icon {
-  display: grid;
+   display: grid;
   width: 49px;
   height: 49px;
   place-items: center;
@@ -924,15 +953,14 @@ input::placeholder {
   <div class="tool-grid">
 
     <button class="tool-card card-purple"
-      onclick="showPage('factorization')">
-      <span class="tool-icon">⑂</span>
-      <span class="tool-title">تجزیه به عوامل اول</span>
-      <span class="tool-description">
-        تجزیهٔ عدد همراه با نمایش درخت تجزیه
-      </span>
+      onclick="showPage('calculator')">
+      <span class="tool-icon">＋</span>
+      <span class="tool-title">ماشین‌حساب</span>
+      <span class="tool-description">محاسبهٔ چهار عمل اصلی با اعداد صحیح و اعشاری</span>
       <span class="tool-link">باز کردن ابزار ←</span>
     </button>
-<button class="tool-card card-blue"
+
+    <button class="tool-card card-blue"
   onclick="showPage('fractions')">
   <span class="tool-icon">½</span>
   <span class="tool-title">محاسبهٔ کسرها</span>
@@ -941,12 +969,13 @@ input::placeholder {
   </span>
   <span class="tool-link">باز کردن ابزار ←</span>
 </button>
-    <button class="tool-card card-blue"
-      onclick="showPage('sieve')">
-      <span class="tool-icon">#</span>
-      <span class="tool-title">غربال اراتستن</span>
+
+    <button class="tool-card card-purple"
+      onclick="showPage('factorization')">
+      <span class="tool-icon">⑂</span>
+      <span class="tool-title">تجزیه به عوامل اول</span>
       <span class="tool-description">
-        پیدا کردن اعداد اول در یک بازه
+        تجزیهٔ عدد همراه با نمایش درخت تجزیه
       </span>
       <span class="tool-link">باز کردن ابزار ←</span>
     </button>
@@ -961,20 +990,22 @@ input::placeholder {
       <span class="tool-link">باز کردن ابزار ←</span>
     </button>
 
-    <button class="tool-card card-purple"
-      onclick="showPage('calculator')">
-      <span class="tool-icon">＋</span>
-      <span class="tool-title">ماشین‌حساب</span>
-      <span class="tool-description">محاسبهٔ چهار عمل اصلی با اعداد صحیح و اعشاری</span>
-      <span class="tool-link">باز کردن ابزار ←</span>
-    </button>
-
     <button class="tool-card card-orange"
       onclick="showPage('prime')">
       <span class="tool-icon">✓</span>
       <span class="tool-title">تشخیص عدد اول</span>
       <span class="tool-description">
         بررسی اول یا مرکب بودن یک عدد
+      </span>
+      <span class="tool-link">باز کردن ابزار ←</span>
+    </button>
+
+    <button class="tool-card card-blue"
+      onclick="showPage('sieve')">
+      <span class="tool-icon">#</span>
+      <span class="tool-title">غربال اراتستن</span>
+      <span class="tool-description">
+        پیدا کردن اعداد اول در یک بازه
       </span>
       <span class="tool-link">باز کردن ابزار ←</span>
     </button>
