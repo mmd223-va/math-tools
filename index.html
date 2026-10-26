@@ -1211,6 +1211,13 @@ function showPage(pageId) {
     result.classList.remove("error");
   }
 
+  if (pageId !== "calculator") {
+    const calculatorResult = document.getElementById("calculatorResult");
+    calculatorResult.hidden = true;
+    calculatorResult.textContent = "";
+    calculatorResult.classList.remove("error");
+  }
+
   window.scrollTo(0, 0);
 }
 
@@ -1241,11 +1248,14 @@ function calculatorInsert(value) {
   const display = document.getElementById("calculatorDisplay");
   const start = display.selectionStart ?? display.value.length;
   const end = display.selectionEnd ?? display.value.length;
+  if (value === "-") value = "−";
   const before = display.value.slice(0, start);
-  const after = display.value.slice(end);
-  const isOperator = "+−×÷^%".includes(value);
   const previous = before.trimEnd().slice(-1);
-  if (isOperator && "+−×÷^%".includes(previous)) return;
+  const operators = "+−×÷^%";
+  const isOperator = operators.includes(value);
+  const previousIsOperator = operators.includes(previous);
+  const isUnaryMinus = value === "−" && (!previous || "(+×÷^".includes(previous));
+  if (isOperator && previousIsOperator && !isUnaryMinus) return;
   if (/[A-Za-z]/.test(value)) value = value.replace(/sqrt\(/g, "√(");
   display.setRangeText(value, start, end, "end");
   sanitizeCalculatorInput(display);
