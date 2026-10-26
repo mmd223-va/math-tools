@@ -1320,6 +1320,110 @@ button:focus-visible {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
+
+/* ===== Blue-only technology palette: remove purple accents ===== */
+:root {
+  --main-color: #168cff;
+  --main-hover: #0875e8;
+  --page-bg: #050b18;
+  --card-bg: #09162b;
+  --text-color: #edf7ff;
+  --muted-color: #a8c4e5;
+  --border-color: #174a7a;
+  --input-bg: #061225;
+  --soft-bg: #0b2340;
+  --card-shadow: 0 12px 36px rgba(0, 0, 0, .28);
+}
+body {
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(0, 116, 255, .23), transparent 36%),
+    radial-gradient(ellipse at 92% 22%, rgba(0, 205, 255, .13), transparent 32%),
+    #050b18;
+}
+body::before {
+  background-image: linear-gradient(rgba(40, 145, 255, .11) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(40, 145, 255, .11) 1px, transparent 1px);
+}
+.container, body.dark .container {
+  background: rgba(6, 16, 34, .94);
+  border-color: #17416d;
+  box-shadow: 0 20px 70px rgba(0,0,0,.34), 0 0 32px rgba(0, 119, 255, .08);
+}
+.hero {
+  border-color: rgba(36, 157, 255, .52);
+  background: linear-gradient(120deg, #09234b 0%, #073b68 54%, #065a82 100%);
+  box-shadow: inset 0 1px rgba(255,255,255,.05), 0 12px 40px rgba(0, 100, 220, .18);
+}
+.hero::after {
+  border-color: rgba(0, 205, 255, .32);
+  box-shadow: 0 0 0 25px rgba(0, 119, 255, .05), 0 0 0 55px rgba(0, 205, 255, .035);
+}
+.hero h1 {
+  background: linear-gradient(90deg, #75d9ff, #eaf8ff 45%, #39baff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-label { border-color: #38bdf866; background: #0284c72b; }
+.hero-button {
+  background: linear-gradient(100deg, #0878e8, #00a8e8);
+  color: white;
+  box-shadow: 0 0 22px rgba(0, 145, 255, .28);
+}
+.hero-button:hover { background: linear-gradient(100deg, #168cff, #00c1ed); }
+.hero-decoration { color: #22baff1f; }
+.home-heading h2, h1, h2 { color: #8bd8ff; }
+.tool-count, body.dark .tool-count {
+  color: #d9f3ff;
+  background: #0b2340;
+  border-color: #1b568a;
+}
+.tool-card {
+  background: linear-gradient(145deg, rgba(9, 30, 58, .98), rgba(5, 16, 34, .98));
+  border-color: #174675;
+}
+.tool-card:hover {
+  border-color: #12b9ff;
+  box-shadow: 0 12px 28px rgba(0, 70, 150, .30), 0 0 18px rgba(0, 170, 255, .13);
+}
+.tool-icon {
+  background: linear-gradient(145deg, #07559b, #092c59);
+  border-color: #19baff;
+  color: #baf3ff;
+  box-shadow: 0 0 16px rgba(0, 164, 255, .24);
+}
+.tool-description, .tool-link { color: #a8c7e8; }
+.menu-button, .action-button {
+  background: linear-gradient(100deg, #0878e8, #009edb);
+  border-color: #2ebdff;
+  box-shadow: 0 5px 18px rgba(0, 130, 220, .2);
+}
+.menu-button:hover, .action-button:hover {
+  background: linear-gradient(100deg, #168cff, #00bce8);
+  box-shadow: 0 0 22px rgba(0, 155, 255, .28);
+}
+.back-button, #themeButton {
+  color: #d9efff;
+  background: #0a203b;
+  border-color: #1a5485;
+}
+#themeButton { box-shadow: 0 5px 24px rgba(0,0,0,.28), 0 0 15px rgba(0,140,255,.12); }
+input, select, textarea { background: #061225; border-color: #1c4772; }
+input:focus, select:focus, textarea:focus {
+  border-color: #16baff;
+  box-shadow: 0 0 0 3px rgba(0, 157, 255, .17), 0 0 16px rgba(0, 175, 255, .12);
+}
+.result { background: linear-gradient(145deg, #0b2340, #07162b); border-color: #1b4775; }
+.factor-final, .factor-tree { background: #081a32; border-color: #1b4775; }
+.factor-final h3, .factor-tree h3, .factor-equation { color: #80d7ff; }
+.tree-node { background: #123b68; color: #e0f4ff; }
+.tree-leaf { background: #064451; color: #a8fff0; border-color: #0ea5a4; }
+.tree-line { stroke: #4b91c5; }
+.number-cell { background: #102746; color: #dceeff; border-color: #1a426a; }
+.number-cell.prime { background: #0b4144; color: #a7fff0; }
+.home-footer { border-color: #17416d; color: #92b6d8; }
+button:focus-visible { outline-color: #38d9ff; }
+
 </style>
 </head>
 <body>
