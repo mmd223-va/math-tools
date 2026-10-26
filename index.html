@@ -1068,9 +1068,26 @@ input::placeholder {
 </main>
 <script>
 function showPage(pageId) {
-  document.querySelectorAll(".page").forEach(page =>
-    page.classList.remove("active")
-  );
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  const selected = document.getElementById(pageId);
+
+  if (selected) {
+    selected.classList.add("active");
+  }
+
+  // پاک کردن نتیجه غربال هنگام خروج از ابزار
+  if (pageId !== "sieve") {
+    document.getElementById("sieveResult").hidden = true;
+    document.getElementById("sieveResult").textContent = "";
+    document.getElementById("sieveResult").classList.remove("error");
+    document.getElementById("sieveGrid").replaceChildren();
+  }
+
+  window.scrollTo(0, 0);
+}
   const selected = document.getElementById(pageId);
   if (selected) selected.classList.add("active");
   window.scrollTo(0, 0);
