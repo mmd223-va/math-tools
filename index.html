@@ -575,7 +575,7 @@ function drawFactorTree(number) {
   const canvas = document.createElement("div");
 
   canvas.className = "tree-canvas";
-  canvas.style.width = layout.width + "px";
+  canvas.style.width = Math.max(layout.width, 300) + "px";
   canvas.style.height = layout.height + "px";
 
   const svgNS = "http://www.w3.org/2000/svg";
