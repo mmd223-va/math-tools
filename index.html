@@ -263,7 +263,112 @@
         input, button, textarea, select {
     font-family: "Vazirmatn", sans-serif;
 }
-    </style>
+   
+
+/* ظاهر درخت تجزیه */
+.factor-tree {
+    margin-top: 18px;
+    padding: 20px 10px;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    text-align: center;
+    overflow-x: auto;
+}
+
+.factor-tree h3 {
+    margin-bottom: 20px;
+}
+
+.factor-tree ul {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.factor-tree li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    position: relative;
+}
+
+.factor-tree li > ul {
+    position: relative;
+    padding-top: 24px;
+}
+
+/* خط عمودی زیر عدد والد */
+.factor-tree li > ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 24px;
+    border-left: 2px solid #94a3b8;
+}
+
+/* خط افقی بین دو فرزند */
+.factor-tree li > ul > li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-top: 2px solid #94a3b8;
+}
+
+.factor-tree li > ul > li:first-child::before {
+    left: 50%;
+    width: 50%;
+}
+
+.factor-tree li > ul > li:last-child::before {
+    width: 50%;
+}
+
+.factor-tree li > ul > li:only-child::before {
+    display: none;
+}
+
+.tree-node,
+.tree-leaf {
+    display: inline-block;
+    min-width: 38px;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+.tree-node {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.tree-leaf {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
+
+body.dark .factor-tree {
+    border-color: #475569;
+}
+
+body.dark .tree-node {
+    background: #334155;
+    color: #dbeafe;
+}
+
+body.dark .tree-leaf {
+    background: #14532d;
+    color: #bbf7d0;
+}
+</style>
 </head>
 
 <body>
@@ -317,7 +422,7 @@
 </button>
 
 
-    <div id="factorResult"></div>
+    <div id="factorResult" hidden></div>
 </section>
         <!-- غربال اراتستن -->
         <section id="sieve" class="page">
@@ -629,11 +734,11 @@
 
         // اجرا هنگام بارگذاری صفحه
         loadSavedTheme();
- 
-        function factorizeNumber() {
+
+
+function factorizeNumber() {
     const input = document.getElementById("factorNumber");
     const result = document.getElementById("factorResult");
-
     const number = Number(input.value);
 
     if (
@@ -641,10 +746,13 @@
         !Number.isSafeInteger(number) ||
         number < 2
     ) {
-        result.textContent = "لطفاً یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.";
+        result.hidden = false;
+        result.textContent =
+            "لطفاً یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.";
         return;
     }
 
+    // محاسبه عوامل اول
     let n = number;
     const factors = [];
 
@@ -659,24 +767,82 @@
         factors.push(n);
     }
 
+    // نمایش توان عوامل تکراری
     const powers = {};
 
     for (const factor of factors) {
         powers[factor] = (powers[factor] || 0) + 1;
     }
 
-    const expanded = factors.join(" × ");
-
     const compact = Object.entries(powers)
         .map(([factor, power]) =>
-            power === 1 ? factor : `${factor}^${power}`
+            power === 1
+                ? factor
+                : `${factor}<sup>${power}</sup>`
         )
         .join(" × ");
 
-    result.textContent =
-        `تجزیه مرحله‌ای: ${expanded}\n` +
-        `عوامل اول با توان: ${compact}`;
-}  
+    // ساخت درخت تجزیه
+    function buildTree(value) {
+        for (let divisor = 2; divisor * divisor <= value; divisor++) {
+            if (value % divisor === 0) {
+                return {
+                    value: value,
+                    left: buildTree(divisor),
+                    right: buildTree(value / divisor)
+                };
+            }
+        }
+
+        return {
+            value: value,
+            left: null,
+            right: null
+        };
+    }
+
+    // تبدیل درخت به HTML
+    function drawTree(node) {
+        if (node.left === null && node.right === null) {
+            return `
+                <li>
+                    <span class="tree-leaf">${node.value}</span>
+                </li>
+            `;
+        }
+
+        return `
+            <li>
+                <span class="tree-node">${node.value}</span>
+                <ul>
+                    ${drawTree(node.left)}
+                    ${drawTree(node.right)}
+                </ul>
+            </li>
+        `;
+    }
+
+    const tree = buildTree(number);
+
+    // نمایش نتیجه و درخت
+    result.hidden = false;
+    result.classList.remove("error");
+
+    result.innerHTML = `
+        <div class="factor-final">
+            <h3>تجزیه به عوامل اول</h3>
+            <div class="factor-equation" dir="ltr">
+                ${compact}
+            </div>
+        </div>
+
+        <div class="factor-tree">
+            <h3>درخت تجزیه</h3>
+            <ul>${drawTree(tree)}</ul>
+        </div>
+    `;
+}
+
     </script>
 </body>
 </html>
