@@ -817,6 +817,47 @@ body.dark .result {
     flex-direction: column;
   }
 }
+
+/* بهبود نمایش در موبایل */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  .container {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+  }
+
+  button {
+    max-width: 100%;
+    touch-action: manipulation;
+  }
+
+  .fraction-input {
+    gap: 6px;
+  }
+
+  .tool-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
 </head>
 <body>
