@@ -669,6 +669,24 @@ body.dark .tool-card:hover {
   border-color: #818cf8;
 }
 
+.calculator-shell {
+  max-width: 430px; margin: 20px auto 0; padding: 18px;
+  border: 1px solid #e2e8f0; border-radius: 20px; background: #f8fafc;
+}
+body.dark .calculator-shell { border-color: #374151; background: #172033; }
+.calculator-display { min-height: 58px; margin: 10px 0 16px; direction: ltr; text-align: left; font-size: 24px; font-weight: 700; }
+.calculator-keypad { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; }
+.calc-key { min-height: 52px; padding: 8px; background: #e8edf5; color: #1e293b; font-size: 19px; font-weight: 700; }
+body.dark .calc-key { background: #334155; color: #f8fafc; }
+.calc-function { background: #dbeafe; color: #1d4ed8; }
+body.dark .calc-function { background: #1e3a5f; color: #bfdbfe; }
+.calc-danger { background: #fee2e2; color: #b91c1c; }
+body.dark .calc-danger { background: #512b35; color: #fecaca; }
+.calc-equals { background: #2457c5; color: white; }
+.calculator-help { margin-bottom: 0; color: #64748b; font-size: 13px; }
+body.dark .calculator-help { color: #cbd5e1; }
+@media (max-width: 420px) { .calculator-shell { padding: 12px; } .calculator-keypad { gap: 6px; } .calc-key { min-height: 46px; font-size: 17px; } }
+
 .tool-title {
   display: block;
   margin-bottom: 8px;
@@ -1106,28 +1124,40 @@ input::placeholder {
 
 <section id="calculator" class="page">
   <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
-  <h2>ماشین‌حساب</h2>
-  <p>دو عدد وارد کن و یکی از چهار عمل اصلی را انتخاب کن.</p>
-  <div class="input-group">
-    <label for="calculatorFirst">عدد اول</label>
-    <input id="calculatorFirst" type="number" step="any" inputmode="decimal" placeholder="مثلاً 12.5">
+  <h2>ماشین‌حساب پیشرفته</h2>
+  <p>عبارت دلخواهت را با چند عدد، پرانتز و عملگرهای ریاضی وارد کن.</p>
+  <div class="calculator-shell">
+    <label for="calculatorDisplay">عبارت ریاضی</label>
+    <input id="calculatorDisplay" class="calculator-display" type="text" inputmode="decimal" autocomplete="off" placeholder="مثلاً (12 + 3) * 2" aria-label="عبارت ریاضی" onkeydown="if(event.key==='Enter'){event.preventDefault();calculateBasic();}">
+    <div class="calculator-keypad">
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('(')">(</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert(')')">)</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('%')">%</button>
+      <button type="button" class="calc-key calc-danger" onclick="calculatorBackspace()">⌫</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('7')">7</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('8')">8</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('9')">9</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('/')">÷</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('4')">4</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('5')">5</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('6')">6</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('*')">×</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('1')">1</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('2')">2</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('3')">3</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('-')">−</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('sqrt(')">√</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('0')">0</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('.')">.</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('+')">+</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('^2')">x²</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('^')">xʸ</button>
+      <button type="button" class="calc-key calc-danger" onclick="clearCalculator()">AC</button>
+      <button type="button" class="calc-key calc-equals" onclick="calculateBasic()">=</button>
+    </div>
+    <div id="calculatorResult" class="result" aria-live="polite" hidden></div>
+    <p class="calculator-help">چهار عمل اصلی، پرانتز، درصد، توان و جذر. با Enter محاسبه کن.</p>
   </div>
-  <div class="input-group">
-    <label for="calculatorOperation">عملیات</label>
-    <select id="calculatorOperation">
-      <option value="add">جمع (+)</option>
-      <option value="subtract">تفریق (−)</option>
-      <option value="multiply">ضرب (×)</option>
-      <option value="divide">تقسیم (÷)</option>
-    </select>
-  </div>
-  <div class="input-group">
-    <label for="calculatorSecond">عدد دوم</label>
-    <input id="calculatorSecond" type="number" step="any" inputmode="decimal" placeholder="مثلاً 3">
-  </div>
-  <button class="action-button" type="button" onclick="calculateBasic()">محاسبه</button>
-  <button class="action-button" type="button" onclick="clearCalculator()" style="background:#64748b">پاک کردن</button>
-  <div id="calculatorResult" class="result" aria-live="polite" hidden></div>
 </section>
 
 </main>
@@ -1184,52 +1214,57 @@ function showPage(pageId) {
   window.scrollTo(0, 0);
 }
 
-function calculateBasic() {
-  const firstInput = document.getElementById("calculatorFirst");
-  const secondInput = document.getElementById("calculatorSecond");
-  const operation = document.getElementById("calculatorOperation").value;
-  const result = document.getElementById("calculatorResult");
-  const firstText = firstInput.value.trim();
-  const secondText = secondInput.value.trim();
-  result.hidden = false;
-  result.classList.remove("error");
-  if (firstText === "" || secondText === "") {
-    result.classList.add("error");
-    result.textContent = "لطفاً هر دو عدد را وارد کن.";
-    return;
-  }
-  const first = Number(firstText);
-  const second = Number(secondText);
-  if (!Number.isFinite(first) || !Number.isFinite(second)) {
-    result.classList.add("error");
-    result.textContent = "لطفاً عددهای معتبر وارد کن.";
-    return;
-  }
-  if (operation === "divide" && second === 0) {
-    result.classList.add("error");
-    result.textContent = "تقسیم بر صفر امکان‌پذیر نیست.";
-    return;
-  }
-  let answer;
-  if (operation === "add") answer = first + second;
-  else if (operation === "subtract") answer = first - second;
-  else if (operation === "multiply") answer = first * second;
-  else answer = first / second;
-  if (!Number.isFinite(answer)) {
-    result.classList.add("error");
-    result.textContent = "نتیجه خارج از محدودهٔ قابل محاسبه است.";
-    return;
-  }
-  result.textContent = "جواب نهایی: " + Number(answer.toPrecision(12)).toString();
+function calculatorInsert(value) {
+  const display = document.getElementById("calculatorDisplay");
+  const start = display.selectionStart ?? display.value.length;
+  const end = display.selectionEnd ?? display.value.length;
+  display.setRangeText(value, start, end, "end");
+  display.focus();
 }
-
+function calculatorBackspace() {
+  const display = document.getElementById("calculatorDisplay");
+  const start = display.selectionStart ?? display.value.length;
+  const end = display.selectionEnd ?? display.value.length;
+  if (start !== end) display.setRangeText("", start, end, "end");
+  else if (start > 0) display.setRangeText("", start - 1, start, "end");
+  display.focus();
+}
 function clearCalculator() {
-  document.getElementById("calculatorFirst").value = "";
-  document.getElementById("calculatorSecond").value = "";
+  document.getElementById("calculatorDisplay").value = "";
   const result = document.getElementById("calculatorResult");
-  result.hidden = true;
-  result.textContent = "";
-  result.classList.remove("error");
+  result.hidden = true; result.textContent = ""; result.classList.remove("error");
+  document.getElementById("calculatorDisplay").focus();
+}
+function calculateBasic() {
+  const display = document.getElementById("calculatorDisplay");
+  const result = document.getElementById("calculatorResult");
+  const expression = display.value.trim().replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/,/g, ".");
+  result.hidden = false; result.classList.remove("error");
+  if (!expression) { result.classList.add("error"); result.textContent = "لطفاً یک عبارت ریاضی وارد کن."; return; }
+  try {
+    const tokens = expression.match(/sqrt|(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?|[()+\-*/%^]/gi);
+    if (!tokens || tokens.join("") !== expression.replace(/\s+/g, "")) throw new Error("عبارت ریاضی نامعتبر است.");
+    let pos = 0;
+    const peek = () => tokens[pos];
+    const take = () => tokens[pos++];
+    function primary() {
+      const token = take();
+      if (token === "+") return unary();
+      if (token === "-") return -unary();
+      if (token === "(") { const v = addSub(); if (take() !== ")") throw new Error("پرانتزها کامل نیستند."); return v; }
+      if (String(token).toLowerCase() === "sqrt") { if (take() !== "(") throw new Error("بعد از √ باید پرانتز باز بیاید."); const v=addSub(); if(take()!==")") throw new Error("پرانتز جذر کامل نیست."); if(v<0) throw new Error("جذر عدد منفی در اعداد حقیقی تعریف نشده است."); return Math.sqrt(v); }
+      if (token === undefined || !/^(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i.test(token)) throw new Error("عبارت ریاضی نامعتبر است.");
+      return Number(token);
+    }
+    function unary() { return power(); }
+    function power() { let v=primary(); if(peek()==="^"){take();v=Math.pow(v,unary());} while(peek()==="%"){take();v/=100;} return v; }
+    function mulDiv() { let v=unary(); while(peek()==="*"||peek()==="/"){const op=take(),n=unary();if(op==="/"&&n===0)throw new Error("تقسیم بر صفر امکان‌پذیر نیست.");v=op==="*"?v*n:v/n;}return v; }
+    function addSub() { let v=mulDiv();while(peek()==="+"||peek()==="-"){const op=take(),n=mulDiv();v=op==="+"?v+n:v-n;}return v; }
+    const answer=addSub();
+    if(pos!==tokens.length) throw new Error("عبارت ریاضی نامعتبر است.");
+    if(!Number.isFinite(answer)) throw new Error("نتیجه خارج از محدودهٔ قابل محاسبه است.");
+    result.textContent="جواب نهایی: "+Number(answer.toPrecision(12)).toString();
+  } catch(error) { result.classList.add("error");result.textContent=error.message||"عبارت ریاضی نامعتبر است."; }
 }
 
 function updateThemeButton() {
