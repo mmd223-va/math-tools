@@ -1226,7 +1226,7 @@ function isPrimeNumber(n) {
 }
 
 function checkPrime() {
-  const parsed = readInteger("primeNumber", 2, Number.MAX_SAFE_INTEGER);
+  const parsed = readInteger("primeNumber", 2, 100000000);
 
   if (parsed.error) {
     showResult("primeResult", parsed.error, true);
