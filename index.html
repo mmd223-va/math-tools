@@ -1428,9 +1428,6 @@ button:focus-visible { outline-color: #38d9ff; }
 </head>
 <body>
 
-<button id="themeButton" type="button" onclick="toggleTheme()">
-  🌙 حالت تاریک
-</button>
 
 <main class="container">
 
@@ -1798,29 +1795,6 @@ function calculateBasic() {
   } catch(error) { result.classList.add("error");result.textContent=error.message||"عبارت ریاضی نامعتبر است."; }
 }
 
-function updateThemeButton() {
-  const button = document.getElementById("themeButton");
-  button.textContent = document.body.classList.contains("dark")
-    ? "☀️ حالت روشن"
-    : "🌙 حالت تاریک";
-}
-
-function toggleTheme() {
-  const isDark = document.body.classList.toggle("dark");
-  try {
-    localStorage.setItem("siteTheme", isDark ? "dark" : "light");
-  } catch (error) {}
-  updateThemeButton();
-}
-
-function loadSavedTheme() {
-  let saved = "light";
-  try {
-    saved = localStorage.getItem("siteTheme") || "light";
-  } catch (error) {}
-  document.body.classList.toggle("dark", saved === "dark");
-  updateThemeButton();
-}
 
 function readInteger(inputId, min, max) {
   const raw = document.getElementById(inputId).value.trim();
@@ -2463,9 +2437,6 @@ if (denominator === 1) {
     });
   });
 })();
-
-
-  loadSavedTheme();
 </script>
 </body>
 </html>
