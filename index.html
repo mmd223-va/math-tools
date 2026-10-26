@@ -299,6 +299,203 @@ body.dark .tree-line { stroke: #64748b; }
   h1 { font-size: 25px; }
   .factor-equation { font-size: 19px; }
 }
+
+/* ===== طراحی جدید سایت ریاضی ===== */
+
+:root {
+  --main-color: #6366f1;
+  --main-hover: #4f46e5;
+  --page-bg: #f4f6fc;
+  --card-bg: #ffffff;
+  --text-color: #20243a;
+  --muted-color: #6b7280;
+  --border-color: #e5e7eb;
+  --input-bg: #ffffff;
+  --soft-bg: #eef2ff;
+  --card-shadow: 0 8px 28px rgba(31, 41, 55, 0.07);
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text-color);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+body.dark {
+  --page-bg: #111827;
+  --card-bg: #1f2937;
+  --text-color: #f3f4f6;
+  --muted-color: #c0c7d2;
+  --border-color: #374151;
+  --input-bg: #111827;
+  --soft-bg: #312e81;
+  --card-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
+}
+
+.container {
+  max-width: 1050px;
+  margin: 30px auto;
+  padding: 26px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+}
+
+h1 {
+  color: var(--main-color);
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+h2 {
+  color: var(--text-color);
+  font-weight: 750;
+  line-height: 1.8;
+}
+
+p {
+  line-height: 1.9;
+}
+
+.menu-button,
+.action-button,
+.back-button,
+#themeButton {
+  border: none;
+  border-radius: 13px;
+  padding: 12px 19px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.menu-button,
+.action-button {
+  background: var(--main-color);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.18);
+}
+
+.menu-button:hover,
+.action-button:hover {
+  background: var(--main-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 17px rgba(99, 102, 241, 0.22);
+}
+
+.back-button {
+  background: var(--soft-bg);
+  color: var(--main-color);
+}
+
+#themeButton {
+  background: var(--soft-bg);
+  color: var(--text-color);
+}
+
+input,
+select,
+textarea {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.result {
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  background: var(--soft-bg);
+  color: var(--text-color);
+  overflow-wrap: anywhere;
+}
+
+.error {
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.prime-grid {
+  gap: 8px;
+}
+
+.number-cell {
+  border-radius: 9px;
+  transition: transform 0.15s ease;
+}
+
+.number-cell:hover {
+  transform: scale(1.04);
+}
+
+.factor-tree {
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  background: var(--card-bg);
+}
+
+.factor-equation {
+  color: var(--main-color);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.factor-final {
+  padding: 15px;
+  border-radius: 12px;
+  background: var(--soft-bg);
+  color: var(--text-color);
+  line-height: 2;
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(99, 102, 241, 0.5);
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 12px;
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .menu-button,
+  .action-button,
+  .back-button,
+  #themeButton {
+    max-width: 100%;
+    padding: 10px 14px;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
 </style>
 </head>
 <body>
