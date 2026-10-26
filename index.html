@@ -1362,12 +1362,12 @@ function factorizeNumber() {
   if (
     raw === "" ||
     !Number.isSafeInteger(number) ||
-    number < 2
+    number < 2 || number > 100000000
   ) {
     result.hidden = false;
     result.classList.add("error");
     result.textContent =
-      "لطفاً یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.";
+      "لطفاً یک عدد صحیح بین ۲ تا ۱۰۰٬۰۰۰٬۰۰۰ وارد کن.";
     return;
   }
 if (isPrimeNumber(number)) {
