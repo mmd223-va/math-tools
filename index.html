@@ -1598,11 +1598,13 @@ result.hidden = true;
   if (inputs.some(id => document.getElementById(id).value.trim() === "")) {
     result.textContent = "لطفاً صورت و مخرج هر دو کسر را وارد کن.";
     return;
+ result.hidden = false;
   }
 
   if (d1 === 0 || d2 === 0) {
     result.textContent = "مخرج کسر نمی‌تواند صفر باشد.";
     return;
+result.hidden = false;
   }
 
   let numerator;
