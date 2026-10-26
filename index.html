@@ -850,6 +850,17 @@ body.dark .result {
       <p>ابزار موردنیازت را انتخاب کن.</p>
     </div>
     <span class="tool-count">۴ ابزار</span>
+ 
+<button class="tool-card card-blue"
+  onclick="showPage('fractions')">
+  <span class="tool-icon">½</span>
+  <span class="tool-title">محاسبهٔ کسرها</span>
+  <span class="tool-description">
+    جمع، تفریق، ضرب و تقسیم کسرها با ساده‌سازی جواب
+  </span>
+  <span class="tool-link">باز کردن ابزار ←</span>
+</button>
+
   </div>
 
   <div class="tool-grid">
@@ -914,6 +925,49 @@ body.dark .result {
   <input type="number" id="factorNumber" min="2" step="1" placeholder="مثلاً 60">
   <button class="action-button" onclick="factorizeNumber()">تجزیه عدد</button>
   <div id="factorResult" hidden></div>
+</section>
+
+<section id="fractions" class="page">
+  <button class="back-button" onclick="showPage('home')">
+    ← بازگشت به صفحه اصلی
+  </button>
+
+  <h2>محاسبهٔ کسرها</h2>
+  <p>دو کسر وارد کن و عمل ریاضی موردنظرت رو انتخاب کن.</p>
+
+  <div class="input-group">
+    <label>کسر اول</label>
+    <div class="fraction-input">
+      <input id="num1" type="number" placeholder="صورت" />
+      <span>―</span>
+      <input id="den1" type="number" placeholder="مخرج" />
+    </div>
+  </div>
+
+  <div class="input-group">
+    <label>کسر دوم</label>
+    <div class="fraction-input">
+      <input id="num2" type="number" placeholder="صورت" />
+      <span>―</span>
+      <input id="den2" type="number" placeholder="مخرج" />
+    </div>
+  </div>
+
+  <div class="input-group">
+    <label for="fraction-operation">عملیات</label>
+    <select id="fraction-operation">
+      <option value="add">جمع (+)</option>
+      <option value="subtract">تفریق (−)</option>
+      <option value="multiply">ضرب (×)</option>
+      <option value="divide">تقسیم (÷)</option>
+    </select>
+  </div>
+
+  <button class="action-button" onclick="calculateFractions()">
+    محاسبه
+  </button>
+
+  <div id="fraction-result" class="result" aria-live="polite"></div>
 </section>
 
 <section id="sieve" class="page">
@@ -1461,7 +1515,87 @@ if (isPrimeNumber(number)) {
 
   result.append(finalBox, treeBox);
 }
-loadSavedTheme();
+
+function calculateFractions() {
+  const n1 = Number(document.getElementById("num1").value);
+  const d1 = Number(document.getElementById("den1").value);
+  const n2 = Number(document.getElementById("num2").value);
+  const d2 = Number(document.getElementById("den2").value);
+
+  const operation = document.getElementById("fraction-operation").value;
+  const result = document.getElementById("fraction-result");
+
+  const inputs = ["num1", "den1", "num2", "den2"];
+
+  if (inputs.some(id => document.getElementById(id).value.trim() === "")) {
+    result.textContent = "لطفاً صورت و مخرج هر دو کسر را وارد کن.";
+    return;
+  }
+
+  if (d1 === 0 || d2 === 0) {
+    result.textContent = "مخرج کسر نمی‌تواند صفر باشد.";
+    return;
+  }
+
+  let numerator;
+  let denominator;
+
+  if (operation === "add") {
+    numerator = n1 * d2 + n2 * d1;
+    denominator = d1 * d2;
+  } else if (operation === "subtract") {
+    numerator = n1 * d2 - n2 * d1;
+    denominator = d1 * d2;
+  } else if (operation === "multiply") {
+    numerator = n1 * n2;
+    denominator = d1 * d2;
+  } else {
+    if (n2 === 0) {
+      result.textContent = "تقسیم بر کسر صفر امکان‌پذیر نیست.";
+      return;
+    }
+
+    numerator = n1 * d2;
+    denominator = d1 * n2;
+  }
+
+  if (!Number.isSafeInteger(numerator) ||
+      !Number.isSafeInteger(denominator)) {
+    result.textContent = "اعداد خیلی بزرگ هستند؛ لطفاً اعداد کوچک‌تری وارد کن.";
+    return;
+  }
+
+  if (denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+  }
+
+  function gcdForFractions(a, b) {
+    a = Math.abs(a);
+    b = Math.abs(b);
+
+    while (b !== 0) {
+      const remainder = a % b;
+      a = b;
+      b = remainder;
+    }
+
+    return a;
+  }
+
+  const divisor = gcdForFractions(numerator, denominator);
+  numerator /= divisor || 1;
+  denominator /= divisor || 1;
+
+  if (denominator === 1) {
+    result.textContent = `جواب نهایی: ${numerator}`;
+  } else {
+    result.textContent =
+      `جواب نهایی: ${numerator}/${denominator}`;
+  }
+}
+
+  loadSavedTheme();
 </script>
 </body>
 </html>
