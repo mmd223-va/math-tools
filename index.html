@@ -661,7 +661,19 @@ function factorizeNumber() {
       "لطفاً یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.";
     return;
   }
+if (isPrimeNumber(number)) {
+  result.hidden = false;
+  result.classList.remove("error");
+  result.replaceChildren();
 
+  const message = document.createElement("div");
+  message.className = "factor-final";
+  message.textContent =
+    number + " یک عدد اول است و به عوامل اول کوچک‌تر تجزیه نمی‌شود.";
+
+  result.appendChild(message);
+  return;
+}
   // محاسبه عوامل اول
   const factors = [];
   let remaining = number;
