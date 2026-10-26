@@ -1128,7 +1128,7 @@ input::placeholder {
   <p>عبارت دلخواهت را با چند عدد، پرانتز و عملگرهای ریاضی وارد کن.</p>
   <div class="calculator-shell">
     <label for="calculatorDisplay">عبارت ریاضی</label>
-    <input id="calculatorDisplay" class="calculator-display" type="text" inputmode="decimal" autocomplete="off" placeholder="مثلاً (12 + 3) * 2" aria-label="عبارت ریاضی" onkeydown="if(event.key==='Enter'){event.preventDefault();calculateBasic();}">
+    <input id="calculatorDisplay" class="calculator-display" type="text" inputmode="decimal" autocomplete="off" placeholder="مثلاً (12 + 3) ÷ 2" aria-label="عبارت ریاضی" onkeydown="if(event.key==='Enter'){event.preventDefault();calculateBasic();}">
     <div class="calculator-keypad">
       <button type="button" class="calc-key calc-function" onclick="calculatorInsert('(')">(</button>
       <button type="button" class="calc-key calc-function" onclick="calculatorInsert(')')">)</button>
@@ -1137,7 +1137,7 @@ input::placeholder {
       <button type="button" class="calc-key" onclick="calculatorInsert('7')">7</button>
       <button type="button" class="calc-key" onclick="calculatorInsert('8')">8</button>
       <button type="button" class="calc-key" onclick="calculatorInsert('9')">9</button>
-      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('/')">÷</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('÷')">÷</button>
       <button type="button" class="calc-key" onclick="calculatorInsert('4')">4</button>
       <button type="button" class="calc-key" onclick="calculatorInsert('5')">5</button>
       <button type="button" class="calc-key" onclick="calculatorInsert('6')">6</button>
@@ -1150,7 +1150,7 @@ input::placeholder {
       <button type="button" class="calc-key" onclick="calculatorInsert('0')">0</button>
       <button type="button" class="calc-key" onclick="calculatorInsert('.')">.</button>
       <button type="button" class="calc-key calc-function" onclick="calculatorInsert('+')">+</button>
-      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('^2')">x²</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('²')">x²</button>
       <button type="button" class="calc-key calc-function" onclick="calculatorInsert('^')">xʸ</button>
       <button type="button" class="calc-key calc-danger" onclick="clearCalculator()">AC</button>
       <button type="button" class="calc-key calc-equals" onclick="calculateBasic()">=</button>
@@ -1238,7 +1238,7 @@ function clearCalculator() {
 function calculateBasic() {
   const display = document.getElementById("calculatorDisplay");
   const result = document.getElementById("calculatorResult");
-  const expression = display.value.trim().replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/,/g, ".");
+  const expression = display.value.trim().replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/²/g, "^2").replace(/,/g, ".");
   result.hidden = false; result.classList.remove("error");
   if (!expression) { result.classList.add("error"); result.textContent = "لطفاً یک عبارت ریاضی وارد کن."; return; }
   try {
