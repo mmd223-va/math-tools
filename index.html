@@ -294,7 +294,27 @@
     تجزیه عدد به عوامل اول
 </button> 
         </section>
+<!-- تجزیه عدد به عوامل اول -->
+<section id="factorization" class="page">
+    <button class="back-button" onclick="showPage('home')">
+        ← بازگشت به صفحه اصلی
+    </button>
 
+    <h2>تجزیه عدد به عوامل اول</h2>
+    <p>یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.</p>
+
+    <input
+        type="number"
+        id="factorNumber"
+        min="2"
+        step="1"
+        placeholder="مثلاً 60"
+    >
+
+    <button onclick="factorizeNumber()">تجزیه عدد</button>
+
+    <div id="factorResult"></div>
+</section>
         <!-- غربال اراتستن -->
         <section id="sieve" class="page">
             <button class="back-button" onclick="showPage('home')">
@@ -605,8 +625,56 @@
 
         // اجرا هنگام بارگذاری صفحه
         loadSavedTheme();
+ function factorizeNumber() {
+    const input = document.getElementById("factorNumber");
+    const result = document.getElementById("factorResult");
+
+    const number = Number(input.value);
+
+    if (
+        input.value.trim() === "" ||
+        !Number.isSafeInteger(number) ||
+        number < 2
+    ) {
+        result.textContent = "لطفاً یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.";
+        return;
+    }
+
+    let n = number;
+    const factors = [];
+
+    for (let divisor = 2; divisor * divisor <= n; divisor++) {
+        while (n % divisor === 0) {
+            factors.push(divisor);
+            n /= divisor;
+        }
+    }
+
+    if (n > 1) {
+        factors.push(n);
+    }
+
+    const powers = {};
+
+    for (const factor of factors) {
+        powers[factor] = (powers[factor] || 0) + 1;
+    }
+
+    const expanded = factors.join(" × ");
+
+    const compact = Object.entries(powers)
+        .map(([factor, power]) =>
+            power === 1 ? factor : `${factor}^${power}`
+        )
+        .join(" × ");
+
+    result.textContent =
+        `تجزیه مرحله‌ای: ${expanded}\n` +
+        `عوامل اول با توان: ${compact}`;
+}  
     </script>
 </body>
 </html>
+
 
 
