@@ -961,6 +961,14 @@ input::placeholder {
       <span class="tool-link">باز کردن ابزار ←</span>
     </button>
 
+    <button class="tool-card card-purple"
+      onclick="showPage('calculator')">
+      <span class="tool-icon">＋</span>
+      <span class="tool-title">ماشین‌حساب</span>
+      <span class="tool-description">محاسبهٔ چهار عمل اصلی با اعداد صحیح و اعشاری</span>
+      <span class="tool-link">باز کردن ابزار ←</span>
+    </button>
+
     <button class="tool-card card-orange"
       onclick="showPage('prime')">
       <span class="tool-icon">✓</span>
@@ -1065,6 +1073,32 @@ input::placeholder {
   <div id="primeResult" class="result" hidden></div>
 </section>
 
+<section id="calculator" class="page">
+  <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
+  <h2>ماشین‌حساب</h2>
+  <p>دو عدد وارد کن و یکی از چهار عمل اصلی را انتخاب کن.</p>
+  <div class="input-group">
+    <label for="calculatorFirst">عدد اول</label>
+    <input id="calculatorFirst" type="number" step="any" inputmode="decimal" placeholder="مثلاً 12.5">
+  </div>
+  <div class="input-group">
+    <label for="calculatorOperation">عملیات</label>
+    <select id="calculatorOperation">
+      <option value="add">جمع (+)</option>
+      <option value="subtract">تفریق (−)</option>
+      <option value="multiply">ضرب (×)</option>
+      <option value="divide">تقسیم (÷)</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label for="calculatorSecond">عدد دوم</label>
+    <input id="calculatorSecond" type="number" step="any" inputmode="decimal" placeholder="مثلاً 3">
+  </div>
+  <button class="action-button" type="button" onclick="calculateBasic()">محاسبه</button>
+  <button class="action-button" type="button" onclick="clearCalculator()" style="background:#64748b">پاک کردن</button>
+  <div id="calculatorResult" class="result" aria-live="polite" hidden></div>
+</section>
+
 </main>
 <script>
 
@@ -1117,6 +1151,54 @@ function showPage(pageId) {
   }
 
   window.scrollTo(0, 0);
+}
+
+function calculateBasic() {
+  const firstInput = document.getElementById("calculatorFirst");
+  const secondInput = document.getElementById("calculatorSecond");
+  const operation = document.getElementById("calculatorOperation").value;
+  const result = document.getElementById("calculatorResult");
+  const firstText = firstInput.value.trim();
+  const secondText = secondInput.value.trim();
+  result.hidden = false;
+  result.classList.remove("error");
+  if (firstText === "" || secondText === "") {
+    result.classList.add("error");
+    result.textContent = "لطفاً هر دو عدد را وارد کن.";
+    return;
+  }
+  const first = Number(firstText);
+  const second = Number(secondText);
+  if (!Number.isFinite(first) || !Number.isFinite(second)) {
+    result.classList.add("error");
+    result.textContent = "لطفاً عددهای معتبر وارد کن.";
+    return;
+  }
+  if (operation === "divide" && second === 0) {
+    result.classList.add("error");
+    result.textContent = "تقسیم بر صفر امکان‌پذیر نیست.";
+    return;
+  }
+  let answer;
+  if (operation === "add") answer = first + second;
+  else if (operation === "subtract") answer = first - second;
+  else if (operation === "multiply") answer = first * second;
+  else answer = first / second;
+  if (!Number.isFinite(answer)) {
+    result.classList.add("error");
+    result.textContent = "نتیجه خارج از محدودهٔ قابل محاسبه است.";
+    return;
+  }
+  result.textContent = "جواب نهایی: " + Number(answer.toPrecision(12)).toString();
+}
+
+function clearCalculator() {
+  document.getElementById("calculatorFirst").value = "";
+  document.getElementById("calculatorSecond").value = "";
+  const result = document.getElementById("calculatorResult");
+  result.hidden = true;
+  result.textContent = "";
+  result.classList.remove("error");
 }
 
 function updateThemeButton() {
@@ -1771,6 +1853,11 @@ if (denominator === 1) {
       if (!input) return;
 
       input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" && input.id.startsWith("calculator")) {
+          event.preventDefault();
+          calculateBasic();
+          return;
+        }
         if (event.key === "Enter") {
           event.preventDefault();
           tool.calculate();
