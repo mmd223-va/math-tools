@@ -1584,12 +1584,46 @@ const d2 = Number(document.getElementById("fraction-den2").value);
   numerator /= divisor || 1;
   denominator /= divisor || 1;
 
-  if (denominator === 1) {
-    result.textContent = `جواب نهایی: ${numerator}`;
-  } else {
-    result.textContent =
-      `جواب نهایی: ${numerator}/${denominator}`;
-  }
+ 
+result.replaceChildren();
+result.classList.remove("error");
+
+const title = document.createElement("div");
+title.textContent = "جواب نهایی";
+title.style.fontWeight = "800";
+title.style.marginBottom = "12px";
+result.appendChild(title);
+
+if (denominator === 1) {
+  const whole = document.createElement("div");
+  whole.textContent = String(numerator);
+  whole.style.fontSize = "28px";
+  whole.style.fontWeight = "800";
+  result.appendChild(whole);
+} else {
+  const fraction = document.createElement("span");
+  fraction.style.display = "inline-flex";
+  fraction.style.flexDirection = "column";
+  fraction.style.alignItems = "center";
+  fraction.style.fontSize = "24px";
+  fraction.style.fontWeight = "800";
+
+  const top = document.createElement("span");
+  top.textContent = String(numerator);
+  top.style.padding = "0 10px 4px";
+
+  const line = document.createElement("span");
+  line.style.width = "100%";
+  line.style.borderTop = "2px solid currentColor";
+
+  const bottom = document.createElement("span");
+  bottom.textContent = String(denominator);
+  bottom.style.padding = "4px 10px 0";
+
+  fraction.append(top, line, bottom);
+  result.appendChild(fraction);
+}
+
 }
 
   loadSavedTheme();
