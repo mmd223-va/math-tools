@@ -1626,93 +1626,36 @@ if (denominator === 1) {
 
 }
 
-/* بهبود ابزارهای سایت: Enter و پاک کردن ورودی‌ها */
+
+/* فعال‌کردن محاسبه با Enter */
 (function () {
   const tools = [
-    {
-      page: "factorization",
-      inputs: ["factorNumber"],
-      results: ["factorResult"],
-      calculate: factorizeNumber
-    },
+    { page: "factorization", inputs: ["factorNumber"], calculate: factorizeNumber },
     {
       page: "fractions",
-      inputs: [
-        "fraction-num1",
-        "fraction-den1",
-        "fraction-num2",
-        "fraction-den2"
-      ],
-      results: ["fraction-result"],
+      inputs: ["fraction-num1", "fraction-den1", "fraction-num2", "fraction-den2"],
       calculate: calculateFractions
     },
-    {
-      page: "sieve",
-      inputs: ["sieveLimit"],
-      results: ["sieveResult", "sieveGrid"],
-      calculate: runSieve
-    },
-    {
-      page: "gcd",
-      inputs: ["num1", "num2"],
-      results: ["gcdResult"],
-      calculate: calculateGcdLcm
-    },
-    {
-      page: "prime",
-      inputs: ["primeNumber"],
-      results: ["primeResult"],
-      calculate: checkPrime
-    }
+    { page: "sieve", inputs: ["sieveLimit"], calculate: runSieve },
+    { page: "gcd", inputs: ["num1", "num2"], calculate: calculateGcdLcm },
+    { page: "prime", inputs: ["primeNumber"], calculate: checkPrime }
   ];
 
   tools.forEach(function (tool) {
-    const page = document.getElementById(tool.page);
-    if (!page) return;
-
     tool.inputs.forEach(function (id) {
       const input = document.getElementById(id);
       if (!input) return;
 
       input.addEventListener("keydown", function (event) {
-        if (event.key !== "Enter") return;
-        event.preventDefault();
-        tool.calculate();
+        if (event.key === "Enter") {
+          event.preventDefault();
+          tool.calculate();
+        }
       });
     });
-
-    const clearButton = document.createElement("button");
-    clearButton.type = "button";
-    clearButton.textContent = "پاک کردن ورودی‌ها و نتیجه";
-    clearButton.className = "action-button";
-    clearButton.style.marginTop = "10px";
-    clearButton.style.background = "#64748b";
-
-    clearButton.addEventListener("click", function () {
-      tool.inputs.forEach(function (id) {
-        const input = document.getElementById(id);
-        if (input) input.value = "";
-      });
-
-      tool.results.forEach(function (id) {
-        const result = document.getElementById(id);
-        if (!result) return;
-
-        result.replaceChildren();
-        result.classList.remove("error");
-        result.hidden = true;
-      });
-
-      const firstInput = document.getElementById(tool.inputs[0]);
-      if (firstInput) firstInput.focus();
-    });
-
-    const actionButton = page.querySelector(".action-button");
-    if (actionButton) {
-      actionButton.insertAdjacentElement("afterend", clearButton);
-    }
   });
 })();
+
 
   loadSavedTheme();
 </script>
