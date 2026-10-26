@@ -933,6 +933,214 @@ input::placeholder {
   opacity: 0.75;
 }
 
+
+/* ===== پرداخت نهایی ظاهر و تجربهٔ کاربری ===== */
+:root {
+  --main-color: #5750e8;
+  --main-hover: #4338ca;
+  --page-bg: #f3f5fc;
+  --card-bg: #ffffff;
+  --text-color: #20243a;
+  --muted-color: #667085;
+  --border-color: #e3e7f1;
+  --input-bg: #ffffff;
+  --soft-bg: #eef2ff;
+  --card-shadow: 0 16px 45px rgba(31, 41, 90, .09);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 8% 4%, rgba(129, 140, 248, .18), transparent 34%),
+    radial-gradient(ellipse at 95% 75%, rgba(45, 212, 191, .09), transparent 28%),
+    var(--page-bg);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+}
+body.dark {
+  --page-bg: #0b1120;
+  --card-bg: #151e30;
+  --text-color: #eef2ff;
+  --muted-color: #b8c3d8;
+  --border-color: #2d3a52;
+  --input-bg: #101827;
+  --soft-bg: #222747;
+  --card-shadow: 0 18px 50px rgba(0, 0, 0, .25);
+  background:
+    radial-gradient(ellipse at 8% 4%, rgba(99, 102, 241, .16), transparent 34%),
+    #0b1120;
+}
+.container {
+  width: min(100% - 28px, 1040px);
+  margin: 34px auto;
+  padding: clamp(16px, 3vw, 32px);
+  border: 1px solid var(--border-color);
+  border-radius: 28px;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}
+body.dark .container { background: var(--card-bg); border-color: var(--border-color); }
+#themeButton {
+  top: 16px;
+  left: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 20px rgba(20, 30, 60, .12);
+  backdrop-filter: blur(12px);
+}
+.hero {
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid rgba(255,255,255,.2);
+  background:
+    radial-gradient(circle at 12% 15%, rgba(255,255,255,.18), transparent 24%),
+    linear-gradient(125deg, #3730a3 0%, #5b55e7 54%, #818cf8 100%);
+  box-shadow: 0 18px 36px rgba(79, 70, 229, .2);
+}
+.hero-label { letter-spacing: .1px; }
+.hero p { line-height: 2; }
+.hero-button {
+  min-height: 48px;
+  box-shadow: 0 7px 18px rgba(15, 23, 42, .13);
+}
+.home-heading { align-items: center; }
+.tool-count {
+  border: 1px solid #dfe4ff;
+  background: #eef2ff;
+}
+body.dark .tool-count { border-color: #454477; }
+.tool-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 224px;
+  padding: 23px;
+  border-color: var(--border-color);
+  border-radius: 20px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: 0 4px 14px rgba(31, 41, 90, .025);
+}
+.tool-card::after {
+  position: absolute;
+  content: "";
+  inset-inline-start: 0;
+  top: 0;
+  width: 4px;
+  height: 0;
+  border-radius: 0 0 6px 6px;
+  background: var(--main-color);
+  transition: height .2s ease;
+}
+.tool-card:hover::after { height: 100%; }
+.tool-card:hover {
+  transform: translateY(-4px);
+  border-color: #c7d2fe;
+  box-shadow: 0 16px 30px rgba(55, 48, 163, .10);
+}
+body.dark .tool-card {
+  background: #182338;
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+body.dark .tool-card:hover {
+  background: #1b2942;
+  border-color: #7775ed;
+}
+.tool-icon {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(99, 102, 241, .08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+}
+.tool-description { color: var(--muted-color); }
+body.dark .tool-description { color: #c0cada; }
+.tool-link { color: var(--main-color); }
+body.dark .tool-link { color: #b5b4ff; }
+.page > h2 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+.page > p { color: var(--muted-color); }
+body.dark .page > p { color: var(--muted-color); }
+.back-button {
+  border: 1px solid var(--border-color);
+  background: var(--soft-bg);
+}
+.action-button { min-height: 46px; }
+input, select, textarea {
+  min-height: 46px;
+  border-color: var(--border-color);
+  background: var(--input-bg);
+  color: var(--text-color);
+}
+input::placeholder { color: #98a2b3; }
+.result {
+  border-color: var(--border-color);
+  background: var(--soft-bg);
+}
+body.dark .result { background: var(--soft-bg); border-color: var(--border-color); color: var(--text-color); }
+.calculator-shell {
+  border-color: var(--border-color);
+  background: var(--soft-bg);
+  box-shadow: 0 12px 30px rgba(31, 41, 90, .06);
+}
+body.dark .calculator-shell { background: #111a2b; border-color: var(--border-color); }
+.calculator-display {
+  min-height: 64px;
+  border-width: 2px;
+  font-size: clamp(21px, 4vw, 27px);
+}
+.calc-key {
+  min-height: 54px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  box-shadow: 0 2px 0 rgba(15, 23, 42, .06);
+}
+.calc-key:hover { filter: brightness(.98); transform: translateY(-2px); }
+.calc-key:active { transform: translateY(0); }
+.calc-equals { background: linear-gradient(135deg, #5750e8, #4338ca); }
+.number-cell { border: 1px solid var(--border-color); }
+.number-cell.prime { border-color: #a7f3d0; }
+.number-cell.not-prime { border-color: #fecaca; }
+.home-footer { color: var(--muted-color); border-color: var(--border-color); }
+body.dark .home-footer { color: var(--muted-color); border-color: var(--border-color); }
+button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid rgba(99, 102, 241, .45);
+  outline-offset: 3px;
+}
+@media (min-width: 760px) {
+  .tool-grid { gap: 18px; }
+}
+@media (max-width: 600px) {
+  body { padding: 48px 8px 12px; }
+  .container {
+    width: 100%;
+    margin: 10px auto;
+    padding: 14px;
+    border-radius: 21px;
+  }
+  #themeButton {
+    top: 8px;
+    left: 8px;
+    padding: 8px 11px;
+    font-size: 13px;
+  }
+  .hero { padding: 23px 18px; }
+  .hero h1 { font-size: 26px; }
+  .home-heading { align-items: flex-start; }
+  .tool-count { font-size: 12px; white-space: nowrap; }
+  .tool-card { min-height: 0; padding: 17px; }
+  .tool-icon { margin-bottom: 12px; }
+  .tool-link { margin-top: 12px; }
+  .calculator-shell { padding: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -965,7 +1173,7 @@ input::placeholder {
       <h2>جعبه‌ابزار ریاضی</h2>
       <p>ابزار موردنیازت را انتخاب کن.</p>
     </div>
-    <span class="tool-count">5 ابزار</span>
+    <span class="tool-count">۶ ابزار</span>
   </div>
 
   <div class="tool-grid">
