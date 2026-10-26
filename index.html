@@ -1182,9 +1182,8 @@ function gcd(a, b) {
 }
 
 function calculateGcdLcm() {
-  const first = readInteger("num1", 0, Number.MAX_SAFE_INTEGER);
-  const second = readInteger("num2", 0, Number.MAX_SAFE_INTEGER);
-
+  const first = readInteger("num1", 0, 10000000);
+const second = readInteger("num2", 0, 10000000);
   if (first.error) {
     showResult("gcdResult", first.error, true);
     return;
@@ -1601,7 +1600,13 @@ result.hidden = true;
   result.textContent = "لطفاً صورت و مخرج هر دو کسر را وارد کن.";
   return;
 }
- if (d1 === 0 || d2 === 0) {
+  if (![n1, d1, n2, d2].every(Number.isSafeInteger)) {
+  result.hidden = false;
+  result.classList.add("error");
+  result.textContent = "لطفاً برای صورت و مخرج کسرها عدد صحیح معتبر وارد کن.";
+  return;
+}
+  if (d1 === 0 || d2 === 0) {
   result.hidden = false;
   result.classList.add("error");
   result.textContent = "مخرج کسر نمی‌تواند صفر باشد.";
@@ -1631,10 +1636,12 @@ result.hidden = true;
   }
 
   if (!Number.isSafeInteger(numerator) ||
-      !Number.isSafeInteger(denominator)) {
-    result.textContent = "اعداد خیلی بزرگ هستند؛ لطفاً اعداد کوچک‌تری وارد کن.";
-    return;
-  }
+    !Number.isSafeInteger(denominator)) {
+  result.hidden = false;
+  result.classList.add("error");
+  result.textContent = "اعداد خیلی بزرگ هستند؛ لطفاً اعداد کوچک‌تری وارد کن.";
+  return;
+}
 
   if (denominator < 0) {
     numerator = -numerator;
