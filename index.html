@@ -1237,7 +1237,7 @@ function sanitizeCalculatorInput(display) {
     cleaned += char;
   }
   // Convert an exponent typed after ^ into superscript digits.
-  cleaned = cleaned.replace(/\^(−?)(\d+)/g, (_, sign, digits) => sign + [...digits].map(d => "⁰¹²³⁴⁵⁶⁷⁸⁹"[Number(d)]).join(""));
+  cleaned = cleaned.replace(/\^(−?)(\d+)/g, (_, sign, digits) => (sign ? "⁻" : "") + [...digits].map(d => "⁰¹²³⁴⁵⁶⁷⁸⁹"[Number(d)]).join(""));
   if (original !== cleaned) {
     const caret = Math.min(originalCaret, cleaned.length);
     display.value = cleaned;
@@ -1278,7 +1278,7 @@ function clearCalculator() {
 function calculateBasic() {
   const display = document.getElementById("calculatorDisplay");
   const result = document.getElementById("calculatorResult");
-  const expression = display.value.trim().replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, "^" + "$1").replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, d => String("⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(d))).replace(/√/g, "sqrt").replace(/,/g, ".");
+  const expression = display.value.trim().replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/([⁻]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, (_, sign, digits) => "^" + (sign ? "-" : "") + [...digits].map(d => String("⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(d))).join("")).replace(/√/g, "sqrt").replace(/,/g, ".");
   result.hidden = false; result.classList.remove("error");
   if (!expression) { result.classList.add("error"); result.textContent = "لطفاً یک عبارت ریاضی وارد کن."; return; }
   try {
