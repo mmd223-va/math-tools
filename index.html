@@ -1780,33 +1780,95 @@ function clearCalculator() {
 function calculateBasic() {
   const display = document.getElementById("calculatorDisplay");
   const result = document.getElementById("calculatorResult");
-  const expression = display.value.trim().replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/([⁻]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, (_, sign, digits) => "^" + (sign ? "-" : "") + [...digits].map(d => String("⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(d))).join("")).replace(/√/g, "sqrt").replace(/,/g, ".");
-  result.hidden = false; result.classList.remove("error");
-  if (!expression) { result.classList.add("error"); result.textContent = "لطفاً یک عبارت ریاضی وارد کن."; return; }
+  const expression = display.value.trim()
+    .replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-")
+    .replace(/([⁻]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, (_, sign, digits) => "^" + (sign ? "-" : "") + [...digits].map(d => String("⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(d))).join(""))
+    .replace(/√/g, "sqrt").replace(/,/g, ".");
+  result.hidden = false;
+  result.classList.remove("error");
+  if (!expression) {
+    result.classList.add("error");
+    result.textContent = "لطفاً یک عبارت ریاضی وارد کن.";
+    return;
+  }
   try {
     const tokens = expression.match(/sqrt|(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?|[()+\-*/%^]/gi);
     if (!tokens || tokens.join("") !== expression.replace(/\s+/g, "")) throw new Error("عبارت ریاضی نامعتبر است.");
     let pos = 0;
+    const steps = [];
+    const fmt = value => Number(value.toPrecision(10)).toString();
     const peek = () => tokens[pos];
     const take = () => tokens[pos++];
     function primary() {
       const token = take();
       if (token === "+") return unary();
       if (token === "-") return -unary();
-      if (token === "(") { const v = addSub(); if (take() !== ")") throw new Error("پرانتزها کامل نیستند."); return v; }
-      if (String(token).toLowerCase() === "sqrt") { if (take() !== "(") throw new Error("بعد از √ باید پرانتز باز بیاید."); const v=addSub(); if(take()!==")") throw new Error("پرانتز جذر کامل نیست."); if(v<0) throw new Error("جذر عدد منفی در اعداد حقیقی تعریف نشده است."); return Math.sqrt(v); }
+      if (token === "(") {
+        const value = addSub();
+        if (take() !== ")") throw new Error("پرانتزها کامل نیستند.");
+        return value;
+      }
+      if (String(token).toLowerCase() === "sqrt") {
+        if (take() !== "(") throw new Error("بعد از √ باید پرانتز باز بیاید.");
+        const value = addSub();
+        if (take() !== ")") throw new Error("پرانتز جذر کامل نیست.");
+        if (value < 0) throw new Error("جذر عدد منفی در اعداد حقیقی تعریف نشده است.");
+        const answer = Math.sqrt(value);
+        steps.push("√(" + fmt(value) + ") = " + fmt(answer));
+        return answer;
+      }
       if (token === undefined || !/^(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i.test(token)) throw new Error("عبارت ریاضی نامعتبر است.");
       return Number(token);
     }
     function unary() { return power(); }
-    function power() { let v=primary(); if(peek()==="^"){take();v=Math.pow(v,unary());} while(peek()==="%"){take();v/=100;} return v; }
-    function mulDiv() { let v=unary(); while(peek()==="*"||peek()==="/"){const op=take(),n=unary();if(op==="/"&&n===0)throw new Error("تقسیم بر صفر امکان‌پذیر نیست.");v=op==="*"?v*n:v/n;}return v; }
-    function addSub() { let v=mulDiv();while(peek()==="+"||peek()==="-"){const op=take(),n=mulDiv();v=op==="+"?v+n:v-n;}return v; }
-    const answer=addSub();
-    if(pos!==tokens.length) throw new Error("عبارت ریاضی نامعتبر است.");
-    if(!Number.isFinite(answer)) throw new Error("نتیجه خارج از محدودهٔ قابل محاسبه است.");
-    result.textContent="جواب نهایی: "+Number(answer.toPrecision(12)).toString();
-  } catch(error) { result.classList.add("error");result.textContent=error.message||"عبارت ریاضی نامعتبر است."; }
+    function power() {
+      let value = primary();
+      if (peek() === "^") {
+        take();
+        const exponent = unary();
+        const before = value;
+        value = Math.pow(value, exponent);
+        steps.push(fmt(before) + " ^ " + fmt(exponent) + " = " + fmt(value));
+      }
+      while (peek() === "%") {
+        take();
+        const before = value;
+        value /= 100;
+        steps.push(fmt(before) + "% = " + fmt(value));
+      }
+      return value;
+    }
+    function mulDiv() {
+      let value = unary();
+      while (peek() === "*" || peek() === "/") {
+        const op = take();
+        const next = unary();
+        if (op === "/" && next === 0) throw new Error("تقسیم بر صفر امکان‌پذیر نیست.");
+        const before = value;
+        value = op === "*" ? value * next : value / next;
+        steps.push(fmt(before) + (op === "*" ? " × " : " ÷ ") + fmt(next) + " = " + fmt(value));
+      }
+      return value;
+    }
+    function addSub() {
+      let value = mulDiv();
+      while (peek() === "+" || peek() === "-") {
+        const op = take();
+        const next = mulDiv();
+        const before = value;
+        value = op === "+" ? value + next : value - next;
+        steps.push(fmt(before) + (op === "+" ? " + " : " − ") + fmt(next) + " = " + fmt(value));
+      }
+      return value;
+    }
+    const answer = addSub();
+    if (pos !== tokens.length) throw new Error("عبارت ریاضی نامعتبر است.");
+    if (!Number.isFinite(answer)) throw new Error("نتیجه خارج از محدودهٔ قابل محاسبه است.");
+    result.textContent = (steps.length ? "مراحل محاسبه:\n" + steps.map((step, index) => (index + 1) + ". " + step).join("\n") + "\n\n" : "") + "جواب نهایی: " + fmt(answer);
+  } catch (error) {
+    result.classList.add("error");
+    result.textContent = error.message || "عبارت ریاضی نامعتبر است.";
+  }
 }
 
 
