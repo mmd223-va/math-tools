@@ -2796,6 +2796,11 @@ function calculateSequence() {
     return;
   }
   const numbers = Array.from({length: count}, (_, i) => start + i * step);
+  if (operation === "divide" && numbers.slice(1).some(n => n === 0)) {
+    result.classList.add("error");
+    result.textContent = "تقسیم بر صفر امکان‌پذیر نیست. دنباله را طوری تغییر بده که بعد از عدد اول، صفر نداشته باشد.";
+    return;
+  }
   let total = numbers[0];
   const expression = [String(numbers[0])];
   for (let i = 1; i < numbers.length; i++) {
@@ -2817,23 +2822,42 @@ function calculateSequence() {
       return;
     }
   }
-  if (operation === "divide" && numbers.slice(1).some(n => n === 0)) {
-    result.classList.add("error");
-    result.textContent = "تقسیم بر صفر امکان‌پذیر نیست. دنباله را طوری تغییر بده که بعد از عدد اول، صفر نداشته باشد.";
-    return;
-  }
   const formatted = Number(total.toPrecision(12)).toLocaleString("en-US", {maximumFractionDigits: 10});
   result.replaceChildren();
-  const heading = document.createElement("strong");
-  heading.textContent = "دنباله:";
-  const sequence = document.createElement("p");
-  sequence.textContent = numbers.join("، ");
-  const expressionHeading = document.createElement("strong");
-  expressionHeading.textContent = "عبارت محاسبه:";
-  const expressionBox = document.createElement("p");
-  expressionBox.style.direction = "ltr";
-  expressionBox.style.textAlign = "left";
-  expressionBox.textContent = expression.join(" ");
+
+  function addLine(label, text, direction) {
+    const heading = document.createElement("strong");
+    heading.textContent = label;
+    const line = document.createElement("p");
+    line.textContent = text;
+    if (direction) {
+      line.style.direction = direction;
+      line.style.textAlign = "left";
+    }
+    result.append(heading, line);
+  }
+  function preview(items, separator, limitStart, limitEnd) {
+    if (items.length <= limitStart + limitEnd) return items.join(separator);
+    return items.slice(0, limitStart).join(separator) + "  …  " +
+      items.slice(-limitEnd).join(separator);
+  }
+
+  addLine("دنباله:", preview(numbers.map(String), "، ", 10, 5));
+  if (numbers.length > 15) {
+    const note = document.createElement("p");
+    note.textContent = "برای کوتاه ماندن صفحه، فقط چند عدد اول و آخر نمایش داده شده‌اند.";
+    note.style.color = "var(--muted-color)";
+    note.style.fontSize = "0.9rem";
+    result.appendChild(note);
+  }
+  addLine("عبارت محاسبه:", preview(expression, " ", 21, 9), "ltr");
+  if (expression.length > 30) {
+    const note = document.createElement("p");
+    note.textContent = "عبارت طولانی به‌صورت خلاصه نمایش داده شده است.";
+    note.style.color = "var(--muted-color)";
+    note.style.fontSize = "0.9rem";
+    result.appendChild(note);
+  }
   const answerHeading = document.createElement("strong");
   answerHeading.textContent = "جواب نهایی:";
   const answer = document.createElement("p");
@@ -2854,9 +2878,8 @@ function calculateSequence() {
       copyButton.textContent = "کپی خودکار در دسترس نیست";
     }
   });
-  result.append(heading, sequence, expressionHeading, expressionBox, answerHeading, answer, countText, copyButton);
+  result.append(answerHeading, answer, countText, copyButton);
 }
-
 function showPage(pageId) {
   document.querySelectorAll(".page").forEach(page => {
     page.classList.remove("active");
@@ -2866,6 +2889,17 @@ function showPage(pageId) {
 
   if (selected) {
     selected.classList.add("active");
+  }
+
+  if (pageId !== "sequence-calculator") {
+    document.getElementById("seqStart").value = "4";
+    document.getElementById("seqEnd").value = "10";
+    document.getElementById("seqStep").value = "2";
+    document.getElementById("seqOperation").value = "add";
+    const sequenceResult = document.getElementById("sequenceResult");
+    sequenceResult.hidden = true;
+    sequenceResult.replaceChildren();
+    sequenceResult.classList.remove("error");
   }
 
   // پاک کردن نتیجه‌های ابزارها هنگام خروج از هر ابزار
