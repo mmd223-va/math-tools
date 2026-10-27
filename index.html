@@ -1715,7 +1715,7 @@ body.dark #calculatorResult.error {
       <h2>جعبه‌ابزار ریاضی</h2>
       <p>ابزار موردنیازت را انتخاب کن.</p>
     </div>
-    <span class="tool-count">۶ ابزار</span>
+    <span class="tool-count">۷ ابزار</span>
   </div>
 
   <div class="tool-grid">
@@ -1765,6 +1765,14 @@ body.dark #calculatorResult.error {
       <span class="tool-description">
         بررسی اول یا مرکب بودن یک عدد
       </span>
+      <span class="tool-link">باز کردن ابزار ←</span>
+    </button>
+
+    <button class="tool-card card-green"
+      onclick="showPage('equations')">
+      <span class="tool-icon">x=</span>
+      <span class="tool-title">حل معادله</span>
+      <span class="tool-description">حل معادلهٔ خطی و نمایش مراحل حل</span>
       <span class="tool-link">باز کردن ابزار ←</span>
     </button>
 
@@ -1849,6 +1857,27 @@ body.dark #calculatorResult.error {
   </button>
 
 <div id="fraction-result" class="result" aria-live="polite" hidden></div>
+</section>
+
+<section id="equations" class="page">
+  <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
+  <h2>حل معادلهٔ خطی</h2>
+  <p>ضرایب معادلهٔ ax + b = c را وارد کن تا مقدار x و مراحل حل نمایش داده شود.</p>
+  <div class="input-group">
+    <label for="equation-a">ضریب x (a)</label>
+    <input type="number" id="equation-a" step="1" placeholder="مثلاً 2">
+  </div>
+  <div class="input-group">
+    <label for="equation-b">عدد ثابت (b)</label>
+    <input type="number" id="equation-b" step="1" placeholder="مثلاً 3">
+  </div>
+  <div class="input-group">
+    <label for="equation-c">سمت راست معادله (c)</label>
+    <input type="number" id="equation-c" step="1" placeholder="مثلاً 11">
+  </div>
+  <p class="calculator-help">مثال: اگر a=2، b=3 و c=11 باشد، معادله 2x + 3 = 11 است.</p>
+  <button class="action-button" onclick="solveLinearEquation()">حل معادله</button>
+  <div id="equationResult" class="result" aria-live="polite" hidden></div>
 </section>
 
 <section id="sieve" class="page">
@@ -2640,6 +2669,50 @@ if (isPrimeNumber(number)) {
   result.append(finalBox, treeBox);
 }
 
+function solveLinearEquation() {
+  const a = readInteger("equation-a", -1000000, 1000000);
+  const b = readInteger("equation-b", -1000000, 1000000);
+  const c = readInteger("equation-c", -1000000, 1000000);
+
+  for (const item of [a, b, c]) {
+    if (item.error) {
+      showResult("equationResult", item.error, true);
+      return;
+    }
+  }
+
+  if (a.value === 0) {
+    if (b.value === c.value) {
+      showResult("equationResult", "معادله: " + b.value + " = " + c.value +
+        "\\nاین تساوی همیشه درست است؛ پس معادله بی‌نهایت جواب دارد.", false);
+    } else {
+      showResult("equationResult", "معادله: " + b.value + " = " + c.value +
+        "\\nاین تساوی درست نیست؛ پس معادله جواب ندارد.", false);
+    }
+    return;
+  }
+
+  const difference = c.value - b.value;
+  const answer = difference / a.value;
+  const format = value => Object.is(value, -0) ? "0" : String(value);
+  const equation = a.value + "x " + (b.value < 0 ? "− " + Math.abs(b.value) : "+ " + b.value) + " = " + c.value;
+  const steps = [
+    "معادله: " + equation,
+    "۱. عدد ثابت را از دو طرف کم می‌کنیم: " + a.value + "x = " + c.value + " − (" + b.value + ")",
+    "۲. ساده می‌کنیم: " + a.value + "x = " + difference,
+    "۳. دو طرف را بر " + a.value + " تقسیم می‌کنیم."
+  ];
+
+  if (Number.isInteger(answer)) {
+    steps.push("جواب نهایی: x = " + format(answer));
+  } else {
+    steps.push("جواب نهایی: x = " + difference + "/" + a.value + " ≈ " + format(Number(answer.toFixed(6))));
+  }
+
+  showResult("equationResult", steps.join("\\n"), false);
+}
+
+
 function calculateFractions() {
   const n1 = Number(document.getElementById("fraction-num1").value);
 const d1 = Number(document.getElementById("fraction-den1").value);
@@ -2776,6 +2849,7 @@ if (denominator === 1) {
       inputs: ["fraction-num1", "fraction-den1", "fraction-num2", "fraction-den2"],
       calculate: calculateFractions
     },
+    { page: "equations", inputs: ["equation-a", "equation-b", "equation-c"], calculate: solveLinearEquation },
     { page: "sieve", inputs: ["sieveLimit"], calculate: runSieve },
     { page: "gcd", inputs: ["num1", "num2"], calculate: calculateGcdLcm },
     { page: "prime", inputs: ["primeNumber"], calculate: checkPrime }
