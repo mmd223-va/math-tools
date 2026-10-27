@@ -2684,10 +2684,10 @@ function solveLinearEquation() {
   if (a.value === 0) {
     if (b.value === c.value) {
       showResult("equationResult", "معادله: " + b.value + " = " + c.value +
-        "\\nاین تساوی همیشه درست است؛ پس معادله بی‌نهایت جواب دارد.", false);
+        "\nاین تساوی همیشه درست است؛ پس معادله بی‌نهایت جواب دارد.", false);
     } else {
       showResult("equationResult", "معادله: " + b.value + " = " + c.value +
-        "\\nاین تساوی درست نیست؛ پس معادله جواب ندارد.", false);
+        "\nاین تساوی درست نیست؛ پس معادله جواب ندارد.", false);
     }
     return;
   }
@@ -2709,7 +2709,7 @@ function solveLinearEquation() {
     steps.push("جواب نهایی: x = " + difference + "/" + a.value + " ≈ " + format(Number(answer.toFixed(6))));
   }
 
-  showResult("equationResult", steps.join("\\n"), false);
+  showResult("equationResult", steps.join("\n"), false);
 }
 
 
