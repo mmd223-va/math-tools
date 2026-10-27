@@ -636,10 +636,22 @@ button:focus-visible {
   color: var(--main-color, #4f46e5);
   text-align: right;
 }
-.seo-learning h3 {
-  margin: 18px 0 6px;
-  font-size: 17px;
+.seo-learning .guide-toggle {
+  display: block;
+  width: 100%;
+  margin: 12px 0 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 10px;
+  background: var(--card-bg, #fff);
   color: var(--main-color, #4f46e5);
+  font: inherit;
+  font-weight: 700;
+  text-align: right;
+  cursor: pointer;
+}
+.seo-learning .guide-toggle:hover {
+  background: var(--hover-bg, #f3f4f6);
 }
 .seo-learning p {
   margin: 6px 0;
@@ -2324,44 +2336,44 @@ body.large-text .tool-description,body.large-text p{font-size:1.05em}
   </div>
 
   <div class="tool-toolbar"><label class="search-wrap"><span>⌕</span><input id="toolSearch" type="search" placeholder="جست‌وجوی ابزار" aria-label="جست‌وجوی ابزار"></label><button id="favoritesToggle" class="toolbar-button" type="button" aria-pressed="false">♡ علاقه‌مندی‌ها</button></div><nav class="category-row"><button class="category-chip active" data-category="all" type="button">همه</button><button class="category-chip" data-category="basic" type="button">محاسبات پایه</button><button class="category-chip" data-category="number" type="button">نظریه اعداد</button></nav><div class="tool-grid">
- <article class="tool-card card-purple" data-page="factorization"><span class="tool-icon">⑂</span><button class="tool-title description-toggle" type="button" aria-expanded="false">تجزیه عدد به عوامل اول چیست؟</button><span class="description-content" hidden>یعنی نوشتن یک عدد به صورت ضرب عددهای اول. مثلاً ۱۲ = ۲ × ۲ × ۳. با باز کردن ابزار می‌توانی درخت تجزیه را هم ببینی.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-purple" data-page="calculator"><span class="tool-icon">＋</span><button class="tool-title description-toggle" type="button" aria-expanded="false">ماشین‌حساب چیست؟</button><span class="description-content" hidden>برای انجام جمع، تفریق، ضرب و تقسیم اعداد صحیح و اعشاری استفاده می‌شود.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-blue" data-page="fractions"><span class="tool-icon">½</span><button class="tool-title description-toggle" type="button" aria-expanded="false">محاسبه کسرها چیست؟</button><span class="description-content" hidden>با این ابزار می‌توانی کسرها را جمع، تفریق، ضرب یا تقسیم کنی و جواب را ساده کنی.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-green" data-page="gcd"><span class="tool-icon">÷</span><button class="tool-title description-toggle" type="button" aria-expanded="false">ب.م.م و ک.م.م چیست؟</button><span class="description-content" hidden>ب.م.م بزرگ‌ترین مقسوم‌علیه مشترک و ک.م.م کوچک‌ترین مضرب مشترک دو یا چند عدد است.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-orange" data-page="prime"><span class="tool-icon">✓</span><button class="tool-title description-toggle" type="button" aria-expanded="false">عدد اول چیست؟</button><span class="description-content" hidden>عدد اول عددی بزرگ‌تر از ۱ است که فقط دو مقسوم‌علیه مثبت دارد: ۱ و خودش.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-blue" data-page="sieve"><span class="tool-icon">#</span><button class="tool-title description-toggle" type="button" aria-expanded="false">غربال اراتستن چیست؟</button><span class="description-content" hidden>روشی برای پیدا کردن اعداد اول است؛ مضرب‌های عددهای اول را خط می‌زنیم و عددهای باقی‌مانده اول‌اند.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-green" data-page="extra-percent"><span class="tool-icon">％</span><button class="tool-title description-toggle" type="button" aria-expanded="false">محاسبه درصد چیست؟</button><span class="description-content" hidden>برای محاسبهٔ درصد، عدد اصلی را در درصد ضرب و حاصل را بر ۱۰۰ تقسیم کن.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-orange" data-page="extra-average"><span class="tool-icon">x̄</span><button class="tool-title description-toggle" type="button" aria-expanded="false">میانگین چیست؟</button><span class="description-content" hidden>برای به دست آوردن میانگین، عددها را جمع کن و حاصل را بر تعداد عددها تقسیم کن.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-blue" data-page="extra-equation"><span class="tool-icon">x</span><button class="tool-title description-toggle" type="button" aria-expanded="false">معادله درجه اول چیست؟</button><span class="description-content" hidden>معادله‌ای مثل ax + b = c است که در آن توان x برابر ۱ است؛ می‌توان مقدار x را با انجام عمل‌های معکوس پیدا کرد.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-purple" data-page="factorization"><span class="tool-icon">⑂</span><span class="tool-title">تجزیه عدد به عوامل اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-purple" data-page="calculator"><span class="tool-icon">＋</span><span class="tool-title">ماشین‌حساب</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-blue" data-page="fractions"><span class="tool-icon">½</span><span class="tool-title">محاسبه کسرها</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-green" data-page="gcd"><span class="tool-icon">÷</span><span class="tool-title">ب.م.م و ک.م.م</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-orange" data-page="prime"><span class="tool-icon">✓</span><span class="tool-title">تشخیص عدد اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-blue" data-page="sieve"><span class="tool-icon">#</span><span class="tool-title">غربال اراتستن</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-green" data-page="extra-percent"><span class="tool-icon">％</span><span class="tool-title">محاسبه درصد</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-orange" data-page="extra-average"><span class="tool-icon">x̄</span><span class="tool-title">میانگین</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-blue" data-page="extra-equation"><span class="tool-icon">x</span><span class="tool-title">معادله درجه اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
 </div>
 
   <section class="seo-learning" aria-labelledby="learning-heading">
     <h2 id="learning-heading">راهنمای کوتاه ابزارهای ریاضی</h2>
     <p>در این مجموعه می‌توانی محاسبات رایج ریاضی را آنلاین انجام بدهی و برای تمرین‌های درسی از ابزارهای رایگان استفاده کنی.</p>
 
-    <article>
-      <h3>ب.م.م و ک.م.م چیست؟</h3>
-      <p><strong>بزرگ‌ترین مقسوم‌علیه مشترک (ب.م.م)</strong> بزرگ‌ترین عددی است که دو عدد را بدون باقی‌مانده تقسیم می‌کند. <strong>کوچک‌ترین مضرب مشترک (ک.م.م)</strong> کوچک‌ترین مضرب مثبت مشترک دو عدد است. با ابزار ب.م.م و ک.م.م می‌توانی هر دو را محاسبه کنی.</p>
+    <article class="guide-item">
+      <button class="guide-toggle" type="button" aria-expanded="false">ب.م.م و ک.م.م چیست؟</button>
+      <p hidden><strong>بزرگ‌ترین مقسوم‌علیه مشترک (ب.م.م)</strong> بزرگ‌ترین عددی است که دو عدد را بدون باقی‌مانده تقسیم می‌کند. <strong>کوچک‌ترین مضرب مشترک (ک.م.م)</strong> کوچک‌ترین مضرب مثبت مشترک دو عدد است. با ابزار ب.م.م و ک.م.م می‌توانی هر دو را محاسبه کنی.</p>
     </article>
 
-    <article>
-      <h3>تجزیه عدد به عوامل اول</h3>
-      <p>در تجزیه به عوامل اول، یک عدد مرکب را به حاصل‌ضرب عددهای اول می‌نویسیم. برای نمونه، ۱۲ برابر با ۲ × ۲ × ۳ است. ابزار تجزیه، عوامل اول و درخت تجزیه عدد را نمایش می‌دهد.</p>
+    <article class="guide-item">
+      <button class="guide-toggle" type="button" aria-expanded="false">تجزیه عدد به عوامل اول</button>
+      <p hidden>در تجزیه به عوامل اول، یک عدد مرکب را به حاصل‌ضرب عددهای اول می‌نویسیم. برای نمونه، ۱۲ برابر با ۲ × ۲ × ۳ است. ابزار تجزیه، عوامل اول و درخت تجزیه عدد را نمایش می‌دهد.</p>
     </article>
 
-    <article>
-      <h3>چطور بفهمیم یک عدد اول است؟</h3>
-      <p>عدد اول عدد صحیح بزرگ‌تر از ۱ است که فقط دو مقسوم‌علیه مثبت دارد: ۱ و خودش. از ابزار تشخیص عدد اول استفاده کن تا اول یا مرکب بودن عدد را بررسی کنی.</p>
+    <article class="guide-item">
+      <button class="guide-toggle" type="button" aria-expanded="false">چطور بفهمیم یک عدد اول است؟</button>
+      <p hidden>عدد اول عدد صحیح بزرگ‌تر از ۱ است که فقط دو مقسوم‌علیه مثبت دارد: ۱ و خودش. از ابزار تشخیص عدد اول استفاده کن تا اول یا مرکب بودن عدد را بررسی کنی.</p>
     </article>
 
-    <article>
-      <h3>غربال اراتستن چیست؟</h3>
-      <p>غربال اراتستن روشی برای پیدا کردن اعداد اول تا یک حد مشخص است. در این روش، مضرب‌های عددهای اول را خط می‌زنیم و عددهایی که باقی می‌مانند، اول هستند. ابزار غربال اراتستن این فرایند را به‌صورت دیداری نشان می‌دهد.</p>
+    <article class="guide-item">
+      <button class="guide-toggle" type="button" aria-expanded="false">غربال اراتستن چیست؟</button>
+      <p hidden>غربال اراتستن روشی برای پیدا کردن اعداد اول تا یک حد مشخص است. در این روش، مضرب‌های عددهای اول را خط می‌زنیم و عددهایی که باقی می‌مانند، اول هستند. ابزار غربال اراتستن این فرایند را به‌صورت دیداری نشان می‌دهد.</p>
     </article>
 
-    <article>
-      <h3>محاسبه کسرها و چهار عمل اصلی</h3>
-      <p>با ماشین‌حساب می‌توانی جمع، تفریق، ضرب و تقسیم را انجام بدهی و با ابزار محاسبه کسرها، حاصل عملیات روی دو کسر را به دست بیاوری.</p>
+    <article class="guide-item">
+      <button class="guide-toggle" type="button" aria-expanded="false">محاسبه کسرها و چهار عمل اصلی</button>
+      <p hidden>با ماشین‌حساب می‌توانی جمع، تفریق، ضرب و تقسیم را انجام بدهی و با ابزار محاسبه کسرها، حاصل عملیات روی دو کسر را به دست بیاوری.</p>
     </article>
   </section>
 
@@ -3443,12 +3455,13 @@ if (denominator === 1) {
 })();
 
 (function(){
- document.querySelectorAll('.tool-card .description-toggle').forEach(function(btn){
-  btn.addEventListener('click',function(e){
-   e.preventDefault();e.stopPropagation();
-   var card=btn.closest('.tool-card');var desc=card&&card.querySelector('.description-content');
+ document.querySelectorAll('.seo-learning .guide-toggle').forEach(function(btn){
+  btn.addEventListener('click',function(){
+   var desc=btn.nextElementSibling;
    if(!desc)return;
-   var opening=desc.hidden;desc.hidden=!opening;btn.setAttribute('aria-expanded',String(opening));
+   var opening=desc.hidden;
+   desc.hidden=!opening;
+   btn.setAttribute('aria-expanded',String(opening));
   });
  });
  document.querySelectorAll('.tool-card .tool-open').forEach(function(btn){
