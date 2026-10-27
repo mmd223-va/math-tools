@@ -2262,9 +2262,37 @@ body.dark #factorization .factor-tree h3,body.dark #factorization .factor-final 
 body.dark #factorization .tree-node{background:#334155;color:#dbeafe}body.dark #factorization .tree-leaf{background:#14532d;color:#bbf7d0}body.dark #factorization .tree-line{stroke:#94a3b8}
 @media(max-width:760px){.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.extra-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.container{padding:12px}.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.tool-card{min-height:145px;padding:12px}.tool-icon{width:34px;height:34px;font-size:19px}.tool-title{font-size:14px}.tool-description{font-size:11px}.extra-grid{grid-template-columns:1fr}.help-strip{align-items:flex-start;flex-wrap:wrap}.help-strip a{margin-right:46px}.extra-panel{padding:14px}}
+
+/* بهبودهای درخواستی */
+#themeButton{position:fixed;top:14px;left:14px;z-index:2000;padding:10px 13px;border:1px solid var(--border-color);border-radius:12px;background:var(--card-bg);color:var(--text-color);box-shadow:var(--card-shadow)}
+body.dark .factor-tree, body.dark .factor-final {background:#172033!important;color:#e5e7eb!important;border-color:#475569!important}
+body.dark .factor-tree h3,body.dark .factor-final h3{color:#bfdbfe!important}
+body.dark .tree-canvas{background:transparent!important}
+body.dark .tree-node{background:#334155!important;color:#f1f5f9!important;border-color:#64748b!important}
+body.dark .tree-leaf{background:#14532d!important;color:#dcfce7!important;border-color:#22c55e!important}
+body.dark .factor-equation{background:#1e3a8a!important;color:#eff6ff!important}
+.feature-panel{margin-top:22px;padding:18px;border:1px solid var(--border-color);border-radius:18px;background:var(--card-bg);color:var(--text-color)}
+.feature-panel h3{margin-top:0;color:var(--main-color)}
+.history-list{display:grid;gap:8px;padding:0;list-style:none}
+.history-item{padding:10px 12px;border:1px solid var(--border-color);border-radius:10px;background:var(--soft-bg);overflow-wrap:anywhere}
+.history-item small{display:block;color:var(--muted-color);margin-top:3px}
+.feature-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.feature-row button,.small-button{padding:8px 12px;border-radius:10px;background:var(--soft-bg);color:var(--text-color);border:1px solid var(--border-color)}
+.reveal-help{margin:12px 0;border:1px solid var(--border-color);border-radius:12px;overflow:hidden}
+.reveal-help summary{cursor:pointer;padding:12px 14px;font-weight:700;background:var(--soft-bg)}
+.reveal-help .help-content{padding:12px 14px;line-height:1.9}
+.extra-tool-card{display:flex;flex-direction:column;align-items:flex-start;gap:7px;text-align:right;padding:16px;border:1px solid var(--border-color);border-radius:15px;background:var(--card-bg);color:var(--text-color)}
+.extra-tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+body.compact-ui .container{padding:18px}
+body.compact-ui .tool-card{min-height:150px;padding:15px}
+body.large-text{font-size:18px}
+body.large-text .tool-description,body.large-text p{font-size:1.05em}
+@media(max-width:600px){#themeButton{top:8px;left:8px}.feature-panel{padding:13px}}
+
 </style>
 </head>
 <body>
+<button id="themeButton" type="button" aria-label="تغییر حالت ظاهری">🌙 حالت تیره</button>
 
 
 <main class="container">
@@ -3464,5 +3492,57 @@ if (denominator === 1) {
 })();
 
 (function(){var search=document.getElementById('toolSearch'),cards=Array.from(document.querySelectorAll('.tool-card')),category='all',favorites=[];try{favorites=JSON.parse(localStorage.getItem('mathToolsFavorites')||'[]')}catch(e){}function render(){var q=(search.value||'').toLocaleLowerCase('fa').trim(),visible=0;cards.forEach(function(card){var text=card.innerText.toLocaleLowerCase('fa'),match=(card.getAttribute('onclick')||'').match(/showPage\(['"]([^'"]+)/),id=match?match[1]:'',cat=(id==='calculator'||id==='fractions'||id==='gcd')?'basic':'number',fav=document.getElementById('favoritesToggle').classList.contains('active');var ok=(!q||text.indexOf(q)>=0)&& (category==='all'||category===cat)&&(!fav||favorites.indexOf(id)>=0);card.hidden=!ok;if(ok)visible++});var empty=document.getElementById('emptySearch');if(!empty){empty=document.createElement('p');empty.id='emptySearch';empty.className='empty-search';empty.textContent='ابزاری پیدا نشد؛ عبارت دیگری امتحان کن.';document.querySelector('.tool-grid').after(empty)}empty.classList.toggle('show',visible===0)}search.addEventListener('input',render);document.querySelectorAll('.category-chip').forEach(function(b){b.addEventListener('click',function(){category=b.dataset.category;document.querySelectorAll('.category-chip').forEach(function(x){x.classList.toggle('active',x===b)});render()})});var favButton=document.getElementById('favoritesToggle');favButton.addEventListener('click',function(){favButton.classList.toggle('active');favButton.textContent=favButton.classList.contains('active')?'♥ نمایش همه ابزارها':'♡ علاقه‌مندی‌ها';render()});cards.forEach(function(card){var b=document.createElement('button');b.type='button';b.textContent='♡';b.title='افزودن به علاقه‌مندی‌ها';b.style.cssText='align-self:flex-end;border:0;background:transparent;color:#ff8fb4;font-size:22px;padding:2px 8px';b.addEventListener('click',function(e){e.stopPropagation();var m=(card.getAttribute('onclick')||'').match(/showPage\(['"]([^'"]+)/),id=m?m[1]:'';favorites=favorites.indexOf(id)>=0?favorites.filter(function(x){return x!==id}):favorites.concat(id);try{localStorage.setItem('mathToolsFavorites',JSON.stringify(favorites))}catch(e){}b.textContent=favorites.indexOf(id)>=0?'♥':'♡';render()});card.prepend(b)});render()})();</script>
+
+<script>
+(function(){
+ const KEY='mathToolsHistoryV1', FAV='mathToolsFavorites', PREF='mathToolsPrefsV1';
+ function read(k,f){try{return JSON.parse(localStorage.getItem(k)||JSON.stringify(f))}catch(e){return f}}
+ let history=read(KEY,[]),prefs=read(PREF,{dark:document.body.classList.contains('dark'),compact:false,large:false});
+ function applyPrefs(){document.body.classList.toggle('dark',!!prefs.dark);document.body.classList.toggle('compact-ui',!!prefs.compact);document.body.classList.toggle('large-text',!!prefs.large);let b=document.getElementById('themeButton');if(b)b.textContent=prefs.dark?'☀️ حالت روشن':'🌙 حالت تیره';}
+ function savePrefs(){try{localStorage.setItem(PREF,JSON.stringify(prefs))}catch(e){}applyPrefs()}
+ window.toggleTheme=function(){prefs.dark=!prefs.dark;savePrefs()};
+ document.getElementById('themeButton').addEventListener('click',window.toggleTheme);
+ applyPrefs();
+ const home=document.getElementById('home');
+ if(home){
+  const panel=document.createElement('section');panel.className='feature-panel';
+  panel.innerHTML='<h3>ابزارهای بیشتر</h3><div class="extra-tool-grid"><button class="extra-tool-card" type="button" data-extra="percent"><strong>درصد</strong><span>محاسبه درصد یک عدد</span></button><button class="extra-tool-card" type="button" data-extra="average"><strong>میانگین</strong><span>میانگین چند عدد</span></button><button class="extra-tool-card" type="button" data-extra="equation"><strong>معادله درجه اول</strong><span>حل ax + b = c</span></button></div><div class="feature-row" style="margin-top:12px"><button type="button" id="showHistory">🕘 تاریخچه محاسبات</button><button type="button" id="showPrefs">⚙️ تنظیمات ظاهری</button></div><div id="historyPanel" hidden></div><div id="prefsPanel" hidden></div>';
+  const footer=home.querySelector('footer');if(footer)home.insertBefore(panel,footer);else home.appendChild(panel);
+  panel.querySelectorAll('[data-extra]').forEach(b=>b.addEventListener('click',()=>openExtra(b.dataset.extra)));
+  document.getElementById('showHistory').addEventListener('click',renderHistory);
+  document.getElementById('showPrefs').addEventListener('click',renderPrefs);
+ }
+ function openExtra(kind){
+  let old=document.getElementById('extraToolPage');if(old)old.remove();
+  let title='',fields='',button='',desc='';
+  if(kind==='percent'){title='محاسبه درصد';desc='چطور درصد یک عدد را حساب کنیم؟';fields='<label>عدد</label><input id="exA" type="number" placeholder="مثلاً 200"><label>درصد</label><input id="exB" type="number" placeholder="مثلاً 15">';button='محاسبه درصد';}
+  if(kind==='average'){title='محاسبه میانگین';desc='میانگین چند عدد چگونه به دست می‌آید؟';fields='<label>عددها را با ویرگول جدا کن</label><input id="exA" type="text" placeholder="مثلاً 12، 15، 18">';button='محاسبه میانگین';}
+  if(kind==='equation'){title='حل معادله درجه اول';desc='چطور معادله ax + b = c را حل کنیم؟';fields='<label>ضریب x یعنی a</label><input id="exA" type="number" placeholder="مثلاً 2"><label>عدد b</label><input id="exB" type="number" placeholder="مثلاً 4"><label>عدد c</label><input id="exC" type="number" placeholder="مثلاً 10">';button='حل معادله';}
+  let page=document.createElement('section');page.id='extraToolPage';page.className='page active';page.innerHTML='<button class="back-button" type="button" id="extraBack">← بازگشت</button><h2>'+title+'</h2><details class="reveal-help"><summary>'+desc+'</summary><div class="help-content">'+(kind==='percent'?'درصد موردنظر را بر ۱۰۰ تقسیم کن و در عدد اصلی ضرب کن.':kind==='average'?'همه عددها را جمع کن و حاصل را بر تعداد عددها تقسیم کن.':'ابتدا b را از دو طرف کم کن، سپس دو طرف را بر a تقسیم کن؛ a نباید صفر باشد.')+'</div></details>'+fields+'<button class="action-button" type="button" id="extraRun">'+button+'</button><div class="result" id="extraResult" hidden></div>';
+  document.querySelector('main').appendChild(page);document.querySelectorAll('.page').forEach(p=>{if(p!==page)p.classList.remove('active')});
+  document.getElementById('extraBack').onclick=()=>{page.remove();showPage('home')};
+  document.getElementById('extraRun').onclick=()=>{
+   let out=document.getElementById('extraResult'),answer='',steps='';
+   if(kind==='percent'){let a=Number(document.getElementById('exA').value),b=Number(document.getElementById('exB').value);if(!document.getElementById('exA').value||!document.getElementById('exB').value){answer='هر دو مقدار را وارد کن.'}else{answer=(a*b/100);steps=b+' ÷ ۱۰۰ × '+a+' = '+answer}}
+   if(kind==='average'){let raw=document.getElementById('exA').value.trim(),nums=raw.split(/[,،\s]+/).filter(Boolean).map(Number);if(!raw||nums.some(n=>!Number.isFinite(n))){answer='چند عدد معتبر وارد کن و آن‌ها را با ویرگول جدا کن.'}else{let sum=nums.reduce((s,n)=>s+n,0);answer=sum/nums.length;steps='مجموع عددها: '+sum+'؛ تعداد: '+nums.length+'؛ میانگین = '+sum+' ÷ '+nums.length}}
+   if(kind==='equation'){let a=Number(document.getElementById('exA').value),b=Number(document.getElementById('exB').value),cc=Number(document.getElementById('exC').value);if(!document.getElementById('exA').value||!document.getElementById('exB').value||!document.getElementById('exC').value)answer='هر سه مقدار را وارد کن.';else if(a===0)answer='ضریب x نباید صفر باشد.';else{answer='x = '+((cc-b)/a);steps+a+'x + '+b+' = '+cc+'؛ '+a+'x = '+(cc-b)+'؛ x = '+((cc-b)/a)}}
+   out.hidden=false;out.textContent=steps?'جواب: '+answer+'\nمراحل حل: '+steps:answer;if(steps)record(title,steps,answer);
+  };
+ }
+ function record(tool,detail,result){history.unshift({tool,detail,result,time:new Date().toLocaleString('fa-IR')});history=history.slice(0,50);try{localStorage.setItem(KEY,JSON.stringify(history))}catch(e){}}
+ function renderHistory(){let box=document.getElementById('historyPanel');box.hidden=false;box.className='feature-panel';box.innerHTML='<h3>تاریخچه محاسبات</h3><div class="feature-row"><button type="button" id="clearHistory">پاک کردن تاریخچه</button></div><ul class="history-list">'+(history.length?history.map(x=>'<li class="history-item"><strong>'+escapeHtml(x.tool)+'</strong><div>'+escapeHtml(x.detail)+'</div><div>نتیجه: '+escapeHtml(x.result)+'</div><small>'+escapeHtml(x.time)+'</small></li>').join(''):'<li>هنوز محاسبه‌ای در تاریخچه ثبت نشده است.</li>')+'</ul>';box.querySelector('#clearHistory').onclick=()=>{history=[];localStorage.removeItem(KEY);renderHistory()}}
+ function renderPrefs(){let box=document.getElementById('prefsPanel');box.hidden=false;box.className='feature-panel';box.innerHTML='<h3>تنظیمات ظاهری</h3><label><input id="prefDark" type="checkbox" style="display:inline;width:auto" '+(prefs.dark?'checked':'')+'> حالت تیره</label><label><input id="prefCompact" type="checkbox" style="display:inline;width:auto" '+(prefs.compact?'checked':'')+'> نمایش فشرده‌تر</label><label><input id="prefLarge" type="checkbox" style="display:inline;width:auto" '+(prefs.large?'checked':'')+'> نوشته‌های بزرگ‌تر</label>';[['prefDark','dark'],['prefCompact','compact'],['prefLarge','large']].forEach(pair=>box.querySelector('#'+pair[0]).addEventListener('change',e=>{prefs[pair[1]]=e.target.checked;savePrefs()}))}
+ function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+ // توضیح کارت‌ها و ابزارها فقط با کلیک باز می‌شود.
+ document.querySelectorAll('.tool-card .tool-description').forEach(el=>{let d=document.createElement('details');d.className='reveal-help';let s=document.createElement('summary');s.textContent='توضیحات این ابزار';let content=document.createElement('div');content.className='help-content';content.textContent=el.textContent.trim();d.append(s,content);el.replaceWith(d)});
+ document.querySelectorAll('main > section.page:not(#home) > p').forEach(p=>{let text=p.textContent.trim();if(!text)return;let d=document.createElement('details');d.className='reveal-help';let s=document.createElement('summary');s.textContent='این ابزار چگونه کار می‌کند؟';let content=document.createElement('div');content.className='help-content';content.textContent=text;d.append(s,content);p.replaceWith(d)});
+ // تاریخچهٔ محاسبات موجود را از تغییر نتایج ذخیره کن.
+ const resultIds=['calculatorResult','fraction-result','sieveResult','gcdResult','primeResult','factorResult'];
+ resultIds.forEach(id=>{let el=document.getElementById(id);if(!el)return;let previous='';new MutationObserver(()=>{let text=el.innerText||el.textContent||'';if(text.trim()&&text!==previous&&!el.classList.contains('error')){previous=text;record(id.replace(/Result|result/gi,''),text,'ثبت شد');}}).observe(el,{subtree:true,childList:true,characterData:true})});
+ // بهبود علاقه‌مندی‌ها: نشان قلب روشن و ذخیره‌شده بر اساس localStorage.
+ let favs=read(FAV,[]);document.querySelectorAll('.tool-card').forEach(card=>{let m=(card.getAttribute('onclick')||'').match(/showPage\(['"]([^'"]+)/);if(!m)return;let id=m[1],btn=card.querySelector('button');if(btn){btn.textContent=favs.includes(id)?'♥':'♡';btn.setAttribute('aria-label',favs.includes(id)?'حذف از علاقه‌مندی‌ها':'افزودن به علاقه‌مندی‌ها');}});
+})();
+</script>
+
 </body>
 </html>
