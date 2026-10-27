@@ -2309,6 +2309,118 @@ body.large-text{font-size:18px}
 body.large-text .tool-description,body.large-text p{font-size:1.05em}
 @media(max-width:600px){#themeButton{top:8px;left:8px}.feature-panel{padding:13px}}
 
+
+/* FIX: حالت روشن باید بر قوانین قدیمیِ تم تیره اولویت داشته باشد */
+body:not(.dark) {
+  color-scheme: light !important;
+  --main-color: #4f46e5;
+  --main-hover: #4338ca;
+  --page-bg: #f3f6fc;
+  --card-bg: #ffffff;
+  --text-color: #20243a;
+  --muted-color: #5e6d86;
+  --border-color: #dbe2ef;
+  --input-bg: #ffffff;
+  --soft-bg: #f5f7ff;
+  --card-shadow: 0 12px 30px rgba(30, 41, 59, .09);
+  background: #f3f6fc !important;
+  background-image: none !important;
+  color: #20243a !important;
+}
+body:not(.dark)::before { opacity: 0 !important; }
+body:not(.dark) .container,
+body:not(.dark) .page,
+body:not(.dark) .feature-panel,
+body:not(.dark) .extra-panel,
+body:not(.dark) .seo-learning,
+body:not(.dark) .home-footer,
+body:not(.dark) .utility-panel {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #20243a !important;
+  border-color: #dbe2ef !important;
+}
+body:not(.dark) .hero {
+  background: linear-gradient(120deg, #e7efff, #eeeaff) !important;
+  color: #20243a !important;
+}
+body:not(.dark) .hero h1,
+body:not(.dark) h1,
+body:not(.dark) h2,
+body:not(.dark) h3,
+body:not(.dark) .home-heading h2,
+body:not(.dark) .tool-title,
+body:not(.dark) .feature-panel h3 {
+  color: #27356b !important;
+}
+body:not(.dark) p,
+body:not(.dark) label,
+body:not(.dark) .home-heading p,
+body:not(.dark) .tool-description,
+body:not(.dark) .calculator-help,
+body:not(.dark) .page > p {
+  color: #5e6d86 !important;
+}
+body:not(.dark) .tool-card,
+body:not(.dark) .extra-card,
+body:not(.dark) .extra-tool-card,
+body:not(.dark) .utility-link {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #20243a !important;
+  border-color: #dbe2ef !important;
+}
+body:not(.dark) input,
+body:not(.dark) select,
+body:not(.dark) textarea,
+body:not(.dark) .search-wrap,
+body:not(.dark) .search-wrap input {
+  background: #f8faff !important;
+  background-color: #f8faff !important;
+  color: #20243a !important;
+  border-color: #dbe2ef !important;
+}
+body:not(.dark) input::placeholder,
+body:not(.dark) textarea::placeholder { color: #7b879b !important; }
+body:not(.dark) .result,
+body:not(.dark) .history-item,
+body:not(.dark) .reveal-help summary {
+  background: #f3f6fc !important;
+  background-color: #f3f6fc !important;
+  color: #20243a !important;
+  border-color: #dbe2ef !important;
+}
+body:not(.dark) .back-button,
+body:not(.dark) .feature-row button,
+body:not(.dark) .small-button {
+  background: #eef2ff !important;
+  color: #3730a3 !important;
+  border-color: #dbe2ef !important;
+}
+body:not(.dark) #themeButton {
+  background: #ffffff !important;
+  color: #20243a !important;
+  border-color: #dbe2ef !important;
+}
+body:not(.dark) .factor-final,
+body:not(.dark) .factor-tree {
+  background: #f8faff !important;
+  color: #20243a !important;
+  border-color: #dbe2ef !important;
+}
+body:not(.dark) .factor-final h3,
+body:not(.dark) .factor-tree h3,
+body:not(.dark) .factor-equation { color: #3730a3 !important; }
+body:not(.dark) .tree-node { background: #e7eaff !important; color: #3730a3 !important; border-color: #c7d2fe !important; }
+body:not(.dark) .tree-leaf { background: #d8f7eb !important; color: #065f46 !important; border-color: #6ee7b7 !important; }
+body:not(.dark) .tree-line { stroke: #94a3b8 !important; }
+body:not(.dark) .calc-key { background: #e8edf5 !important; color: #1e293b !important; }
+body:not(.dark) .calc-function { background: #dbeafe !important; color: #1d4ed8 !important; }
+body:not(.dark) .calc-danger { background: #fee2e2 !important; color: #b91c1c !important; }
+body:not(.dark) .calc-equals,
+body:not(.dark) .action-button,
+body:not(.dark) .tool-open { color: #ffffff !important; }
+
 </style>
 </head>
 <body>
