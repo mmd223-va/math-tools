@@ -2451,6 +2451,45 @@ if (denominator === 1) {
     });
   });
 })();
+
+/* ورودی ابزارهای عددی: فقط رقم و علامت منفی مجاز است.
+   نمایشگر ماشین‌حساب مستثناست چون عبارت ریاضی می‌پذیرد. */
+(function () {
+  const numericInputs = Array.from(document.querySelectorAll("input"))
+    .filter(input => input.id !== "calculatorDisplay");
+
+  numericInputs.forEach(input => {
+    input.addEventListener("input", function () {
+      const cleaned = this.value.replace(/[^0-9-]/g, "");
+      const normalized = cleaned.startsWith("-")
+        ? "-" + cleaned.slice(1).replace(/-/g, "")
+        : cleaned.replace(/-/g, "");
+      if (this.value !== normalized) {
+        const start = this.selectionStart;
+        const before = this.value;
+        this.value = normalized;
+        if (start !== null) {
+          const removedBeforeCursor = before.slice(0, start).replace(/[0-9-]/g, "").length;
+          const cursor = Math.max(0, start - removedBeforeCursor);
+          try { this.setSelectionRange(cursor, cursor); } catch (_) {}
+        }
+      }
+    });
+
+    input.addEventListener("paste", function (event) {
+      const pasted = (event.clipboardData || window.clipboardData).getData("text");
+      if (/[^0-9-]/.test(pasted)) {
+        event.preventDefault();
+        const cleaned = pasted.replace(/[^0-9-]/g, "");
+        const start = this.selectionStart ?? this.value.length;
+        const end = this.selectionEnd ?? start;
+        this.setRangeText(cleaned, start, end, "end");
+        this.dispatchEvent(new Event("input", { bubbles: true }));
+      }
+    });
+  });
+})();
+
 </script>
 </body>
 </html>
