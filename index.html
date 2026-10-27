@@ -2826,6 +2826,7 @@ function calculateSequence() {
   result.replaceChildren();
 
   const stepsDetails = document.createElement("details");
+  stepsDetails.open = true;
   const stepsHeading = document.createElement("summary");
   stepsHeading.textContent = "نمایش مراحل محاسبه";
   const steps = document.createElement("p");
