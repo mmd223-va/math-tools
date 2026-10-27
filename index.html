@@ -2548,10 +2548,11 @@ body.dark .feedback-report{background:#402038;color:#fecdd3}
       <h2>جعبه‌ابزار ریاضی</h2>
       <p>ابزار موردنیازت را انتخاب کن.</p>
     </div>
-    <span class="tool-count">۹ ابزار</span>
+    <span class="tool-count">۱۰ ابزار</span>
   </div>
 
   <div class="tool-toolbar"><label class="search-wrap"><span>⌕</span><input id="toolSearch" type="search" placeholder="جست‌وجوی ابزار" aria-label="جست‌وجوی ابزار"></label><button id="favoritesToggle" class="toolbar-button" type="button" aria-pressed="false">♡ علاقه‌مندی‌ها</button></div><nav class="category-row"><button class="category-chip active" data-category="all" type="button">همه</button><button class="category-chip" data-category="basic" type="button">محاسبات پایه</button><button class="category-chip" data-category="number" type="button">نظریه اعداد</button></nav><div class="tool-grid">
+ <article class="tool-card card-purple" data-page="sequence-calculator"><span class="tool-icon">∑</span><span class="tool-title">ماشین‌حساب دنباله‌ای</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
  <article class="tool-card card-purple" data-page="factorization"><span class="tool-icon">⑂</span><span class="tool-title">تجزیه عدد به عوامل اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
  <article class="tool-card card-purple" data-page="calculator"><span class="tool-icon">＋</span><span class="tool-title">ماشین‌حساب</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
  <article class="tool-card card-blue" data-page="fractions"><span class="tool-icon">½</span><span class="tool-title">محاسبه کسرها</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
@@ -2621,6 +2622,30 @@ body.dark .feedback-report{background:#402038;color:#fecdd3}
 
 </section>
 
+
+
+<section id="sequence-calculator" class="page">
+  <button class="back-button" type="button" onclick="showPage('home')">← بازگشت</button>
+  <h2>ماشین‌حساب دنباله‌ای</h2>
+  <p>عدد شروع، عدد پایان و فاصله را وارد کن؛ سپس عملیات موردنظرت را روی دنباله انجام بده.</p>
+  <label for="seqStart">عدد شروع</label>
+  <input id="seqStart" type="number" step="1" value="4" placeholder="مثلاً 4">
+  <label for="seqEnd">عدد پایان</label>
+  <input id="seqEnd" type="number" step="1" value="10" placeholder="مثلاً 10">
+  <label for="seqStep">فاصله بین عددها</label>
+  <input id="seqStep" type="number" step="1" min="1" value="2" placeholder="مثلاً 2">
+  <label for="seqOperation">نوع عملیات</label>
+  <select id="seqOperation">
+    <option value="add">جمع همه عددها</option>
+    <option value="subtract">تفریق پشت‌سرهم</option>
+    <option value="multiply">ضرب همه عددها</option>
+    <option value="divide">تقسیم پشت‌سرهم</option>
+    <option value="alternate-add">یکی‌درمیان، با جمع شروع شود</option>
+    <option value="alternate-subtract">یکی‌درمیان، با تفریق شروع شود</option>
+  </select>
+  <button class="action-button" type="button" onclick="calculateSequence()">محاسبه</button>
+  <div id="sequenceResult" class="result" hidden aria-live="polite"></div>
+</section>
 
 <section id="factorization" class="page">
   <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
@@ -2743,6 +2768,94 @@ body.dark .feedback-report{background:#402038;color:#fecdd3}
 
 </main>
 <script>
+
+
+function calculateSequence() {
+  const startText = document.getElementById("seqStart").value.trim();
+  const endText = document.getElementById("seqEnd").value.trim();
+  const stepText = document.getElementById("seqStep").value.trim();
+  const operation = document.getElementById("seqOperation").value;
+  const result = document.getElementById("sequenceResult");
+  result.hidden = false;
+  result.classList.remove("error");
+  if (!startText || !endText || !stepText) {
+    result.classList.add("error");
+    result.textContent = "لطفاً هر سه مقدار را وارد کن.";
+    return;
+  }
+  const start = Number(startText), end = Number(endText), step = Number(stepText);
+  if (![start, end, step].every(Number.isSafeInteger) || step <= 0 || end < start) {
+    result.classList.add("error");
+    result.textContent = "عدد شروع و پایان باید عدد صحیح معتبر باشند؛ فاصله باید عدد صحیح مثبت باشد و پایان نباید از شروع کوچک‌تر باشد.";
+    return;
+  }
+  const count = Math.floor((end - start) / step) + 1;
+  if (count > 5000) {
+    result.classList.add("error");
+    result.textContent = "این دنباله بیش از ۵۰۰۰ عدد دارد. لطفاً فاصله را بیشتر یا بازه را کوچک‌تر کن.";
+    return;
+  }
+  const numbers = Array.from({length: count}, (_, i) => start + i * step);
+  let total = numbers[0];
+  const expression = [String(numbers[0])];
+  for (let i = 1; i < numbers.length; i++) {
+    let op;
+    if (operation === "add") op = "+";
+    else if (operation === "subtract") op = "−";
+    else if (operation === "multiply") op = "×";
+    else if (operation === "divide") op = "÷";
+    else if (operation === "alternate-add") op = i % 2 === 1 ? "+" : "−";
+    else op = i % 2 === 1 ? "−" : "+";
+    expression.push(op, String(numbers[i]));
+    if (op === "+") total += numbers[i];
+    else if (op === "−") total -= numbers[i];
+    else if (op === "×") total *= numbers[i];
+    else total /= numbers[i];
+    if (!Number.isFinite(total) || Math.abs(total) > Number.MAX_SAFE_INTEGER) {
+      result.classList.add("error");
+      result.textContent = "نتیجه بیش از محدوده قابل محاسبه است.";
+      return;
+    }
+  }
+  if (operation === "divide" && numbers.slice(1).some(n => n === 0)) {
+    result.classList.add("error");
+    result.textContent = "تقسیم بر صفر امکان‌پذیر نیست. دنباله را طوری تغییر بده که بعد از عدد اول، صفر نداشته باشد.";
+    return;
+  }
+  const formatted = Number(total.toPrecision(12)).toLocaleString("en-US", {maximumFractionDigits: 10});
+  result.replaceChildren();
+  const heading = document.createElement("strong");
+  heading.textContent = "دنباله:";
+  const sequence = document.createElement("p");
+  sequence.textContent = numbers.join("، ");
+  const expressionHeading = document.createElement("strong");
+  expressionHeading.textContent = "عبارت محاسبه:";
+  const expressionBox = document.createElement("p");
+  expressionBox.style.direction = "ltr";
+  expressionBox.style.textAlign = "left";
+  expressionBox.textContent = expression.join(" ");
+  const answerHeading = document.createElement("strong");
+  answerHeading.textContent = "جواب نهایی:";
+  const answer = document.createElement("p");
+  answer.style.fontSize = "1.4rem";
+  answer.style.fontWeight = "800";
+  answer.textContent = formatted;
+  const countText = document.createElement("p");
+  countText.textContent = "تعداد اعداد: " + numbers.length;
+  const copyButton = document.createElement("button");
+  copyButton.type = "button";
+  copyButton.className = "action-button";
+  copyButton.textContent = "کپی جواب";
+  copyButton.addEventListener("click", async function() {
+    try {
+      await navigator.clipboard.writeText(formatted);
+      copyButton.textContent = "کپی شد ✓";
+    } catch (e) {
+      copyButton.textContent = "کپی خودکار در دسترس نیست";
+    }
+  });
+  result.append(heading, sequence, expressionHeading, expressionBox, answerHeading, answer, countText, copyButton);
+}
 
 function showPage(pageId) {
   document.querySelectorAll(".page").forEach(page => {
