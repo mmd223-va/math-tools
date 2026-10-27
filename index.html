@@ -2285,6 +2285,7 @@ body.dark .factor-equation{background:#1e3a8a!important;color:#eff6ff!important}
 .extra-tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
 body.compact-ui .container{padding:18px}
 body.compact-ui .tool-card{min-height:150px;padding:15px}
+.tool-card{display:flex;flex-direction:column;align-items:flex-start;gap:9px;text-align:right;width:100%;cursor:default}.tool-card[hidden]{display:none!important}.description-toggle,.tool-open{border:0;border-radius:9px;padding:7px 10px;cursor:pointer;font:inherit}.description-toggle{background:rgba(100,116,139,.13);color:var(--text-color)}.tool-open{margin-top:auto;background:#4f46e5;color:#fff}.description-content{display:block;font-size:.92em;line-height:1.8;color:var(--muted-color,#64748b)}.description-content[hidden]{display:none!important}.favorite-toggle{align-self:flex-end}
 body.large-text{font-size:18px}
 body.large-text .tool-description,body.large-text p{font-size:1.05em}
 @media(max-width:600px){#themeButton{top:8px;left:8px}.feature-panel{padding:13px}}
@@ -2319,70 +2320,20 @@ body.large-text .tool-description,body.large-text p{font-size:1.05em}
       <h2>جعبه‌ابزار ریاضی</h2>
       <p>ابزار موردنیازت را انتخاب کن.</p>
     </div>
-    <span class="tool-count">۶ ابزار</span>
+    <span class="tool-count">۹ ابزار</span>
   </div>
 
   <div class="tool-toolbar"><label class="search-wrap"><span>⌕</span><input id="toolSearch" type="search" placeholder="جست‌وجوی ابزار" aria-label="جست‌وجوی ابزار"></label><button id="favoritesToggle" class="toolbar-button" type="button" aria-pressed="false">♡ علاقه‌مندی‌ها</button></div><nav class="category-row"><button class="category-chip active" data-category="all" type="button">همه</button><button class="category-chip" data-category="basic" type="button">محاسبات پایه</button><button class="category-chip" data-category="number" type="button">نظریه اعداد</button></nav><div class="tool-grid">
-
-    <button class="tool-card card-purple"
-      onclick="showPage('calculator')">
-      <span class="tool-icon">＋</span>
-      <span class="tool-title">ماشین‌حساب</span>
-      <span class="tool-description">محاسبهٔ چهار عمل اصلی با اعداد صحیح و اعشاری</span>
-      <span class="tool-link">باز کردن ابزار ←</span>
-    </button>
-
-    <button class="tool-card card-blue"
-  onclick="showPage('fractions')">
-  <span class="tool-icon">½</span>
-  <span class="tool-title">محاسبهٔ کسرها</span>
-  <span class="tool-description">
-    جمع، تفریق، ضرب و تقسیم کسرها با ساده‌سازی جواب
-  </span>
-  <span class="tool-link">باز کردن ابزار ←</span>
-</button>
-
-    <button class="tool-card card-purple"
-      onclick="showPage('factorization')">
-      <span class="tool-icon">⑂</span>
-      <span class="tool-title">تجزیه به عوامل اول</span>
-      <span class="tool-description">
-        تجزیهٔ عدد همراه با نمایش درخت تجزیه
-      </span>
-      <span class="tool-link">باز کردن ابزار ←</span>
-    </button>
-
-    <button class="tool-card card-green"
-      onclick="showPage('gcd')">
-      <span class="tool-icon">÷</span>
-      <span class="tool-title">ب.م.م و ک.م.م</span>
-      <span class="tool-description">
-        محاسبهٔ بزرگ‌ترین مقسوم‌علیه و کوچک‌ترین مضرب مشترک
-      </span>
-      <span class="tool-link">باز کردن ابزار ←</span>
-    </button>
-
-    <button class="tool-card card-orange"
-      onclick="showPage('prime')">
-      <span class="tool-icon">✓</span>
-      <span class="tool-title">تشخیص عدد اول</span>
-      <span class="tool-description">
-        بررسی اول یا مرکب بودن یک عدد
-      </span>
-      <span class="tool-link">باز کردن ابزار ←</span>
-    </button>
-
-    <button class="tool-card card-blue"
-      onclick="showPage('sieve')">
-      <span class="tool-icon">#</span>
-      <span class="tool-title">غربال اراتستن</span>
-      <span class="tool-description">
-        پیدا کردن اعداد اول در یک بازه
-      </span>
-      <span class="tool-link">باز کردن ابزار ←</span>
-    </button>
-
-  </div>
+<article class="tool-card card-purple" data-page="factorization"><span class="tool-icon">⑂</span><span class="tool-title">تجزیه به عوامل اول</span><button class="description-toggle" type="button" aria-expanded="false">چطور کار می‌کند؟</button><span class="description-content" hidden>تجزیهٔ عدد همراه با نمایش درخت تجزیه</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+<article class="tool-card card-purple" data-page="calculator"><span class="tool-icon">＋</span><span class="tool-title">ماشین‌حساب</span><button class="description-toggle" type="button" aria-expanded="false">چطور کار می‌کند؟</button><span class="description-content" hidden>محاسبهٔ چهار عمل اصلی با اعداد صحیح و اعشاری</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+<article class="tool-card card-blue" data-page="fractions"><span class="tool-icon">½</span><span class="tool-title">محاسبهٔ کسرها</span><button class="description-toggle" type="button" aria-expanded="false">چطور کار می‌کند؟</button><span class="description-content" hidden>جمع، تفریق، ضرب و تقسیم کسرها با ساده‌سازی جواب</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+<article class="tool-card card-green" data-page="gcd"><span class="tool-icon">÷</span><span class="tool-title">ب.م.م و ک.م.م</span><button class="description-toggle" type="button" aria-expanded="false">چطور کار می‌کند؟</button><span class="description-content" hidden>محاسبهٔ بزرگ‌ترین مقسوم‌علیه و کوچک‌ترین مضرب مشترک</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+<article class="tool-card card-orange" data-page="prime"><span class="tool-icon">✓</span><span class="tool-title">تشخیص عدد اول</span><button class="description-toggle" type="button" aria-expanded="false">چطور کار می‌کند؟</button><span class="description-content" hidden>بررسی اول یا مرکب بودن یک عدد</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+<article class="tool-card card-blue" data-page="sieve"><span class="tool-icon">#</span><span class="tool-title">غربال اراتستن</span><button class="description-toggle" type="button" aria-expanded="false">چطور کار می‌کند؟</button><span class="description-content" hidden>پیدا کردن اعداد اول در یک بازه</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+<article class="tool-card card-green" data-page="extra-percent"><span class="tool-icon">％</span><span class="tool-title">محاسبه درصد</span><button class="description-toggle" type="button" aria-expanded="false">چطور کار می‌کند؟</button><span class="description-content" hidden>درصد را بر ۱۰۰ تقسیم کن و در عدد اصلی ضرب کن.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+<article class="tool-card card-orange" data-page="extra-average"><span class="tool-icon">x̄</span><span class="tool-title">محاسبه میانگین</span><button class="description-toggle" type="button" aria-expanded="false">چطور کار می‌کند؟</button><span class="description-content" hidden>عددها را جمع کن و حاصل را بر تعداد عددها تقسیم کن.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+<article class="tool-card card-blue" data-page="extra-equation"><span class="tool-icon">x</span><span class="tool-title">معادله درجه اول</span><button class="description-toggle" type="button" aria-expanded="false">چطور کار می‌کند؟</button><span class="description-content" hidden>برای ax + b = c، ابتدا b را کم کن و سپس بر a تقسیم کن؛ a نباید صفر باشد.</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+</div>
 
   <section class="seo-learning" aria-labelledby="learning-heading">
     <h2 id="learning-heading">راهنمای کوتاه ابزارهای ریاضی</h2>
@@ -2414,7 +2365,7 @@ body.large-text .tool-description,body.large-text p{font-size:1.05em}
     </article>
   </section>
 
-    <section class="extra-panel"><div class="extra-panel-head"><div><h2>بیشتر از ابزارهای ریاضی</h2><p>میان‌برهای کاربردی برای استفادهٔ راحت‌تر از سایت</p></div><span class="extra-badge">رایگان</span></div><div class="extra-grid"><a class="extra-card" href="#calculator" onclick="showPage('calculator');return false"><span>⌗</span><strong>محاسبهٔ سریع</strong><small>چهار عمل اصلی و محاسبات روزمره</small></a><a class="extra-card" href="#prime" onclick="showPage('prime');return false"><span>✳</span><strong>آزمایش عدد اول</strong><small>بررسی سریع اول یا مرکب بودن عدد</small></a><a class="extra-card" href="#sieve" onclick="showPage('sieve');return false"><span>▦</span><strong>فهرست اعداد اول</strong><small>پیدا کردن اعداد اول تا حد دلخواه</small></a></div><div class="help-strip"><span class="help-symbol">؟</span><div><strong>راهنما و پیشنهاد</strong><p>اگر ابزاری درست کار نکرد یا ابزار تازه‌ای می‌خواهی، نام آن را یادداشت کن تا در به‌روزرسانی بعدی بررسی شود.</p></div><a href="https://github.com/mmd223-va/math-tools/issues" target="_blank" rel="noopener noreferrer">گزارش مشکل ↗</a></div></section><footer class="home-footer">
+    <footer class="home-footer">
     <span>ساخته‌شده برای یادگیری بهتر ریاضی</span>
     <span>✦ یاد بگیر، محاسبه کن، پیشرفت کن</span>
     <span class="github-link-wrap">
@@ -3491,7 +3442,7 @@ if (denominator === 1) {
   });
 })();
 
-(function(){var search=document.getElementById('toolSearch'),cards=Array.from(document.querySelectorAll('.tool-card')),category='all',favorites=[];try{favorites=JSON.parse(localStorage.getItem('mathToolsFavorites')||'[]')}catch(e){}function render(){var q=(search.value||'').toLocaleLowerCase('fa').trim(),visible=0;cards.forEach(function(card){var text=card.innerText.toLocaleLowerCase('fa'),match=(card.getAttribute('onclick')||'').match(/showPage\(['"]([^'"]+)/),id=match?match[1]:'',cat=(id==='calculator'||id==='fractions'||id==='gcd')?'basic':'number',fav=document.getElementById('favoritesToggle').classList.contains('active');var ok=(!q||text.indexOf(q)>=0)&& (category==='all'||category===cat)&&(!fav||favorites.indexOf(id)>=0);card.hidden=!ok;if(ok)visible++});var empty=document.getElementById('emptySearch');if(!empty){empty=document.createElement('p');empty.id='emptySearch';empty.className='empty-search';empty.textContent='ابزاری پیدا نشد؛ عبارت دیگری امتحان کن.';document.querySelector('.tool-grid').after(empty)}empty.classList.toggle('show',visible===0)}search.addEventListener('input',render);document.querySelectorAll('.category-chip').forEach(function(b){b.addEventListener('click',function(){category=b.dataset.category;document.querySelectorAll('.category-chip').forEach(function(x){x.classList.toggle('active',x===b)});render()})});var favButton=document.getElementById('favoritesToggle');favButton.addEventListener('click',function(){favButton.classList.toggle('active');favButton.textContent=favButton.classList.contains('active')?'♥ نمایش همه ابزارها':'♡ علاقه‌مندی‌ها';render()});cards.forEach(function(card){var b=document.createElement('button');b.type='button';b.textContent='♡';b.title='افزودن به علاقه‌مندی‌ها';b.style.cssText='align-self:flex-end;border:0;background:transparent;color:#ff8fb4;font-size:22px;padding:2px 8px';b.addEventListener('click',function(e){e.stopPropagation();var m=(card.getAttribute('onclick')||'').match(/showPage\(['"]([^'"]+)/),id=m?m[1]:'';favorites=favorites.indexOf(id)>=0?favorites.filter(function(x){return x!==id}):favorites.concat(id);try{localStorage.setItem('mathToolsFavorites',JSON.stringify(favorites))}catch(e){}b.textContent=favorites.indexOf(id)>=0?'♥':'♡';render()});card.prepend(b)});render()})();</script>
+(function(){var search=document.getElementById('toolSearch'),cards=Array.from(document.querySelectorAll('.tool-card')),category='all',favorites=[];try{favorites=JSON.parse(localStorage.getItem('mathToolsFavorites')||'[]')}catch(e){}function render(){var q=(search.value||'').toLocaleLowerCase('fa').trim(),visible=0;cards.forEach(function(card){var text=card.innerText.toLocaleLowerCase('fa'),id=card.dataset.page||'',cat=(id==='calculator'||id==='fractions'||id==='gcd'||id.startsWith('extra-'))?'basic':'number',fav=document.getElementById('favoritesToggle').classList.contains('active');var ok=(!q||text.indexOf(q)>=0)&& (category==='all'||category===cat)&&(!fav||favorites.indexOf(id)>=0);card.hidden=!ok;if(ok)visible++});var empty=document.getElementById('emptySearch');if(!empty){empty=document.createElement('p');empty.id='emptySearch';empty.className='empty-search';empty.textContent='ابزاری پیدا نشد؛ عبارت دیگری امتحان کن.';document.querySelector('.tool-grid').after(empty)}empty.classList.toggle('show',visible===0)}search.addEventListener('input',render);document.querySelectorAll('.category-chip').forEach(function(b){b.addEventListener('click',function(){category=b.dataset.category;document.querySelectorAll('.category-chip').forEach(function(x){x.classList.toggle('active',x===b)});render()})});var favButton=document.getElementById('favoritesToggle');favButton.addEventListener('click',function(){favButton.classList.toggle('active');favButton.textContent=favButton.classList.contains('active')?'♥ نمایش همه ابزارها':'♡ علاقه‌مندی‌ها';render()});cards.forEach(function(card){var b=document.createElement('button');b.type='button';b.textContent='♡';b.title='افزودن به علاقه‌مندی‌ها';b.style.cssText='align-self:flex-end;border:0;background:transparent;color:#ff8fb4;font-size:22px;padding:2px 8px';b.addEventListener('click',function(e){e.stopPropagation();var id=card.dataset.page||'';favorites=favorites.indexOf(id)>=0?favorites.filter(function(x){return x!==id}):favorites.concat(id);try{localStorage.setItem('mathToolsFavorites',JSON.stringify(favorites))}catch(e){}b.textContent=favorites.indexOf(id)>=0?'♥':'♡';render()});card.prepend(b)});render()})();</script>
 
 <script>
 (function(){
@@ -3506,9 +3457,8 @@ if (denominator === 1) {
  const home=document.getElementById('home');
  if(home){
   const panel=document.createElement('section');panel.className='feature-panel';
-  panel.innerHTML='<h3>ابزارهای بیشتر</h3><div class="extra-tool-grid"><button class="extra-tool-card" type="button" data-extra="percent"><strong>درصد</strong><span>محاسبه درصد یک عدد</span></button><button class="extra-tool-card" type="button" data-extra="average"><strong>میانگین</strong><span>میانگین چند عدد</span></button><button class="extra-tool-card" type="button" data-extra="equation"><strong>معادله درجه اول</strong><span>حل ax + b = c</span></button></div><div class="feature-row" style="margin-top:12px"><button type="button" id="showHistory">🕘 تاریخچه محاسبات</button><button type="button" id="showPrefs">⚙️ تنظیمات ظاهری</button></div><div id="historyPanel" hidden></div><div id="prefsPanel" hidden></div>';
+  panel.innerHTML='<div class="feature-row"><button type="button" id="showHistory">🕘 تاریخچه محاسبات</button><button type="button" id="showPrefs">⚙️ تنظیمات ظاهری</button></div><div id="historyPanel" hidden></div><div id="prefsPanel" hidden></div>';
   const footer=home.querySelector('footer');if(footer)home.insertBefore(panel,footer);else home.appendChild(panel);
-  panel.querySelectorAll('[data-extra]').forEach(b=>b.addEventListener('click',()=>openExtra(b.dataset.extra)));
   document.getElementById('showHistory').addEventListener('click',()=>togglePanel('historyPanel',renderHistory));
   document.getElementById('showPrefs').addEventListener('click',()=>togglePanel('prefsPanel',renderPrefs));
  }
@@ -3541,7 +3491,7 @@ if (denominator === 1) {
  const resultIds=['calculatorResult','fraction-result','sieveResult','gcdResult','primeResult','factorResult'];
  resultIds.forEach(id=>{let el=document.getElementById(id);if(!el)return;let previous='';new MutationObserver(()=>{let text=el.innerText||el.textContent||'';if(text.trim()&&text!==previous&&!el.classList.contains('error')){previous=text;record(id.replace(/Result|result/gi,''),text,'ثبت شد');}}).observe(el,{subtree:true,childList:true,characterData:true})});
  // بهبود علاقه‌مندی‌ها: نشان قلب روشن و ذخیره‌شده بر اساس localStorage.
- let favs=read(FAV,[]);document.querySelectorAll('.tool-card').forEach(card=>{let m=(card.getAttribute('onclick')||'').match(/showPage\(['"]([^'"]+)/);if(!m)return;let id=m[1],btn=card.querySelector('button');if(btn){btn.textContent=favs.includes(id)?'♥':'♡';btn.setAttribute('aria-label',favs.includes(id)?'حذف از علاقه‌مندی‌ها':'افزودن به علاقه‌مندی‌ها');}});
+ let favs=read(FAV,[]);document.querySelectorAll('.tool-card').forEach(card=>{let id=card.dataset.page;if(!id)return;let btn=card.querySelector('.favorite-toggle');if(btn){btn.textContent=favs.includes(id)?'♥':'♡';btn.setAttribute('aria-label',favs.includes(id)?'حذف از علاقه‌مندی‌ها':'افزودن به علاقه‌مندی‌ها');}});
 })();
 </script>
 
