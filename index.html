@@ -2005,6 +2005,25 @@ function showPage(pageId) {
     calculatorResult.classList.remove("error");
   }
 
+  // هنگام خروج از هر ابزار، ورودی‌های همان ابزار پاک شوند.
+  const inputsByPage = {
+    factorization: ["factorNumber"],
+    fractions: ["fraction-num1", "fraction-den1", "fraction-num2", "fraction-den2"],
+    sieve: ["sieveLimit"],
+    gcd: ["num1", "num2"],
+    prime: ["primeNumber"],
+    calculator: ["calculatorDisplay"],
+    equations: ["equation-a", "equation-b", "equation-c"]
+  };
+
+  document.querySelectorAll(".page").forEach(page => {
+    if (page.id === pageId) return;
+    (inputsByPage[page.id] || []).forEach(id => {
+      const input = document.getElementById(id);
+      if (input) input.value = "";
+    });
+  });
+
   window.scrollTo(0, 0);
 }
 
