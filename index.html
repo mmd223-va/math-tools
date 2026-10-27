@@ -2825,13 +2825,22 @@ function calculateSequence() {
   const formatted = Number(total.toPrecision(12)).toLocaleString("en-US", {maximumFractionDigits: 10});
   result.replaceChildren();
 
-  const stepsHeading = document.createElement("strong");
-  stepsHeading.textContent = "مراحل محاسبه:";
+  const stepsDetails = document.createElement("details");
+  const stepsHeading = document.createElement("summary");
+  stepsHeading.textContent = "نمایش مراحل محاسبه";
   const steps = document.createElement("p");
   steps.style.direction = "ltr";
   steps.style.textAlign = "left";
   steps.style.overflowWrap = "anywhere";
-  steps.textContent = expression.join(" ");
+  if (numbers.length <= 20) {
+    steps.textContent = expression.join(" ");
+  } else {
+    steps.textContent = expression.slice(0, 23).join(" ") + "  …  " + expression.slice(-11).join(" ");
+    const stepsNote = document.createElement("p");
+    stepsNote.textContent = "برای جلوگیری از شلوغ شدن صفحه، فقط ۱۲ عدد اول و ۶ عدد آخر نمایش داده شده‌اند.";
+    stepsDetails.append(stepsHeading, steps, stepsNote);
+  }
+  if (numbers.length <= 20) stepsDetails.append(stepsHeading, steps);
   const answerHeading = document.createElement("strong");
   answerHeading.textContent = "جواب نهایی:";
   const answer = document.createElement("p");
@@ -2852,7 +2861,7 @@ function calculateSequence() {
       copyButton.textContent = "کپی خودکار در دسترس نیست";
     }
   });
-  result.append(stepsHeading, steps, answerHeading, answer, countText, copyButton);
+  result.append(stepsDetails, answerHeading, answer, countText, copyButton);
 }
 function showPage(pageId) {
   document.querySelectorAll(".page").forEach(page => {
