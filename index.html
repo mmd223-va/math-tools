@@ -1771,6 +1771,37 @@ button:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 3px; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
 
+
+/* FINAL FIX: force the intended dark neon-purple technology theme */
+:root {
+  color-scheme: dark;
+  --main-color: #a78bfa;
+  --main-hover: #8b5cf6;
+  --page-bg: #080b1b;
+  --card-bg: #11152d;
+  --text-color: #f3efff;
+  --muted-color: #b8b6d9;
+  --border-color: #34305f;
+  --input-bg: #0b1024;
+  --soft-bg: #211b46;
+  --card-shadow: 0 12px 36px rgba(0, 0, 0, .35);
+}
+html, body {
+  background: radial-gradient(ellipse at 15% 0%, #30205b 0%, #11132b 42%, #080b1b 100%) !important;
+  background-color: #080b1b !important;
+  color: #f3efff !important;
+}
+.container, .hero, .tool-card, .page, .result, .calculator, .fraction-box,
+input, select, textarea {
+  background-color: #11152d !important;
+  color: #f3efff !important;
+  border-color: #34305f !important;
+}
+.tool-card:hover, button:hover { border-color: #a78bfa !important; }
+h1, h2, h3, .tool-card h3 { color: #c4b5fd; }
+p, label, .muted, .tool-card p { color: #c2bfdc; }
+input, select, textarea { background-color: #0b1024 !important; }
+
 </style>
 </head>
 <body>
