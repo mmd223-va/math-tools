@@ -300,6 +300,119 @@ body.dark .tree-line { stroke: #64748b; }
   .factor-equation { font-size: 19px; }
 }
 
+
+/* درخت عوامل اول: خواناتر و خوش‌ظاهرتر */
+.factor-final, .factor-tree {
+  border: 1px solid #dbe4ff;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffff, #f5f7ff);
+  box-shadow: 0 8px 22px rgba(55, 65, 180, .07);
+}
+.factor-final {
+  position: relative;
+  overflow: hidden;
+}
+.factor-final::before {
+  content: "";
+  display: block;
+  height: 5px;
+  position: absolute;
+  inset: 0 0 auto;
+  background: linear-gradient(90deg, #06b6d4, #6366f1, #8b5cf6);
+}
+.factor-final h3, .factor-tree h3 {
+  font-size: 18px;
+  letter-spacing: -.2px;
+}
+.factor-equation {
+  display: inline-block;
+  max-width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #c7d2fe;
+  border-radius: 14px;
+  background: #eef2ff;
+  color: #3730a3;
+  line-height: 1.8;
+}
+.factor-equation sup {
+  font-size: .65em;
+  color: #7c3aed;
+}
+.factor-tree {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #a5b4fc transparent;
+}
+.factor-tree h3 {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #e0e7ff;
+  color: #3730a3;
+}
+.tree-canvas {
+  padding: 6px 0 10px;
+}
+.tree-line {
+  stroke: #a5b4fc;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.tree-node, .tree-leaf {
+  min-width: 44px;
+  padding: 8px 13px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, .08);
+  border: 1px solid transparent;
+  transition: transform .18s, box-shadow .18s;
+}
+.tree-node {
+  background: linear-gradient(145deg, #e0e7ff, #c7d2fe);
+  color: #3730a3;
+  border-color: #a5b4fc;
+}
+.tree-leaf {
+  background: linear-gradient(145deg, #d1fae5, #a7f3d0);
+  color: #065f46;
+  border-color: #6ee7b7;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, .12);
+}
+.tree-node:hover, .tree-leaf:hover {
+  transform: translate(-50%, -50%) scale(1.07);
+  box-shadow: 0 7px 16px rgba(15, 23, 42, .14);
+}
+body.dark .factor-final, body.dark .factor-tree {
+  background: linear-gradient(145deg, #1e293b, #172554);
+  border-color: #475569;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .15);
+}
+body.dark .factor-equation {
+  background: #1e3a8a;
+  border-color: #3730a3;
+  color: #e0e7ff;
+}
+body.dark .factor-equation sup { color: #ddd6fe; }
+body.dark .factor-tree h3 {
+  background: #312e81;
+  color: #e0e7ff;
+}
+body.dark .tree-line { stroke: #64748b; }
+body.dark .tree-node {
+  background: linear-gradient(145deg, #334155, #3730a3);
+  color: #e0e7ff;
+  border-color: #6366f1;
+}
+body.dark .tree-leaf {
+  background: linear-gradient(145deg, #14532d, #166534);
+  color: #dcfce7;
+  border-color: #22c55e;
+}
+@media (max-width: 500px) {
+  .factor-final, .factor-tree { padding: 15px 10px; }
+  .factor-equation { font-size: 18px; padding: 10px 12px; }
+  .tree-node, .tree-leaf { min-width: 38px; padding: 7px 10px; }
+}
+
 /* ===== طراحی جدید سایت ریاضی ===== */
 
 :root {
