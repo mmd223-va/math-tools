@@ -2835,9 +2835,9 @@ function calculateSequence() {
   if (numbers.length <= 20) {
     steps.textContent = expression.join(" ");
   } else {
-    steps.textContent = expression.slice(0, 23).join(" ") + "  …  " + expression.slice(-11).join(" ");
+    steps.textContent = expression.slice(0, 19).join(" ") + "  …  " + expression.slice(-9).join(" ");
     const stepsNote = document.createElement("p");
-    stepsNote.textContent = "برای جلوگیری از شلوغ شدن صفحه، فقط ۱۲ عدد اول و ۶ عدد آخر نمایش داده شده‌اند.";
+    stepsNote.textContent = "برای جلوگیری از شلوغ شدن صفحه، فقط ۱۰ عدد اول و ۵ عدد آخر نمایش داده شده‌اند.";
     stepsDetails.append(stepsHeading, steps, stepsNote);
   }
   if (numbers.length <= 20) stepsDetails.append(stepsHeading, steps);
