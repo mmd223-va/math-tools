@@ -2421,6 +2421,36 @@ body:not(.dark) .calc-equals,
 body:not(.dark) .action-button,
 body:not(.dark) .tool-open { color: #ffffff !important; }
 
+
+/* اصلاح اندازه ثابت در هر دو حالت */
+html { font-size: 16px !important; }
+body, body.dark, body:not(.dark) {
+  font-size: 16px !important;
+  zoom: 1 !important;
+}
+body.dark:not(.large-text) { font-size: 16px !important; }
+body.dark:not(.large-text) .container,
+body.dark:not(.large-text) .tool-card,
+body.dark:not(.large-text) button,
+body.dark:not(.large-text) input,
+body.dark:not(.large-text) select,
+body.dark:not(.large-text) textarea { font-size: inherit; }
+body.dark:not(.large-text) .tool-title { font-size: 1.1rem !important; }
+body.dark:not(.large-text) .tool-description { font-size: .91rem !important; }
+body.dark:not(.large-text) .tool-link { font-size: .88rem !important; }
+body.dark:not(.large-text) .home-heading h2 { font-size: 20px !important; }
+body.dark:not(.large-text) .container { padding: clamp(14px, 2.2vw, 26px) !important; }
+.feedback-panel{margin-top:18px;padding:18px;border:1px solid var(--border-color);border-radius:18px;background:var(--card-bg);color:var(--text-color)}
+.feedback-panel h3{margin:0 0 6px;color:var(--main-color)}
+.feedback-panel p{margin:0 0 13px;color:var(--muted-color);font-size:14px}
+.feedback-actions{display:flex;gap:10px;flex-wrap:wrap}
+.feedback-actions a{display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border-radius:11px;text-decoration:none;font-weight:800;font-size:14px}
+.feedback-suggest{background:#e0e7ff;color:#3730a3}
+.feedback-report{background:#fee2e2;color:#991b1b}
+body.dark .feedback-panel{background:#11152d;border-color:#34305f}
+body.dark .feedback-suggest{background:#292448;color:#ddd6fe}
+body.dark .feedback-report{background:#402038;color:#fecdd3}
+
 </style>
 </head>
 <body>
@@ -2495,6 +2525,16 @@ body:not(.dark) .tool-open { color: #ffffff !important; }
       <p hidden>با ماشین‌حساب می‌توانی جمع، تفریق، ضرب و تقسیم را انجام بدهی و با ابزار محاسبه کسرها، حاصل عملیات روی دو کسر را به دست بیاوری.</p>
     </article>
   </section>
+
+
+    <section class="feedback-panel" aria-labelledby="feedbackTitle">
+      <h3 id="feedbackTitle">💬 پیشنهادی داری؟ یا مشکلی پیدا کردی؟</h3>
+      <p>نظرت کمک می‌کند ابزارهای ریاضی را بهتر کنیم. برای ثبت پیشنهاد یا گزارش مشکل، یکی از گزینه‌ها را انتخاب کن.</p>
+      <div class="feedback-actions">
+        <a class="feedback-suggest" href="https://github.com/mmd223-va/math-tools/issues/new?title=%D9%BE%DB%8C%D8%B4%D9%86%D9%87%D8%A7%D8%AF%20%D8%A8%D8%B1%D8%A7%DB%8C%20%D8%B3%D8%A7%DB%8C%D8%AA" target="_blank" rel="noopener noreferrer">💡 ثبت پیشنهاد</a>
+        <a class="feedback-report" href="https://github.com/mmd223-va/math-tools/issues/new?title=%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4%20%D9%85%D8%B4%DA%A9%D9%84" target="_blank" rel="noopener noreferrer">🐞 گزارش مشکل</a>
+      </div>
+    </section>
 
     <footer class="home-footer">
     <span>ساخته‌شده برای یادگیری بهتر ریاضی</span>
