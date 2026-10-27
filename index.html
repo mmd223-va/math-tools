@@ -2561,7 +2561,7 @@ body.dark .feedback-report{background:#402038;color:#fecdd3}
  <article class="tool-card card-blue" data-page="sieve"><span class="tool-icon">#</span><span class="tool-title">غربال اراتستن</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
  <article class="tool-card card-green" data-page="extra-percent"><span class="tool-icon">％</span><span class="tool-title">محاسبه درصد</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
  <article class="tool-card card-orange" data-page="extra-average"><span class="tool-icon">x̄</span><span class="tool-title">میانگین</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-blue" data-page="extra-equation"><span class="tool-icon">x</span><span class="tool-title">معادله درجه اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+
 </div>
 
   <section class="seo-learning" aria-labelledby="learning-heading">
@@ -2629,11 +2629,11 @@ body.dark .feedback-report{background:#402038;color:#fecdd3}
   <h2>ماشین‌حساب دنباله‌ای</h2>
   <p>عدد شروع، عدد پایان و فاصله را وارد کن؛ سپس عملیات موردنظرت را روی دنباله انجام بده.</p>
   <label for="seqStart">عدد شروع</label>
-  <input id="seqStart" type="number" step="1" value="4" placeholder="مثلاً 4">
+  <input id="seqStart" type="number" step="1" placeholder="مثلاً 4">
   <label for="seqEnd">عدد پایان</label>
-  <input id="seqEnd" type="number" step="1" value="10" placeholder="مثلاً 10">
+  <input id="seqEnd" type="number" step="1" placeholder="مثلاً 10">
   <label for="seqStep">فاصله بین عددها</label>
-  <input id="seqStep" type="number" step="1" min="1" value="2" placeholder="مثلاً 2">
+  <input id="seqStep" type="number" step="1" min="1" placeholder="مثلاً 2">
   <label for="seqOperation">نوع عملیات</label>
   <select id="seqOperation">
     <option value="add">جمع همه عددها</option>
@@ -3811,7 +3811,6 @@ if (denominator === 1) {
   var id=card.dataset.page;
   if(id==='extra-percent')openExtra('percent');
   else if(id==='extra-average')openExtra('average');
-  else if(id==='extra-equation')openExtra('equation');
   else showPage(id);
  }
  document.querySelectorAll('.tool-card').forEach(function(card){
