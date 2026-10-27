@@ -3426,7 +3426,7 @@ if (denominator === 1) {
 /* ورودی ابزارهای عددی: فقط رقم و علامت منفی مجاز است.
    نمایشگر ماشین‌حساب مستثناست چون عبارت ریاضی می‌پذیرد. */
 (function () {
-  const numericInputs = Array.from(document.querySelectorAll("input"))
+  const numericInputs = Array.from(document.querySelectorAll('input[type="number"]'))
     .filter(input => input.id !== "calculatorDisplay");
 
   numericInputs.forEach(input => {
@@ -3530,6 +3530,7 @@ if (denominator === 1) {
    out.hidden=false;out.textContent=steps?'جواب: '+answer+'\nمراحل حل: '+steps:answer;if(steps)record(title,steps,answer);
   };
  }
+ window.openExtra = openExtra;
  function record(tool,detail,result){history.unshift({tool,detail,result,time:new Date().toLocaleString('fa-IR')});history=history.slice(0,50);try{localStorage.setItem(KEY,JSON.stringify(history))}catch(e){}}
  function togglePanel(id,renderer){const box=document.getElementById(id);if(!box)return;if(!box.hidden){box.hidden=true;return}renderer()}
  function renderHistory(){let box=document.getElementById('historyPanel');box.hidden=false;box.className='feature-panel';box.innerHTML='<h3>تاریخچه محاسبات</h3><div class="feature-row"><button type="button" id="clearHistory">پاک کردن تاریخچه</button></div><ul class="history-list">'+(history.length?history.map(x=>'<li class="history-item"><strong>'+escapeHtml(x.tool)+'</strong><div>'+escapeHtml(x.detail)+'</div><div>نتیجه: '+escapeHtml(x.result)+'</div><small>'+escapeHtml(x.time)+'</small></li>').join(''):'<li>هنوز محاسبه‌ای در تاریخچه ثبت نشده است.</li>')+'</ul>';box.querySelector('#clearHistory').onclick=()=>{history=[];localStorage.removeItem(KEY);renderHistory()}}
