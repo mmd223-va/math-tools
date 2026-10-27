@@ -2825,7 +2825,13 @@ function calculateSequence() {
   const formatted = Number(total.toPrecision(12)).toLocaleString("en-US", {maximumFractionDigits: 10});
   result.replaceChildren();
 
-  // برای مرتب ماندن صفحه، فقط جواب نهایی و تعداد اعداد نمایش داده می‌شود.
+  const stepsHeading = document.createElement("strong");
+  stepsHeading.textContent = "مراحل محاسبه:";
+  const steps = document.createElement("p");
+  steps.style.direction = "ltr";
+  steps.style.textAlign = "left";
+  steps.style.overflowWrap = "anywhere";
+  steps.textContent = expression.join(" ");
   const answerHeading = document.createElement("strong");
   answerHeading.textContent = "جواب نهایی:";
   const answer = document.createElement("p");
@@ -2846,7 +2852,7 @@ function calculateSequence() {
       copyButton.textContent = "کپی خودکار در دسترس نیست";
     }
   });
-  result.append(answerHeading, answer, countText, copyButton);
+  result.append(stepsHeading, steps, answerHeading, answer, countText, copyButton);
 }
 function showPage(pageId) {
   document.querySelectorAll(".page").forEach(page => {
