@@ -1430,6 +1430,102 @@ button:focus-visible { outline-color: #38d9ff; }
 .home-footer .github-link { display: inline-flex; align-items: center; gap: 7px; color: inherit; text-decoration: none; }
 .home-footer .github-link:hover { color: #168cff; }
 .home-footer .github-mark { flex: 0 0 auto; }
+
+/* نمایش مرتب و مرحله‌ای جواب ماشین‌حساب */
+#calculatorResult {
+  padding: 16px;
+  border: 1px solid #dbeafe;
+  background: linear-gradient(145deg, #f8fbff, #eef4ff);
+  white-space: normal;
+}
+#calculatorResult .calc-steps-heading {
+  margin-bottom: 12px;
+  color: #3347b5;
+  font-size: 17px;
+  font-weight: 800;
+}
+#calculatorResult .calc-steps-list {
+  display: grid;
+  gap: 9px;
+}
+#calculatorResult .calc-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #e0e7ff;
+  border-radius: 12px;
+  background: #fff;
+}
+#calculatorResult .calc-step-number {
+  display: inline-flex;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #e0e7ff;
+  color: #4338ca;
+  font-weight: 800;
+}
+#calculatorResult .calc-step-detail {
+  direction: ltr;
+  text-align: left;
+  overflow-wrap: anywhere;
+  padding-top: 2px;
+  font-weight: 600;
+  color: #253247;
+}
+#calculatorResult .calc-final-answer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2457c5, #4f46e5);
+  color: white;
+  font-weight: 700;
+}
+#calculatorResult .calc-final-answer strong {
+  font-size: 23px;
+  direction: ltr;
+  overflow-wrap: anywhere;
+}
+body.dark #calculatorResult {
+  background: #172554;
+  border-color: #334155;
+}
+body.dark #calculatorResult .calc-steps-heading { color: #c7d2fe; }
+body.dark #calculatorResult .calc-step {
+  background: #1e293b;
+  border-color: #475569;
+}
+body.dark #calculatorResult .calc-step-number {
+  background: #334155;
+  color: #c7d2fe;
+}
+body.dark #calculatorResult .calc-step-detail { color: #e2e8f0; }
+body.dark #calculatorResult .calc-final-answer {
+  background: linear-gradient(135deg, #3730a3, #4338ca);
+}
+#calculatorResult.error {
+  background: #fff0f0;
+  border-color: #fecaca;
+  color: #b42318;
+}
+body.dark #calculatorResult.error {
+  background: #451a1a;
+  border-color: #7f1d1d;
+  color: #fecaca;
+}
+@media (max-width: 500px) {
+  #calculatorResult { padding: 12px; }
+  #calculatorResult .calc-final-answer { align-items: flex-start; flex-direction: column; }
+}
+
 </style>
 </head>
 <body>
@@ -1864,7 +1960,38 @@ function calculateBasic() {
     const answer = addSub();
     if (pos !== tokens.length) throw new Error("عبارت ریاضی نامعتبر است.");
     if (!Number.isFinite(answer)) throw new Error("نتیجه خارج از محدودهٔ قابل محاسبه است.");
-    result.textContent = (steps.length ? "مراحل محاسبه:\n" + steps.map((step, index) => (index + 1) + ". " + step).join("\n") + "\n\n" : "") + "جواب نهایی: " + fmt(answer);
+    result.classList.remove("error");
+    result.innerHTML = "";
+    if (steps.length) {
+      const heading = document.createElement("div");
+      heading.className = "calc-steps-heading";
+      heading.textContent = "مراحل محاسبه";
+      result.appendChild(heading);
+      const list = document.createElement("div");
+      list.className = "calc-steps-list";
+      steps.forEach((step, index) => {
+        const item = document.createElement("div");
+        item.className = "calc-step";
+        const number = document.createElement("span");
+        number.className = "calc-step-number";
+        number.textContent = index + 1;
+        const detail = document.createElement("span");
+        detail.className = "calc-step-detail";
+        detail.textContent = step;
+        item.append(number, detail);
+        list.appendChild(item);
+      });
+      result.appendChild(list);
+    }
+    const final = document.createElement("div");
+    final.className = "calc-final-answer";
+    const label = document.createElement("span");
+    label.textContent = "جواب نهایی";
+    const value = document.createElement("strong");
+    value.dir = "ltr";
+    value.textContent = fmt(answer);
+    final.append(label, value);
+    result.appendChild(final);
   } catch (error) {
     result.classList.add("error");
     result.textContent = error.message || "عبارت ریاضی نامعتبر است.";
