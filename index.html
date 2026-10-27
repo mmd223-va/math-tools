@@ -2422,6 +2422,39 @@ body:not(.dark) .action-button,
 body:not(.dark) .tool-open { color: #ffffff !important; }
 
 
+/* یکسان‌سازی اندازه‌ها و خوانایی دسته‌بندی‌ها در دو تم */
+body.dark:not(.large-text) .container { padding: clamp(14px, 2.2vw, 26px) !important; }
+body.dark:not(.large-text) .hero { padding: clamp(22px, 3.5vw, 38px) !important; }
+body.dark:not(.large-text) h1 { font-size: clamp(26px, 3.2vw, 38px) !important; }
+body.dark:not(.large-text) .tool-card { min-height: 158px !important; padding: 15px !important; }
+body.dark:not(.large-text) .tool-title { font-size: 15px !important; line-height: 1.65 !important; }
+body.dark:not(.large-text) .tool-description { font-size: 12px !important; line-height: 1.75 !important; }
+body.dark:not(.large-text) .tool-link { font-size: 12px !important; }
+body.dark:not(.large-text) .category-chip,
+body.dark:not(.large-text) .toolbar-button { font-size: 14px !important; padding: 10px 14px !important; }
+body:not(.dark) .category-chip,
+body:not(.dark) .toolbar-button {
+  background: #eef2ff !important;
+  color: #3730a3 !important;
+  border-color: #cbd5e1 !important;
+}
+body:not(.dark) .category-chip.active {
+  background: #dbeafe !important;
+  color: #1d4ed8 !important;
+  border-color: #93c5fd !important;
+}
+body.dark .category-chip,
+body.dark .toolbar-button {
+  background: #17233b !important;
+  color: #eef4ff !important;
+  border-color: rgba(151,179,230,.25) !important;
+}
+body.dark .category-chip.active {
+  background: #18394a !important;
+  color: #58e1e8 !important;
+  border-color: #58e1e8 !important;
+}
+
 /* اصلاح اندازه ثابت در هر دو حالت */
 html { font-size: 16px !important; }
 body, body.dark, body:not(.dark) {
