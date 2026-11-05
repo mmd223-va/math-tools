@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
+<title id="title">تصویر ابزارهای ریاضی</title><desc id="desc">تصویر آموزشی با ماشین‌حساب، نمودار سهمی، فرمول‌ها و کتاب‌های ریاضی</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111b4a"/><stop offset=".55" stop-color="#28206b"/><stop offset="1" stop-color="#0c4969"/></linearGradient>
+ <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c8f4ff"/><stop offset="1" stop-color="#72c9ef"/></linearGradient>
+ <linearGradient id="book" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#3730a3"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#020617" flood-opacity=".35"/></filter>
+</defs>
+<rect width="1200" height="500" rx="28" fill="url(#bg)"/>
+<g opacity=".18" fill="none" stroke="#9ee8ff" stroke-width="2">
+ <path d="M0 90H1200M0 180H1200M0 270H1200M0 360H1200M120 0V500M240 0V500M360 0V500M480 0V500M600 0V500M720 0V500M840 0V500M960 0V500M1080 0V500"/>
+</g>
+<g fill="#b9d9ff" font-family="serif" opacity=".9">
+ <text x="90" y="105" font-size="70">π</text><text x="240" y="185" font-size="43">Σ</text><text x="980" y="125" font-size="48">∞</text>
+ <text x="790" y="85" font-size="27">x² + y² = r²</text><text x="900" y="205" font-size="25">a² + b² = c²</text>
+</g>
+<g transform="translate(440 42)" stroke="#8bdcff" stroke-width="4" fill="none" opacity=".9">
+ <path d="M0 155H280M140 12V280"/><path d="M48 35Q140 280 232 35" stroke="#70e1e8" stroke-width="6"/>
+ <path d="M270 146l15 9-15 9M131 22l9-15 9 15"/>
+</g>
+<g filter="url(#shadow)" transform="translate(70 250) rotate(-8 105 100)">
+ <rect width="220" height="205" rx="24" fill="#172b59" stroke="#8cb7ff" stroke-width="4"/>
+ <rect x="18" y="18" width="184" height="48" rx="9" fill="url(#screen)"/>
+ <text x="186" y="52" text-anchor="end" font-family="monospace" font-size="27" fill="#15345d">123456</text>
+ <g fill="#dbeafe">
+  <rect x="20" y="82" width="38" height="32" rx="7"/><rect x="68" y="82" width="38" height="32" rx="7"/><rect x="116" y="82" width="38" height="32" rx="7"/><rect x="164" y="82" width="38" height="32" rx="7"/>
+  <rect x="20" y="124" width="38" height="32" rx="7"/><rect x="68" y="124" width="38" height="32" rx="7"/><rect x="116" y="124" width="38" height="32" rx="7"/><rect x="164" y="124" width="38" height="32" rx="7"/>
+  <rect x="20" y="166" width="38" height="25" rx="7"/><rect x="68" y="166" width="38" height="25" rx="7"/><rect x="116" y="166" width="38" height="25" rx="7"/>
+ </g><rect x="164" y="166" width="38" height="25" rx="7" fill="#fb923c"/>
+</g>
+<g filter="url(#shadow)" transform="translate(900 290)">
+ <rect x="0" y="95" width="240" height="60" rx="10" fill="#6d28d9"/><rect x="0" y="95" width="240" height="12" rx="6" fill="#a78bfa"/>
+ <rect x="15" y="42" width="225" height="56" rx="10" fill="#0f766e"/><rect x="15" y="42" width="225" height="10" rx="5" fill="#5eead4"/>
+ <rect x="30" y="-10" width="210" height="55" rx="10" fill="url(#book)"/><rect x="30" y="-10" width="210" height="10" rx="5" fill="#93c5fd"/>
+ <g fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="20"><text x="135" y="25" text-anchor="middle">MATHEMATICS</text><text x="127" y="78" text-anchor="middle">ALGORITHMS</text><text x="120" y="132" text-anchor="middle">LEARNING</text></g>
+</g>
+<g transform="translate(340 330)" fill="#fff" font-family="sans-serif">
+ <text x="0" y="0" font-size="31" font-weight="700">ریاضی را ساده‌تر یاد بگیر</text>
+ <text x="0" y="43" font-size="20" fill="#c7e8ff">محاسبه • یادگیری • حل مسئله</text>
+</g>
+<circle cx="1080" cy="55" r="5" fill="#67e8f9"/><circle cx="1045" cy="75" r="3" fill="#c4b5fd"/><circle cx="360" cy="75" r="4" fill="#67e8f9"/>
+</svg>
