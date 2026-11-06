@@ -4466,6 +4466,53 @@ html body.dark .tool-card > button[title="افزودن به علاقه‌مند�
   background:linear-gradient(145deg,#5b91bd,#4078a5) !important;
   border-color:#a5d4fa !important;
 }
+
+/* اصلاح نهایی هماهنگی پنل‌های داخلی و دکمه علاقه‌مندی */
+html body.dark main.container #home > .seo-learning,
+html body.dark main.container #home > .feedback-panel,
+html body.dark main.container #home > .home-footer,
+html body.dark main.container .feature-panel,
+html body.dark main.container .utility-panel,
+html body.dark main.container .extra-panel {
+  background: linear-gradient(145deg,#294d70 0%,#254768 52%,#2b5073 100%) !important;
+  background-color:#294d70 !important;
+  border:1px solid #638bb2 !important;
+  border-radius:22px !important;
+  color:#edf6ff !important;
+  box-shadow:inset 0 1px rgba(235,247,255,.12),0 9px 22px rgba(3,18,38,.16) !important;
+}
+html body.dark main.container #home > .seo-learning h2,
+html body.dark main.container #home > .feedback-panel h3 {
+  color:#c4e3ff !important;
+}
+html body.dark main.container #home > .seo-learning p,
+html body.dark main.container #home > .feedback-panel p {
+  color:#d2e3f4 !important;
+}
+/* قلب در یک کادر مستطیلیِ گرد و هم‌رنگ کارت؛ نه مربع */
+html body.dark .tool-card > button[title="افزودن به علاقه‌مندی‌ها"],
+html body.dark .tool-card > button[title="حذف از علاقه‌مندی‌ها"] {
+  width:42px !important;
+  min-width:42px !important;
+  height:34px !important;
+  padding:0 10px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border:1px solid rgba(170,211,244,.48) !important;
+  border-radius:12px !important;
+  background:linear-gradient(145deg,#3d719c 0%,#2c557b 100%) !important;
+  color:#f0f8ff !important;
+  font-size:20px !important;
+  line-height:1 !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.16),0 4px 10px rgba(3,20,40,.18) !important;
+}
+html body.dark .tool-card > button[title="افزودن به علاقه‌مندی‌ها"]:hover,
+html body.dark .tool-card > button[title="حذف از علاقه‌مندی‌ها"]:hover {
+  background:linear-gradient(145deg,#568bb6 0%,#3c709b 100%) !important;
+  border-color:#b5dcfa !important;
+}
+
 </style>
 </body>
 </html>
