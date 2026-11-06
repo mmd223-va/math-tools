@@ -4701,5 +4701,38 @@ html body.dark main.container #home .tool-card > button:first-child:not(.tool-op
 }
 </style>
 
+
+<style id="restore-uniform-blue-cards-and-panel-borders">
+/* کارت‌ها به حالت یک‌دست آبی برگردند؛ تفاوت با پس‌زمینه از روشنایی باشد */
+html body.dark main.container #home .tool-card,
+html body.dark main.container #home .tool-card.card-purple,
+html body.dark main.container #home .tool-card.card-blue,
+html body.dark main.container #home .tool-card.card-green,
+html body.dark main.container #home .tool-card.card-orange {
+  background:linear-gradient(145deg,#345d80 0%,#2d5274 55%,#284967 100%) !important;
+  border:1px solid #668caf !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.13),0 9px 20px rgba(0,8,22,.28) !important;
+}
+/* کادر تنظیمات ظاهری، تاریخچه و پنل‌های مشابه با حاشیه کارت‌ها هماهنگ شوند */
+html body.dark main.container #home .feature-panel,
+html body.dark main.container #home #historyPanel,
+html body.dark main.container #home #prefsPanel,
+html body.dark main.container #home .utility-panel,
+html body.dark main.container #home .extra-panel,
+html body.dark main.container #home .seo-learning,
+html body.dark main.container #home .feedback-panel,
+html body.dark main.container #home .home-footer {
+  border-color:#668caf !important;
+}
+/* پس‌زمینه پنل تنظیمات کمی تیره‌تر از کارت باشد تا خود پنل مشخص بماند */
+html body.dark main.container #home .feature-panel,
+html body.dark main.container #home #historyPanel,
+html body.dark main.container #home #prefsPanel {
+  background:linear-gradient(145deg,#263d55 0%,#22364c 100%) !important;
+  background-color:#263d55 !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.10),0 9px 20px rgba(0,8,22,.22) !important;
+}
+</style>
+
 </body>
 </html>
