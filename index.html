@@ -4624,6 +4624,36 @@ html[dir="ltr"] .calculator-keypad{direction:ltr}
 html[dir="ltr"] .tool-card{text-align:left}
 html[dir="ltr"] #themeButton{right:auto;left:18px}
 @media(max-width:600px){#languageToggle{top:12px;right:12px;padding:7px 10px;font-size:12px}}
+
+/* تثبیت اندازه قاب اصلی؛ رنگ و سایه تنها موارد وابسته به تم هستند */
+.container,
+body.dark .container,
+body:not(.dark) .container {
+  box-sizing: border-box !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 1120px !important;
+  min-width: 0 !important;
+  min-height: calc(100vh - 105px) !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  padding: clamp(14px, 2.2vw, 26px) !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-radius: 28px !important;
+}
+@media (max-width: 600px) {
+  .container,
+  body.dark .container,
+  body:not(.dark) .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: calc(100vh - 105px) !important;
+    margin: 0 auto !important;
+    padding: 12px !important;
+    border-radius: 20px !important;
+  }
+}
 </style>
 <button id="languageToggle" type="button" aria-label="Switch language">English</button>
 <script id="language-switch-script">
