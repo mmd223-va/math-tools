@@ -4531,6 +4531,13 @@ html[dir="ltr"] #themeButton{right:auto;left:18px}
     "میانگین چند عدد چگونه به دست می‌آید؟":"How do you calculate the average of several numbers?",
     "چطور معادله ax + b = c را حل کنیم؟":"How do you solve the equation ax + b = c?",
     "درصد موردنظر را بر ۱۰۰ تقسیم کن و در عدد اصلی ضرب کن.":"Divide the percentage by 100 and multiply it by the original number.",
+    "بزرگ‌ترین مقسوم‌علیه مشترک (ب.م.م) بزرگ‌ترین عددی است که دو عدد را بدون باقی‌مانده تقسیم می‌کند. کوچک‌ترین مضرب مشترک (ک.م.م) کوچک‌ترین مضرب مثبت مشترک دو عدد است. با ابزار ب.م.م و ک.م.م می‌توانی هر دو را محاسبه کنی.":"The greatest common divisor (GCD) is the largest number that divides two numbers without a remainder. The least common multiple (LCM) is the smallest positive multiple shared by two numbers. Use the GCD & LCM tool to calculate both.",
+    "در تجزیه به عوامل اول، یک عدد مرکب را به حاصل‌ضرب عددهای اول می‌نویسیم. برای نمونه، ۱۲ برابر با ۲ × ۲ × ۳ است. ابزار تجزیه، عوامل اول و درخت تجزیه عدد را نمایش می‌دهد.":"Prime factorization expresses a composite number as a product of prime numbers. For example, 12 = 2 × 2 × 3. The factorization tool displays the prime factors and a factor tree.",
+    "عدد اول عدد صحیح بزرگ‌تر از ۱ است که فقط دو مقسوم‌علیه مثبت دارد: ۱ و خودش. از ابزار تشخیص عدد اول استفاده کن تا اول یا مرکب بودن عدد را بررسی کنی.":"A prime number is an integer greater than 1 with exactly two positive divisors: 1 and itself. Use the prime checker to find out whether a number is prime or composite.",
+    "غربال اراتستن روشی برای پیدا کردن اعداد اول تا یک حد مشخص است. در این روش، مضرب‌های عددهای اول را خط می‌زنیم و عددهایی که باقی می‌مانند، اول هستند. ابزار غربال اراتستن این فرایند را به‌صورت دیداری نشان می‌دهد.":"The Sieve of Eratosthenes is a method for finding all prime numbers up to a chosen limit. Multiples of prime numbers are crossed out, and the remaining numbers are prime. This tool illustrates the process.",
+    "با ماشین‌حساب می‌توانی جمع، تفریق، ضرب و تقسیم را انجام بدهی و با ابزار محاسبه کسرها، حاصل عملیات روی دو کسر را به دست بیاوری.":"Use the calculator for addition, subtraction, multiplication, and division. The fraction calculator performs operations on two fractions.",
+    "عدد":"Number","درصد":"Percentage","عددها را با ویرگول جدا کن":"Separate numbers with commas",
+    "ضریب x یعنی a":"Coefficient of x (a)","عدد b":"Value of b","عدد c":"Value of c","حل معادله":"Solve equation"
     "همه عددها را جمع کن و حاصل را بر تعداد عددها تقسیم کن.":"Add all the numbers and divide the sum by how many numbers there are.",
     "ابتدا b را از دو طرف کم کن، سپس دو طرف را بر a تقسیم کن؛ a نباید صفر باشد.":"First subtract b from both sides, then divide both sides by a. a must not be zero.",
     "هر دو مقدار را وارد کن.":"Please enter both values.","چند عدد معتبر وارد کن و آن‌ها را با ویرگول جدا کن.":"Enter valid numbers separated by commas.",
@@ -4576,6 +4583,14 @@ html[dir="ltr"] #themeButton{right:auto;left:18px}
     document.title=language==="en"?"Free Online Math Tools | Math Calculator and Prime Numbers":"ابزارهای ریاضی آنلاین رایگان | ۹ ابزار محاسباتی";
     const description=document.querySelector('meta[name="description"]');
     if(description)description.content=language==="en"?"Free online math tools for fractions, percentages, averages, GCD, LCM, prime numbers, factorization and calculations.":"با ۹ ابزار آنلاین ریاضی، کسر و درصد را محاسبه کن، میانگین بگیر، ب.م.م و ک.م.م را پیدا کن، اعداد اول را تشخیص بده و اعداد را تجزیه کن. رایگان و بدون نیاز به نصب.";
+    const ogTitle=document.querySelector('meta[property="og:title"]');
+    const ogDescription=document.querySelector('meta[property="og:description"]');
+    const twitterTitle=document.querySelector('meta[name="twitter:title"]');
+    const twitterDescription=document.querySelector('meta[name="twitter:description"]');
+    if(ogTitle)ogTitle.content=language==="en"?"Free Online Math Tools":"ابزارهای ریاضی آنلاین و رایگان فارسی";
+    if(ogDescription)ogDescription.content=description.content;
+    if(twitterTitle)twitterTitle.content=document.title;
+    if(twitterDescription)twitterDescription.content=description.content;
     if(language==="en")translateNode(document.querySelector("main"));
     else location.reload();
     try{localStorage.setItem("mathToolsLanguage",language)}catch(e){}
