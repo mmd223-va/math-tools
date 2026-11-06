@@ -4391,6 +4391,157 @@ html body.large-text main.container #home .tool-card {
     min-height:170px !important;
   }
 }
+/* یکسان‌سازی سراسری اندازه و چیدمان در تم روشن و تیره */
+html body,
+html body.dark {
+  box-sizing:border-box !important;
+  padding:75px 15px 30px !important;
+}
+html body *,
+html body *::before,
+html body *::after { box-sizing:border-box; }
+html body main.container,
+html body.dark main.container {
+  width:min(100%,1120px) !important;
+  max-width:1120px !important;
+  margin:0 auto !important;
+  padding:clamp(14px,2.2vw,26px) !important;
+  border-radius:28px !important;
+}
+html body main.container > .page,
+html body.dark main.container > .page {
+  width:100% !important;
+  min-width:0 !important;
+}
+html body main.container .hero,
+html body.dark main.container .hero {
+  width:100% !important;
+  min-height:0 !important;
+  padding:clamp(22px,3.5vw,38px) !important;
+  border-radius:24px !important;
+}
+html body main.container .hero h1,
+html body.dark main.container .hero h1 {
+  font-size:clamp(26px,3.2vw,38px) !important;
+  line-height:1.5 !important;
+}
+html body main.container .tool-grid,
+html body.dark main.container .tool-grid {
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:15px !important;
+}
+html body main.container .tool-card,
+html body.dark main.container .tool-card {
+  display:flex !important;
+  width:100% !important;
+  height:166px !important;
+  min-height:166px !important;
+  max-height:166px !important;
+  min-width:0 !important;
+  padding:16px !important;
+  gap:10px !important;
+  border-radius:21px !important;
+}
+html body main.container .tool-card .tool-icon,
+html body.dark main.container .tool-card .tool-icon {
+  flex:0 0 43px !important;
+  width:43px !important;
+  height:43px !important;
+  font-size:21px !important;
+}
+html body main.container .tool-card .tool-title,
+html body.dark main.container .tool-card .tool-title {
+  font-size:14px !important;
+  line-height:1.65 !important;
+}
+html body main.container .tool-card .tool-description,
+html body.dark main.container .tool-card .tool-description {
+  font-size:.91rem !important;
+  line-height:1.75 !important;
+}
+html body main.container .tool-card .tool-open,
+html body.dark main.container .tool-card .tool-open {
+  min-height:0 !important;
+  padding:7px 8px !important;
+  font-size:11px !important;
+}
+html body main.container .feature-panel,
+html body.dark main.container .feature-panel,
+html body main.container .utility-panel,
+html body.dark main.container .utility-panel,
+html body main.container .extra-panel,
+html body.dark main.container .extra-panel,
+html body main.container .seo-learning,
+html body.dark main.container .seo-learning,
+html body main.container .feedback-panel,
+html body.dark main.container .feedback-panel,
+html body main.container .home-footer,
+html body.dark main.container .home-footer,
+html body main.container #historyPanel,
+html body.dark main.container #historyPanel,
+html body main.container #prefsPanel,
+html body.dark main.container #prefsPanel {
+  box-sizing:border-box !important;
+  width:100% !important;
+  max-width:100% !important;
+  border-radius:20px !important;
+}
+html body main.container input:not([type="checkbox"]):not([type="radio"]),
+html body.dark main.container input:not([type="checkbox"]):not([type="radio"]),
+html body main.container select,
+html body.dark main.container select,
+html body main.container textarea,
+html body.dark main.container textarea {
+  box-sizing:border-box !important;
+  max-width:100% !important;
+  font-size:16px !important;
+}
+html body main.container button,
+html body.dark main.container button {
+  box-sizing:border-box !important;
+  max-width:100% !important;
+}
+@media (max-width:780px) {
+  html body main.container .tool-grid,
+  html body.dark main.container .tool-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+@media (max-width:600px) {
+  html body,
+  html body.dark { padding:76px 9px 18px !important; }
+  html body main.container,
+  html body.dark main.container {
+    width:100% !important;
+    margin:0 auto !important;
+    padding:12px !important;
+    border-radius:20px !important;
+  }
+  html body main.container .tool-grid,
+  html body.dark main.container .tool-grid { gap:10px !important; }
+  html body main.container .tool-card,
+  html body.dark main.container .tool-card {
+    height:148px !important;
+    min-height:148px !important;
+    max-height:148px !important;
+    padding:12px !important;
+  }
+  html body main.container .tool-card .tool-icon,
+  html body.dark main.container .tool-card .tool-icon {
+    flex-basis:38px !important;
+    width:38px !important;
+    height:38px !important;
+    font-size:19px !important;
+  }
+  html body main.container .tool-grid > .tool-card:last-child,
+  html body.dark main.container .tool-grid > .tool-card:last-child {
+    grid-column:1 / -1 !important;
+    width:calc((100% - 10px) / 2) !important;
+    justify-self:center !important;
+  }
+}
+
 /* چک‌باکس‌های تنظیمات: حذف قاب و فاصله‌های ناخواستهٔ استایل عمومی input */
 html body #prefsPanel label {
   display:flex !important;
