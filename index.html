@@ -4546,5 +4546,73 @@ html body.dark main.container #home .home-heading {
 }
 </style>
 
+
+<style id="contrast-and-heart-cleanup">
+/* تضاد ملایم بین پس‌زمینه، قاب اصلی و کارت‌ها */
+html body.dark {
+  background: linear-gradient(145deg,#101d30 0%,#14263d 52%,#0d1a2b 100%) !important;
+  background-color:#101d30 !important;
+}
+html body.dark main.container,
+html body.dark .container {
+  background:linear-gradient(145deg,#1b3048 0%,#203a55 55%,#192d44 100%) !important;
+  background-color:#1b3048 !important;
+  border-color:#547493 !important;
+}
+html body.dark main.container .page,
+html body.dark main.container .page.active {
+  background:transparent !important;
+  background-color:transparent !important;
+}
+html body.dark .tool-card {
+  background:linear-gradient(145deg,#345d80 0%,#2d5274 55%,#284967 100%) !important;
+  border:1px solid #668caf !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.13),0 8px 18px rgba(0,8,22,.25) !important;
+}
+html body.dark main.container #home > .seo-learning,
+html body.dark main.container #home > .feedback-panel,
+html body.dark main.container #home > .home-footer,
+html body.dark main.container .feature-panel,
+html body.dark main.container .utility-panel,
+html body.dark main.container .extra-panel {
+  background:linear-gradient(145deg,#243f5b 0%,#294967 100%) !important;
+  background-color:#243f5b !important;
+  border-color:#587b9c !important;
+}
+/* قلب فقط؛ بدون کادر، پس‌زمینه یا سایه */
+html body.dark .tool-card > button[title="افزودن به علاقه‌مندی‌ها"],
+html body.dark .tool-card > button[title="حذف از علاقه‌مندی‌ها"],
+html body.dark .tool-card > button[aria-label="افزودن به علاقه‌مندی‌ها"],
+html body.dark .tool-card > button[aria-label="حذف از علاقه‌مندی‌ها"] {
+  width:auto !important;
+  min-width:0 !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:2px 8px !important;
+  border:0 !important;
+  border-radius:0 !important;
+  outline:0 !important;
+  background:transparent !important;
+  background-color:transparent !important;
+  box-shadow:none !important;
+  color:#ff91b7 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  line-height:1 !important;
+}
+html body.dark .tool-card > button[title="افزودن به علاقه‌مندی‌ها"]:hover,
+html body.dark .tool-card > button[title="حذف از علاقه‌مندی‌ها"]:hover,
+html body.dark .tool-card > button[aria-label="افزودن به علاقه‌مندی‌ها"]:hover,
+html body.dark .tool-card > button[aria-label="حذف از علاقه‌مندی‌ها"]:hover {
+  border:0 !important;
+  background:transparent !important;
+  background-color:transparent !important;
+  box-shadow:none !important;
+  color:#ffc0d5 !important;
+  transform:scale(1.12);
+}
+</style>
+
 </body>
 </html>
