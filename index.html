@@ -4614,5 +4614,92 @@ html body.dark .tool-card > button[aria-label="حذف از علاقه‌مندی
 }
 </style>
 
+
+<style id="strong-contrast-and-bare-heart">
+/* پالت تیره با رنگ‌های متنوع و اختلاف روشنایی واضح */
+html body.dark {
+  background:
+    radial-gradient(ellipse at 12% 5%,rgba(91,65,145,.22),transparent 38%),
+    linear-gradient(145deg,#10131f 0%,#171d2b 55%,#101722 100%) !important;
+  background-color:#10131f !important;
+}
+html body.dark main.container,
+html body.dark .container {
+  background:linear-gradient(145deg,#222b3b 0%,#293548 55%,#202a39 100%) !important;
+  background-color:#222b3b !important;
+  border-color:#58677c !important;
+}
+html body.dark main.container .page,
+html body.dark main.container .page.active {
+  background:transparent !important;
+  background-color:transparent !important;
+}
+/* کارت‌ها رنگ‌های جداگانه داشته باشند */
+html body.dark main.container #home .tool-card.card-purple {
+  background:linear-gradient(145deg,#493b70 0%,#392e5d 100%) !important;
+  border-color:#806cae !important;
+}
+html body.dark main.container #home .tool-card.card-blue {
+  background:linear-gradient(145deg,#285b78 0%,#20465f 100%) !important;
+  border-color:#5790ad !important;
+}
+html body.dark main.container #home .tool-card.card-green {
+  background:linear-gradient(145deg,#285e55 0%,#20483f 100%) !important;
+  border-color:#579486 !important;
+}
+html body.dark main.container #home .tool-card.card-orange {
+  background:linear-gradient(145deg,#76502e 0%,#5d3d26 100%) !important;
+  border-color:#b18455 !important;
+}
+html body.dark main.container #home .tool-card {
+  box-shadow:inset 0 1px rgba(255,255,255,.16),0 10px 22px rgba(0,0,0,.32) !important;
+}
+html body.dark main.container #home > .seo-learning,
+html body.dark main.container #home > .feedback-panel,
+html body.dark main.container #home > .home-footer,
+html body.dark main.container .feature-panel,
+html body.dark main.container .utility-panel,
+html body.dark main.container .extra-panel {
+  background:linear-gradient(145deg,#303c4e 0%,#293547 100%) !important;
+  background-color:#303c4e !important;
+  border-color:#65768b !important;
+}
+/* قانون قبلیِ پُراختصاصی روی دکمه قلب را خنثی می‌کند */
+html body.dark main.container #home .tool-card > button:first-child:not(.tool-open),
+html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):hover,
+html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):focus,
+html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):focus-visible {
+  position:absolute !important;
+  top:9px !important;
+  left:9px !important;
+  width:auto !important;
+  min-width:0 !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  border-width:0 !important;
+  border-style:none !important;
+  border-radius:0 !important;
+  outline:0 !important;
+  background:none !important;
+  background-color:transparent !important;
+  box-shadow:none !important;
+  color:#ff9fca !important;
+  font-size:23px !important;
+  line-height:1 !important;
+  appearance:none !important;
+  -webkit-appearance:none !important;
+}
+html body.dark main.container #home .tool-card > button:first-child:not(.tool-open)::before,
+html body.dark main.container #home .tool-card > button:first-child:not(.tool-open)::after {
+  content:none !important;
+  display:none !important;
+  border:0 !important;
+  background:none !important;
+  box-shadow:none !important;
+}
+</style>
+
 </body>
 </html>
