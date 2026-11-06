@@ -4267,6 +4267,43 @@ html body:not(.dark) .back-button:hover {
   html body.dark main.container #home .tool-card,
   html body.dark main.container #home .tool-card:hover { transition:none !important; transform:none !important; }
 }
+
+/* هماهنگی اندازه‌های تم روشن با تم تیره */
+html body:not(.dark) main.container { padding:clamp(14px,2.2vw,26px) !important; }
+html body:not(.dark) main.container #home .hero { padding:clamp(22px,3.5vw,38px) !important; }
+html body:not(.dark) main.container #home .hero h1 { font-size:clamp(26px,3.2vw,38px) !important; }
+html body:not(.dark) main.container #home .tool-grid { gap:15px !important; }
+html body:not(.dark) main.container #home .tool-card {
+  min-height:166px !important;
+  padding:16px !important;
+}
+html body:not(.dark) main.container #home .tool-card .tool-icon {
+  width:43px !important;
+  height:43px !important;
+  font-size:21px !important;
+}
+html body:not(.dark) main.container #home .tool-card .tool-title {
+  font-size:14px !important;
+  line-height:1.65 !important;
+}
+html body:not(.dark) main.container #home .tool-card .tool-description {
+  font-size:.91rem !important;
+  line-height:1.75 !important;
+}
+html body:not(.dark) main.container #home .tool-card .tool-link { font-size:.88rem !important; }
+html body:not(.dark) .category-chip,
+html body:not(.dark) .toolbar-button { font-size:14px !important; padding:10px 14px !important; }
+@media (max-width:600px) {
+  html body:not(.dark) main.container #home .tool-card { min-height:148px !important; }
+}
+
+/* تنظیمات ظاهری: حذف کادر فوکوس اضافی دور چک‌باکس‌ها */
+html body #prefsPanel input[type="checkbox"]:focus,
+html body #prefsPanel input[type="checkbox"]:focus-visible {
+  outline:none !important;
+  box-shadow:none !important;
+}
+
 </style>
 
 </body>
