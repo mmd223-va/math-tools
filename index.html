@@ -2552,6 +2552,148 @@ body.dark .feedback-suggest{background:#292448;color:#ddd6fe}
 body.dark .feedback-report{background:#402038;color:#fecdd3}
 
 </style>
+
+<style id="blue-theme-override">
+:root {
+  --main-color: #2563eb;
+  --main-hover: #1d4ed8;
+  --page-bg: #f1f7ff;
+  --card-bg: #ffffff;
+  --text-color: #1e293b;
+  --muted-color: #64748b;
+  --border-color: #dbeafe;
+  --input-bg: #ffffff;
+  --soft-bg: #eaf3ff;
+  --card-shadow: 0 8px 28px rgba(37, 99, 235, .08);
+}
+body {
+  background:
+    radial-gradient(ellipse at 10% 0%, #dbeafe 0, transparent 42%),
+    linear-gradient(135deg, #f8fbff, #edf5ff) !important;
+  color: var(--text-color);
+}
+body.dark {
+  --main-color: #60a5fa;
+  --main-hover: #3b82f6;
+  --page-bg: #0b1424;
+  --card-bg: #17263d;
+  --text-color: #eaf2ff;
+  --muted-color: #b8c9df;
+  --border-color: #29415f;
+  --input-bg: #101d30;
+  --soft-bg: #1d3555;
+  --card-shadow: 0 8px 28px rgba(0, 0, 0, .22);
+  background:
+    radial-gradient(ellipse at 10% 0%, #18365d 0, transparent 42%),
+    #0b1424 !important;
+}
+.container {
+  background: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+}
+.hero {
+  background: linear-gradient(120deg, #1e40af, #2563eb 55%, #60a5fa) !important;
+}
+.hero-button { color: #1d4ed8 !important; }
+.home-heading h2, .seo-learning h2 { color: var(--main-color) !important; }
+.menu-button, .action-button, .menu-button:hover, .action-button:hover {
+  background: #2563eb !important;
+  color: #fff !important;
+  box-shadow: 0 4px 13px rgba(37, 99, 235, .18);
+}
+.menu-button:hover, .action-button:hover { background: #1d4ed8 !important; }
+.back-button, #themeButton {
+  background: #eaf3ff !important;
+  color: #1d4ed8 !important;
+}
+.tool-count {
+  background: #eaf3ff !important;
+  color: #1d4ed8 !important;
+}
+.tool-card:hover {
+  border-color: #93c5fd !important;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, .12) !important;
+}
+body.dark .tool-card {
+  background: #172b46 !important;
+  border-color: #29415f !important;
+  color: #eaf2ff !important;
+}
+body.dark .tool-card:hover { border-color: #60a5fa !important; }
+body.dark .tool-count, body.dark .back-button, body.dark #themeButton {
+  background: #1d3555 !important;
+  color: #bfdbfe !important;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #60a5fa !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, .16) !important;
+}
+.factor-final::before {
+  background: linear-gradient(90deg, #38bdf8, #3b82f6, #1d4ed8) !important;
+}
+.factor-equation {
+  background: #eff6ff !important;
+  border-color: #bfdbfe !important;
+  color: #1d4ed8 !important;
+}
+.factor-tree h3 {
+  background: #dbeafe !important;
+  color: #1d4ed8 !important;
+}
+.tree-node {
+  background: linear-gradient(145deg, #dbeafe, #bfdbfe) !important;
+  color: #1e40af !important;
+  border-color: #93c5fd !important;
+}
+.tree-line { stroke: #60a5fa !important; }
+body.dark .factor-final, body.dark .factor-tree {
+  background: linear-gradient(145deg, #172b46, #10243e) !important;
+  border-color: #29415f !important;
+}
+body.dark .factor-equation {
+  background: #1d3555 !important;
+  border-color: #315783 !important;
+  color: #dbeafe !important;
+}
+body.dark .factor-tree h3 {
+  background: #1d3555 !important;
+  color: #dbeafe !important;
+}
+body.dark .tree-node {
+  background: linear-gradient(145deg, #24466e, #1d4d80) !important;
+  color: #eaf2ff !important;
+  border-color: #3b82f6 !important;
+}
+body.dark .tree-line { stroke: #60a5fa !important; }
+body.dark .calc-function {
+  background: #1d3555 !important;
+  color: #bfdbfe !important;
+}
+.calc-equals { background: #2563eb !important; }
+body.dark .calc-equals { background: #2563eb !important; }
+.seo-learning .guide-toggle {
+  color: #1d4ed8 !important;
+  border-color: #dbeafe !important;
+}
+.seo-learning .guide-toggle:hover {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: white !important;
+}
+body.dark .seo-learning .guide-toggle {
+  background: #172b46 !important;
+  color: #bfdbfe !important;
+  border-color: #29415f !important;
+}
+body.dark .seo-learning .guide-toggle:hover {
+  background: #2563eb !important;
+  color: white !important;
+}
+button:focus-visible {
+  outline-color: rgba(59, 130, 246, .55) !important;
+}
+</style>
+
 </head>
 <body>
 <button id="themeButton" type="button" aria-label="تغییر حالت ظاهری">🌙 حالت تیره</button>
