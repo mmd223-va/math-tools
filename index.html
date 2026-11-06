@@ -4514,5 +4514,37 @@ html body.dark .tool-card > button[title="حذف از علاقه‌مندی‌ه
 }
 
 </style>
+
+<style id="remove-black-page-layer">
+/* لایه مشکی پشت کارت‌ها از قانون قدیمی .page می‌آمد، نه از خود کارت‌ها */
+html body.dark {
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(91,170,232,.30), transparent 38%),
+    radial-gradient(ellipse at 88% 78%, rgba(70,137,205,.24), transparent 38%),
+    linear-gradient(135deg,#23496d 0%,#1b3b5d 48%,#285078 100%) !important;
+  background-color:#23496d !important;
+  background-attachment:fixed !important;
+}
+html body.dark main.container {
+  background:linear-gradient(145deg,#294d70 0%,#315b80 50%,#294d70 100%) !important;
+  border-color:#7199bd !important;
+}
+html body.dark main.container > .page,
+html body.dark main.container > .page.active,
+html body.dark main.container #home.page,
+html body.dark main.container #home.page.active {
+  background:transparent !important;
+  background-color:transparent !important;
+  background-image:none !important;
+  color:#edf6ff !important;
+}
+html body.dark main.container #home .tool-toolbar,
+html body.dark main.container #home .category-row,
+html body.dark main.container #home .home-heading {
+  background:transparent !important;
+  background-color:transparent !important;
+}
+</style>
+
 </body>
 </html>
