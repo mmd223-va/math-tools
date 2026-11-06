@@ -4258,48 +4258,84 @@ html body:not(.dark) .back-button:hover {
   html body.dark main.container #home .tool-card:hover { transition:none !important; transform:none !important; }
 }
 
-/* اندازه‌های مشترک صفحه اصلی در هر دو تم */
+/* اندازه و چیدمان مشترک صفحه اصلی در هر دو تم */
+html body.dark main.container,
+html body:not(.dark) main.container {
+  padding:clamp(14px,2.2vw,26px) !important;
+}
+html body.dark main.container #home .hero,
+html body:not(.dark) main.container #home .hero {
+  padding:clamp(22px,3.5vw,38px) !important;
+}
+html body.dark main.container #home .hero h1,
+html body:not(.dark) main.container #home .hero h1 {
+  font-size:clamp(26px,3.2vw,38px) !important;
+  line-height:1.5 !important;
+}
 html body.dark main.container #home .home-heading h2,
 html body:not(.dark) main.container #home .home-heading h2 {
   font-size:20px !important;
   line-height:1.7 !important;
 }
-html body:not(.dark) main.container { padding:clamp(14px,2.2vw,26px) !important; }
-html body:not(.dark) main.container #home .hero { padding:clamp(22px,3.5vw,38px) !important; }
-html body:not(.dark) main.container #home .hero h1 { font-size:clamp(26px,3.2vw,38px) !important; line-height:1.5 !important; }
-html body:not(.dark) main.container #home .tool-grid { gap:15px !important; }
+html body.dark main.container #home .tool-grid,
+html body:not(.dark) main.container #home .tool-grid {
+  gap:15px !important;
+}
+html body.dark main.container #home .tool-card,
 html body:not(.dark) main.container #home .tool-card {
   min-height:166px !important;
   padding:16px !important;
   gap:10px !important;
   border-radius:21px !important;
 }
+html body.dark main.container #home .tool-card .tool-icon,
 html body:not(.dark) main.container #home .tool-card .tool-icon {
   width:43px !important;
   height:43px !important;
   font-size:21px !important;
 }
+html body.dark main.container #home .tool-card .tool-title,
 html body:not(.dark) main.container #home .tool-card .tool-title {
   font-size:14px !important;
   line-height:1.65 !important;
   font-weight:850 !important;
 }
+html body.dark main.container #home .tool-card .tool-description,
 html body:not(.dark) main.container #home .tool-card .tool-description {
   font-size:.91rem !important;
   line-height:1.75 !important;
 }
+html body.dark main.container #home .tool-card .tool-open,
 html body:not(.dark) main.container #home .tool-card .tool-open {
   min-height:0 !important;
   padding:7px 8px !important;
   font-size:11px !important;
 }
-html body:not(.dark) main.container #home .tool-card .tool-link { font-size:.88rem !important; }
+html body.dark .category-chip,
 html body:not(.dark) .category-chip,
-html body:not(.dark) .toolbar-button { font-size:14px !important; padding:10px 14px !important; }
-@media (max-width:600px) {
-  html body:not(.dark) main.container #home .tool-card { min-height:148px !important; }
+html body.dark .toolbar-button,
+html body:not(.dark) .toolbar-button {
+  font-size:14px !important;
+  padding:10px 14px !important;
 }
-
+@media (max-width:600px) {
+  html body.dark main.container,
+  html body:not(.dark) main.container { padding:12px !important; }
+  html body.dark main.container #home .tool-grid,
+  html body:not(.dark) main.container #home .tool-grid { gap:10px !important; }
+  html body.dark main.container #home .tool-card,
+  html body:not(.dark) main.container #home .tool-card {
+    min-height:148px !important;
+    padding:12px !important;
+  }
+  html body.dark main.container #home .tool-card .tool-icon,
+  html body:not(.dark) main.container #home .tool-card .tool-icon {
+    width:38px !important;
+    height:38px !important;
+    font-size:19px !important;
+  }
+}
+ 
 /* چک‌باکس‌های تنظیمات: حذف قاب و فاصله‌های ناخواستهٔ استایل عمومی input */
 html body #prefsPanel label {
   display:flex !important;
