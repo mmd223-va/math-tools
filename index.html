@@ -4619,7 +4619,10 @@ html[dir="ltr"] #themeButton{right:auto;left:18px}
     if(language!=="en")return;
     for(const record of records){
       if(record.type==="childList")record.addedNodes.forEach(translateNode);
-      else if(record.type==="characterData")record.target.nodeValue=translateText(record.target.nodeValue);
+      else if(record.type==="characterData"){
+        const translated=translateText(record.target.nodeValue);
+        if(translated!==record.target.nodeValue)record.target.nodeValue=translated;
+      }
     }
   });
   observer.observe(document.querySelector("main"),{subtree:true,childList:true,characterData:true});
