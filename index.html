@@ -4268,14 +4268,21 @@ html body:not(.dark) .back-button:hover {
   html body.dark main.container #home .tool-card:hover { transition:none !important; transform:none !important; }
 }
 
-/* هماهنگی اندازه‌های تم روشن با تم تیره */
+/* اندازه‌های مشترک صفحه اصلی در هر دو تم */
+html body.dark main.container #home .home-heading h2,
+html body:not(.dark) main.container #home .home-heading h2 {
+  font-size:20px !important;
+  line-height:1.7 !important;
+}
 html body:not(.dark) main.container { padding:clamp(14px,2.2vw,26px) !important; }
 html body:not(.dark) main.container #home .hero { padding:clamp(22px,3.5vw,38px) !important; }
-html body:not(.dark) main.container #home .hero h1 { font-size:clamp(26px,3.2vw,38px) !important; }
+html body:not(.dark) main.container #home .hero h1 { font-size:clamp(26px,3.2vw,38px) !important; line-height:1.5 !important; }
 html body:not(.dark) main.container #home .tool-grid { gap:15px !important; }
 html body:not(.dark) main.container #home .tool-card {
   min-height:166px !important;
   padding:16px !important;
+  gap:10px !important;
+  border-radius:21px !important;
 }
 html body:not(.dark) main.container #home .tool-card .tool-icon {
   width:43px !important;
@@ -4285,10 +4292,16 @@ html body:not(.dark) main.container #home .tool-card .tool-icon {
 html body:not(.dark) main.container #home .tool-card .tool-title {
   font-size:14px !important;
   line-height:1.65 !important;
+  font-weight:850 !important;
 }
 html body:not(.dark) main.container #home .tool-card .tool-description {
   font-size:.91rem !important;
   line-height:1.75 !important;
+}
+html body:not(.dark) main.container #home .tool-card .tool-open {
+  min-height:0 !important;
+  padding:7px 8px !important;
+  font-size:11px !important;
 }
 html body:not(.dark) main.container #home .tool-card .tool-link { font-size:.88rem !important; }
 html body:not(.dark) .category-chip,
@@ -4297,7 +4310,30 @@ html body:not(.dark) .toolbar-button { font-size:14px !important; padding:10px 1
   html body:not(.dark) main.container #home .tool-card { min-height:148px !important; }
 }
 
-/* تنظیمات ظاهری: حذف کادر فوکوس اضافی دور چک‌باکس‌ها */
+/* چک‌باکس‌های تنظیمات: حذف قاب و فاصله‌های ناخواستهٔ استایل عمومی input */
+html body #prefsPanel label {
+  display:flex !important;
+  align-items:center !important;
+  gap:9px !important;
+  margin:10px 0 !important;
+}
+html body #prefsPanel input[type="checkbox"] {
+  appearance:auto !important;
+  -webkit-appearance:checkbox !important;
+  display:inline-block !important;
+  flex:0 0 17px !important;
+  width:17px !important;
+  height:17px !important;
+  min-width:17px !important;
+  min-height:17px !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:3px !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  vertical-align:middle !important;
+}
 html body #prefsPanel input[type="checkbox"]:focus,
 html body #prefsPanel input[type="checkbox"]:focus-visible {
   outline:none !important;
