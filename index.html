@@ -4560,12 +4560,13 @@ html[dir="ltr"] #themeButton{right:auto;left:18px}
     "نوشته‌های بزرگ‌تر":"Larger text","این ابزار چگونه کار می‌کند؟":"How does this tool work?"
   };
   const exact = value => translations[value] || value;
+  // فهرست ترجمه‌ها فقط یک‌بار ساخته و مرتب می‌شود تا تغییر زبان سریع‌تر باشد.
+  const translationKeys = Object.keys(translations).sort((a,b)=>b.length-a.length);
   function translateText(value){
     if(!value || !/[\u0600-\u06FF]/.test(value)) return value;
     if(translations[value]) return translations[value];
     let out=value;
-    const keys=Object.keys(translations).sort((a,b)=>b.length-a.length);
-    for(const key of keys){if(key.length>2 && out.includes(key)) out=out.split(key).join(translations[key]);}
+    for(const key of translationKeys){if(key.length>2 && out.includes(key)) out=out.split(key).join(translations[key]);}
     return out;
   }
   function translateNode(node){
