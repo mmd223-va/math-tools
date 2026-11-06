@@ -4362,5 +4362,72 @@ body.dark main.container #home .tool-card .tool-open {
 }
 
 </style>
-</body>
+<style id="blue-harmony-override">
+/* هماهنگی زمینه پنل اصلی با قاب بیرونی */
+html, body.dark {
+  background: linear-gradient(135deg,#193653 0%,#142b46 52%,#1c3b5c 100%) !important;
+  background-color:#193653 !important;
+}
+body.dark {
+  background-image:
+    radial-gradient(ellipse at 12% 8%,rgba(86,164,224,.20),transparent 38%),
+    radial-gradient(ellipse at 88% 85%,rgba(65,132,194,.15),transparent 36%),
+    linear-gradient(135deg,#193653 0%,#142b46 52%,#1c3b5c 100%) !important;
+  background-attachment:fixed !important;
+}
+body.dark main.container,
+body.dark .container {
+  background:linear-gradient(145deg,#1d3a59 0%,#1b3552 55%,#203e60 100%) !important;
+  border:1px solid #52799e !important;
+  box-shadow:0 18px 48px rgba(0,9,24,.28),inset 0 1px rgba(220,240,255,.08) !important;
+}
+/* پنل راهنما هم‌رنگ پنل اصلی، با اختلاف روشنایی ملایم */
+body.dark .seo-learning {
+  background:linear-gradient(145deg,#234565 0%,#203f60 55%,#25496b 100%) !important;
+  border:1px solid #527da3 !important;
+  border-radius:22px !important;
+  box-shadow:inset 0 1px rgba(225,241,255,.09),0 8px 22px rgba(0,10,28,.15) !important;
+}
+body.dark .seo-learning .guide-item,
+body.dark .seo-learning article {
+  background:linear-gradient(135deg,#2b5073,#27496a) !important;
+  border:1px solid #5b82a6 !important;
+  border-radius:14px !important;
+}
+body.dark .seo-learning .guide-toggle {
+  background:linear-gradient(100deg,#355f85,#31577c) !important;
+  border:1px solid #6a91b5 !important;
+  color:#f1f7ff !important;
+}
+/* حذف همه تزئینات قدیمی و دایره‌های ناهماهنگ کارت */
+.tool-card::before,
+.tool-card::after,
+body.dark .tool-card::before,
+body.dark .tool-card::after,
+body.dark main.container #home .tool-card::before,
+body.dark main.container #home .tool-card::after {
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  box-shadow:none !important;
+}
+/* آیکون و زمینه پشت آن از یک طیف آبی هماهنگ */
+body.dark .tool-card .tool-icon,
+body.dark .tool-card.card-purple .tool-icon,
+body.dark .tool-card.card-blue .tool-icon,
+body.dark .tool-card.card-green .tool-icon,
+body.dark .tool-card.card-orange .tool-icon {
+  background:linear-gradient(145deg,#4779a5 0%,#35658e 55%,#2c557d 100%) !important;
+  color:#f2f8ff !important;
+  border:1px solid #79a5ca !important;
+  border-radius:14px !important;
+  box-shadow:0 5px 13px rgba(5,20,38,.22),inset 0 1px rgba(255,255,255,.2) !important;
+}
+body.dark .tool-card {
+  background:linear-gradient(145deg,#2b5276 0%,#25496b 52%,#203f60 100%) !important;
+  border:1px solid #5c83a7 !important;
+  border-radius:20px !important;
+  box-shadow:inset 0 1px rgba(230,244,255,.12),0 9px 22px rgba(0,8,24,.22) !important;
+}
+</style></body>
 </html>
