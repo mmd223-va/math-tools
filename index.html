@@ -4703,17 +4703,44 @@ html body.dark main.container #home .tool-card > button:first-child:not(.tool-op
 
 
 <style id="restore-uniform-blue-cards-and-panel-borders">
-/* کارت‌ها به حالت یک‌دست آبی برگردند؛ تفاوت با پس‌زمینه از روشنایی باشد */
+/* کارت‌های آبی با عمق بیشتر و سایه‌ی نرم */
 html body.dark main.container #home .tool-card,
 html body.dark main.container #home .tool-card.card-purple,
 html body.dark main.container #home .tool-card.card-blue,
 html body.dark main.container #home .tool-card.card-green,
 html body.dark main.container #home .tool-card.card-orange {
-  background:linear-gradient(145deg,#345d80 0%,#2d5274 55%,#284967 100%) !important;
-  border:1px solid #668caf !important;
-  box-shadow:inset 0 1px rgba(255,255,255,.13),0 9px 20px rgba(0,8,22,.28) !important;
+  background:linear-gradient(145deg,#3a668d 0%,#315a7e 52%,#284967 100%) !important;
+  border:1px solid #7399bb !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    0 3px 7px rgba(0,8,22,.20),
+    0 12px 24px rgba(0,8,22,.30) !important;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease !important;
 }
-/* کادر تنظیمات ظاهری، تاریخچه و پنل‌های مشابه با حاشیه کارت‌ها هماهنگ شوند */
+html body.dark main.container #home .tool-card:hover {
+  transform:translateY(-4px) !important;
+  border-color:#91b8da !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.24),
+    0 5px 10px rgba(0,8,22,.22),
+    0 17px 30px rgba(0,8,22,.36) !important;
+}
+/* قلب بدون قاب و پس‌زمینه؛ آبی روشن و جدا از رنگ کارت، نه قرمز */
+html body.dark main.container #home .tool-card > button:first-child:not(.tool-open),
+html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):hover,
+html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):focus,
+html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):focus-visible {
+  color:#a9dcff !important;
+  text-shadow:0 1px 5px rgba(105,190,255,.28) !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):hover {
+  color:#d2edff !important;
+  transform:scale(1.13) !important;
+}
+/* حاشیه‌ی پنل‌های تنظیمات و بخش‌های مشابه هماهنگ با کارت‌ها */
 html body.dark main.container #home .feature-panel,
 html body.dark main.container #home #historyPanel,
 html body.dark main.container #home #prefsPanel,
@@ -4722,15 +4749,19 @@ html body.dark main.container #home .extra-panel,
 html body.dark main.container #home .seo-learning,
 html body.dark main.container #home .feedback-panel,
 html body.dark main.container #home .home-footer {
-  border-color:#668caf !important;
+  border-color:#7399bb !important;
 }
-/* پس‌زمینه پنل تنظیمات کمی تیره‌تر از کارت باشد تا خود پنل مشخص بماند */
+/* پنل تنظیمات کمی تیره‌تر از کارت‌ها بماند */
 html body.dark main.container #home .feature-panel,
 html body.dark main.container #home #historyPanel,
 html body.dark main.container #home #prefsPanel {
-  background:linear-gradient(145deg,#263d55 0%,#22364c 100%) !important;
-  background-color:#263d55 !important;
-  box-shadow:inset 0 1px rgba(255,255,255,.10),0 9px 20px rgba(0,8,22,.22) !important;
+  background:linear-gradient(145deg,#263f59 0%,#20364d 100%) !important;
+  background-color:#263f59 !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.10),0 9px 20px rgba(0,8,22,.24) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html body.dark main.container #home .tool-card { transition:none !important; }
+  html body.dark main.container #home .tool-card:hover { transform:none !important; }
 }
 </style>
 
