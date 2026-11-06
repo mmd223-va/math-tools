@@ -4312,5 +4312,55 @@ body.dark main.container #home .tool-card > button:first-child:not(.tool-open) {
   body.dark main.container #home .tool-card { min-height: 148px !important; }
 }
 </style>
+<style id="blue-background-polish">
+
+/* اصلاح نهایی پس‌زمینه کلی و جزئیات کارت‌ها */
+html, body.dark {
+  background: linear-gradient(135deg, #142b49 0%, #10233d 48%, #1a3152 100%) !important;
+  background-color: #142b49 !important;
+}
+body.dark {
+  background-image:
+    radial-gradient(ellipse at 12% 4%, rgba(65, 150, 225, .24), transparent 38%),
+    radial-gradient(ellipse at 88% 72%, rgba(45, 110, 190, .17), transparent 34%),
+    linear-gradient(135deg, #142b49 0%, #10233d 48%, #1a3152 100%) !important;
+  background-attachment: fixed !important;
+}
+body.dark::before {
+  opacity: .22 !important;
+  background-image:
+    linear-gradient(rgba(142, 190, 235, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(142, 190, 235, .08) 1px, transparent 1px) !important;
+}
+body.dark main.container {
+  background: linear-gradient(150deg, #1a3555 0%, #1c304e 55%, #203b5e 100%) !important;
+  border-color: #5279a2 !important;
+  box-shadow: 0 20px 55px rgba(0, 8, 24, .3), inset 0 1px rgba(220,240,255,.08) !important;
+}
+body.dark main.container #home .tool-card {
+  background:
+    linear-gradient(125deg, rgba(104, 174, 231, .14), transparent 48%),
+    linear-gradient(145deg, #2b5279 0%, #234568 48%, #1b395a 100%) !important;
+  border: 1px solid #5b83aa !important;
+  box-shadow:
+    inset 0 1px 0 rgba(231,244,255,.16),
+    inset 0 -16px 28px rgba(5,22,43,.13),
+    0 10px 24px rgba(0,8,24,.25) !important;
+}
+body.dark main.container #home .tool-card .tool-icon {
+  background: linear-gradient(145deg, #5489b8, #35658f) !important;
+  border: 1px solid rgba(205,231,255,.4) !important;
+  box-shadow: 0 5px 13px rgba(0,12,30,.24), inset 0 1px rgba(255,255,255,.2) !important;
+}
+body.dark main.container #home .tool-card .tool-title {
+  text-shadow: 0 1px 8px rgba(0,0,0,.18) !important;
+}
+body.dark main.container #home .tool-card .tool-open {
+  background: linear-gradient(100deg, #438bc5, #3475b5) !important;
+  border-color: #82b9e5 !important;
+  box-shadow: 0 5px 12px rgba(4,25,50,.24), inset 0 1px rgba(255,255,255,.22) !important;
+}
+
+</style>
 </body>
 </html>
