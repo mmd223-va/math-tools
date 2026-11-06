@@ -4350,6 +4350,24 @@ html body:not(.dark) .toolbar-button {
     height:38px !important;
     font-size:19px !important;
   }
+
+  /* کارت نهم در مرکز ردیف قرار بگیرد تا تنها و چسبیده به یک سمت نباشد */
+  html body.dark main.container #home .tool-grid > .tool-card:last-child,
+  html body:not(.dark) main.container #home .tool-grid > .tool-card:last-child {
+    grid-column:1 / -1 !important;
+    width:calc((100% - 10px) / 2) !important;
+    justify-self:center !important;
+  }
+
+  /* لینک گیت‌هاب بعد از اعتبار سازنده نمایش داده شود */
+  html body.dark main.container #home .home-footer .creator-credit,
+  html body:not(.dark) main.container #home .home-footer .creator-credit {
+    order:3 !important;
+  }
+  html body.dark main.container #home .home-footer .github-link-wrap,
+  html body:not(.dark) main.container #home .home-footer .github-link-wrap {
+    order:4 !important;
+  }
 }
 html body.compact-ui main.container #home .tool-card {
   height:150px !important;
