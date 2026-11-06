@@ -1810,7 +1810,7 @@ body.dark .seo-learning h2, body.dark .seo-learning h3 { color: #c7d2fe; }
 #factorResult .tree-node { background: #e7eaff; color: #3730a3; border-color: #a5b4fc; }
 #factorResult .tree-leaf { background: #d8f7eb; color: #065f46; border-color: #6ee7b7; }
 #factorResult .tree-line { stroke: #8795cf; }
-button:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 3px; }
+button:focus-visible { outline: 3px solid #60a5fa; outline-offset: 3px; }
 @media (max-width: 650px) {
   body { padding: 72px 10px 20px; }
   .container { padding: 16px; border-radius: 18px; }
@@ -1849,7 +1849,7 @@ input, select, textarea {
   color: #f3efff !important;
   border-color: #34305f !important;
 }
-.tool-card:hover, button:hover { border-color: #a78bfa !important; }
+.tool-card:hover { border-color: #a78bfa !important; }
 h1, h2, h3, .tool-card h3 { color: #c4b5fd; }
 p, label, .muted, .tool-card p { color: #c2bfdc; }
 input, select, textarea { background-color: #0b1024 !important; }
@@ -2114,14 +2114,14 @@ button:focus-visible,input:focus-visible,select:focus-visible {
   gap:8px;
   margin-bottom:18px;
   padding:10px 15px;
-  border:1px solid rgba(167,139,250,.24);
+  border:1px solid rgba(96,165,250,.38);
   border-radius:12px;
-  color:#ddd6fe;
-  background:rgba(139,92,246,.10);
+  color:#dbeafe;
+  background:rgba(59,130,246,.12);
   cursor:pointer;
   transition:background .2s ease,transform .2s ease;
 }
-.back-button:hover { transform:translateX(3px); background:rgba(139,92,246,.19); }
+.back-button:hover { transform:translateX(3px); background:rgba(59,130,246,.22); border-color:#60a5fa; }
 .page > h2 { text-align:right; margin-top:4px; }
 .page > p { margin-top:0; }
 input,select,textarea {
@@ -3590,115 +3590,6 @@ function checkPrime() {
   );
 }
 
-/* ساخت درخت تجزیه */
-function buildTree(value) {
-  for (let divisor = 2; divisor * divisor <= value; divisor++) {
-    if (value % divisor === 0) {
-      return {
-        value,
-        left: buildTree(divisor),
-        right: buildTree(value / divisor)
-      };
-    }
-  }
-
-  return { value, left: null, right: null };
-}
-
-/* چیدن گره‌ها بر اساس تعداد برگ‌ها */
-function layoutTree(root) {
-  let nextLeaf = 0;
-  const nodes = [];
-  const edges = [];
-  const horizontalGap = 76;
-  const verticalGap = 82;
-  const margin = 35;
-
-  function place(node, depth) {
-    let x;
-
-    if (!node.left && !node.right) {
-      x = nextLeaf * horizontalGap + margin;
-      nextLeaf++;
-    } else {
-      const left = place(node.left, depth + 1);
-      const right = place(node.right, depth + 1);
-      x = (left.x + right.x) / 2;
-
-      edges.push({
-        x1: x,
-        y1: depth * verticalGap + 28,
-        x2: left.x,
-        y2: (depth + 1) * verticalGap + 28
-      });
-
-      edges.push({
-        x1: x,
-        y1: depth * verticalGap + 28,
-        x2: right.x,
-        y2: (depth + 1) * verticalGap + 28
-      });
-    }
-
-    const item = {
-      value: node.value,
-      x,
-      y: depth * verticalGap + 28,
-      leaf: !node.left && !node.right
-    };
-
-    nodes.push(item);
-    return item;
-  }
-
-  place(root, 0);
-
-  return {
-    nodes,
-    edges,
-    width: Math.max(horizontalGap, nextLeaf * horizontalGap) + margin * 2,
-    height: Math.max(...nodes.map(node => node.y)) + 45
-  };
-}
-
-function drawFactorTree(number) {
-  const tree = buildTree(number);
-  const layout = layoutTree(tree);
-  const canvas = document.createElement("div");
-
-  canvas.className = "tree-canvas";
-  canvas.style.width = layout.width + "px";
-  canvas.style.height = layout.height + "px";
-
-  const svgNS = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(svgNS, "svg");
-  svg.setAttribute("viewBox", `0 0 ${layout.width} ${layout.height}`);
-  svg.setAttribute("aria-hidden", "true");
-
-  layout.edges.forEach(edge => {
-    const line = document.createElementNS(svgNS, "line");
-    line.setAttribute("x1", edge.x1);
-    line.setAttribute("y1", edge.y1);
-    line.setAttribute("x2", edge.x2);
-    line.setAttribute("y2", edge.y2);
-    line.setAttribute("class", "tree-line");
-    svg.appendChild(line);
-  });
-
-  canvas.appendChild(svg);
-
-  layout.nodes.forEach(node => {
-    const element = document.createElement("span");
-    element.className = node.leaf ? "tree-leaf" : "tree-node";
-    element.textContent = node.value;
-    element.style.left = node.x + "px";
-    element.style.top = node.y + "px";
-    canvas.appendChild(element);
-  });
-
-  return canvas;
-}
-
 function factorizeNumber() {
   const input = document.getElementById("factorNumber");
   const result = document.getElementById("factorResult");
@@ -4212,499 +4103,25 @@ if (denominator === 1) {
 })();
 </script>
 
-<style id="blue-theme-final-fix">
-body.dark main.container #home .seo-learning,
-body.dark main.container #home .feedback-panel,
-body.dark main.container #home .feature-panel {
-  background: linear-gradient(145deg, #1b3859 0%, #203f63 52%, #193451 100%) !important;
-  background-color: #1b3859 !important;
-  border: 1px solid #426b96 !important;
-  border-radius: 24px !important;
-  box-shadow: inset 0 1px 0 rgba(210,235,255,.08), 0 14px 34px rgba(0,0,0,.24) !important;
-  color: #edf6ff !important;
-}
-body.dark main.container #home .seo-learning h2,
-body.dark main.container #home .feedback-panel h3,
-body.dark main.container #home .feature-panel h3 {
-  color: #91caff !important;
-  text-shadow: 0 2px 14px rgba(69,153,235,.18) !important;
-}
-body.dark main.container #home .seo-learning > p,
-body.dark main.container #home .feedback-panel > p { color: #c1d6ec !important; }
-body.dark main.container #home .seo-learning .guide-item {
-  background: linear-gradient(135deg, #294b70, #234263) !important;
-  border: 1px solid #4a7199 !important;
-  border-radius: 15px !important;
-  padding: 11px !important;
-  margin: 11px 0 !important;
-  box-shadow: 0 5px 14px rgba(4,18,36,.16) !important;
-}
-body.dark main.container #home .seo-learning .guide-toggle {
-  background: linear-gradient(100deg, #315b85, #2a4d73) !important;
-  border: 1px solid #5b83aa !important;
-  color: #f0f7ff !important;
-  border-radius: 11px !important;
-  min-height: 44px !important;
-  box-shadow: inset 0 1px rgba(255,255,255,.08) !important;
-}
-body.dark main.container #home .seo-learning .guide-item > p:not([hidden]) {
-  background: #1d3958 !important;
-  border: 1px solid #385d82 !important;
-  border-radius: 11px !important;
-  color: #dcecff !important;
-  padding: 13px !important;
-  line-height: 2 !important;
-}
-body.dark main.container #home .tool-grid { gap: 15px !important; }
-body.dark main.container #home .tool-card {
-  min-height: 166px !important;
-  padding: 16px !important;
-  border-radius: 21px !important;
-  border: 1px solid #42658a !important;
-  background: linear-gradient(145deg, #28517a 0%, #214568 52%, #1b3959 100%) !important;
-  box-shadow: inset 0 1px 0 rgba(223,241,255,.09), 0 9px 22px rgba(0,0,0,.23) !important;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease !important;
-}
-body.dark main.container #home .tool-card::before,
-body.dark main.container #home .tool-card::after {
-  content: none !important;
-  display: none !important;
-}
-body.dark main.container #home .tool-card:hover {
-  transform: translateY(-4px) !important;
-  border-color: #83c5ff !important;
-  box-shadow: inset 0 1px 0 rgba(223,241,255,.12), 0 15px 28px rgba(0,0,0,.3) !important;
-}
-body.dark main.container #home .tool-card .tool-icon {
-  width: 43px !important;
-  height: 43px !important;
-  border-radius: 14px !important;
-  border: 1px solid rgba(190,224,255,.25) !important;
-  background: linear-gradient(145deg, #3c6b99, #294d73) !important;
-  color: #f1f8ff !important;
-  font-size: 21px !important;
-  box-shadow: 0 5px 12px rgba(0,0,0,.18), inset 0 1px rgba(255,255,255,.13) !important;
-  z-index: 1 !important;
-}
-body.dark main.container #home .tool-card .tool-title {
-  color: #f4f8ff !important;
-  font-size: 14px !important;
-  font-weight: 850 !important;
-  letter-spacing: -.15px !important;
-  z-index: 1 !important;
-}
-body.dark main.container #home .tool-card .tool-open {
-  background: linear-gradient(100deg, #397fc0, #3569b6) !important;
-  border: 1px solid #6aa3d5 !important;
-  border-radius: 10px !important;
-  color: #fff !important;
-  box-shadow: 0 4px 10px rgba(0,0,0,.16), inset 0 1px rgba(255,255,255,.16) !important;
-  z-index: 1 !important;
-}
-body.dark main.container #home .tool-card > button:first-child:not(.tool-open) {
-  z-index: 3 !important;
-  color: #a9d9ff !important;
-  background: rgba(17,42,68,.55) !important;
-  border: 1px solid rgba(139,190,232,.22) !important;
-  border-radius: 9px !important;
-}
-@media (max-width: 600px) {
-  body.dark main.container #home .tool-card { min-height: 148px !important; }
-}
-</style>
-<style id="blue-background-polish">
-
-/* اصلاح نهایی پس‌زمینه کلی و جزئیات کارت‌ها */
-html, body.dark {
-  background: linear-gradient(135deg, #142b49 0%, #10233d 48%, #1a3152 100%) !important;
-  background-color: #142b49 !important;
-}
-body.dark {
-  background-image:
-    radial-gradient(ellipse at 12% 4%, rgba(65, 150, 225, .24), transparent 38%),
-    radial-gradient(ellipse at 88% 72%, rgba(45, 110, 190, .17), transparent 34%),
-    linear-gradient(135deg, #142b49 0%, #10233d 48%, #1a3152 100%) !important;
-  background-attachment: fixed !important;
-}
-body.dark::before {
-  opacity: .22 !important;
-  background-image:
-    linear-gradient(rgba(142, 190, 235, .08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(142, 190, 235, .08) 1px, transparent 1px) !important;
-}
-body.dark main.container {
-  background: linear-gradient(150deg, #1a3555 0%, #1c304e 55%, #203b5e 100%) !important;
-  border-color: #5279a2 !important;
-  box-shadow: 0 20px 55px rgba(0, 8, 24, .3), inset 0 1px rgba(220,240,255,.08) !important;
-}
-body.dark main.container #home .tool-card {
-  background:
-    linear-gradient(125deg, rgba(104, 174, 231, .14), transparent 48%),
-    linear-gradient(145deg, #2b5279 0%, #234568 48%, #1b395a 100%) !important;
-  border: 1px solid #5b83aa !important;
-  box-shadow:
-    inset 0 1px 0 rgba(231,244,255,.16),
-    inset 0 -16px 28px rgba(5,22,43,.13),
-    0 10px 24px rgba(0,8,24,.25) !important;
-}
-body.dark main.container #home .tool-card .tool-icon {
-  background: linear-gradient(145deg, #5489b8, #35658f) !important;
-  border: 1px solid rgba(205,231,255,.4) !important;
-  box-shadow: 0 5px 13px rgba(0,12,30,.24), inset 0 1px rgba(255,255,255,.2) !important;
-}
-body.dark main.container #home .tool-card .tool-title {
-  text-shadow: 0 1px 8px rgba(0,0,0,.18) !important;
-}
-body.dark main.container #home .tool-card .tool-open {
-  background: linear-gradient(100deg, #438bc5, #3475b5) !important;
-  border-color: #82b9e5 !important;
-  box-shadow: 0 5px 12px rgba(4,25,50,.24), inset 0 1px rgba(255,255,255,.22) !important;
-}
-
-</style>
-<style id="blue-harmony-override">
-/* هماهنگی زمینه پنل اصلی با قاب بیرونی */
-html, body.dark {
-  background: linear-gradient(135deg,#193653 0%,#142b46 52%,#1c3b5c 100%) !important;
-  background-color:#193653 !important;
-}
-body.dark {
-  background-image:
-    radial-gradient(ellipse at 12% 8%,rgba(86,164,224,.20),transparent 38%),
-    radial-gradient(ellipse at 88% 85%,rgba(65,132,194,.15),transparent 36%),
-    linear-gradient(135deg,#193653 0%,#142b46 52%,#1c3b5c 100%) !important;
-  background-attachment:fixed !important;
-}
-body.dark main.container,
-body.dark .container {
-  background:linear-gradient(145deg,#1d3a59 0%,#1b3552 55%,#203e60 100%) !important;
-  border:1px solid #52799e !important;
-  box-shadow:0 18px 48px rgba(0,9,24,.28),inset 0 1px rgba(220,240,255,.08) !important;
-}
-/* پنل راهنما هم‌رنگ پنل اصلی، با اختلاف روشنایی ملایم */
-body.dark .seo-learning {
-  background:linear-gradient(145deg,#234565 0%,#203f60 55%,#25496b 100%) !important;
-  border:1px solid #527da3 !important;
-  border-radius:22px !important;
-  box-shadow:inset 0 1px rgba(225,241,255,.09),0 8px 22px rgba(0,10,28,.15) !important;
-}
-body.dark .seo-learning .guide-item,
-body.dark .seo-learning article {
-  background:linear-gradient(135deg,#2b5073,#27496a) !important;
-  border:1px solid #5b82a6 !important;
-  border-radius:14px !important;
-}
-body.dark .seo-learning .guide-toggle {
-  background:linear-gradient(100deg,#355f85,#31577c) !important;
-  border:1px solid #6a91b5 !important;
-  color:#f1f7ff !important;
-}
-/* حذف همه تزئینات قدیمی و دایره‌های ناهماهنگ کارت */
-.tool-card::before,
-.tool-card::after,
-body.dark .tool-card::before,
-body.dark .tool-card::after,
-body.dark main.container #home .tool-card::before,
-body.dark main.container #home .tool-card::after {
-  content:none !important;
-  display:none !important;
-  background:none !important;
-  box-shadow:none !important;
-}
-/* آیکون و زمینه پشت آن از یک طیف آبی هماهنگ */
-body.dark .tool-card .tool-icon,
-body.dark .tool-card.card-purple .tool-icon,
-body.dark .tool-card.card-blue .tool-icon,
-body.dark .tool-card.card-green .tool-icon,
-body.dark .tool-card.card-orange .tool-icon {
-  background:linear-gradient(145deg,#4779a5 0%,#35658e 55%,#2c557d 100%) !important;
-  color:#f2f8ff !important;
-  border:1px solid #79a5ca !important;
-  border-radius:14px !important;
-  box-shadow:0 5px 13px rgba(5,20,38,.22),inset 0 1px rgba(255,255,255,.2) !important;
-}
-body.dark .tool-card {
-  background:linear-gradient(145deg,#2b5276 0%,#25496b 52%,#203f60 100%) !important;
-  border:1px solid #5c83a7 !important;
-  border-radius:20px !important;
-  box-shadow:inset 0 1px rgba(230,244,255,.12),0 9px 22px rgba(0,8,24,.22) !important;
-}
-</style><style id="targeted-panel-and-favorite-fix">
-/* علت تیرگی پنل: یک قانون قدیمی‌تر با پس‌زمینه مشکی در انتهای CSS بود.
-   این قانون نهایی، خود قاب داخلی را مستقیماً هدف می‌گیرد. */
-html body.dark main.container,
-html body.dark .container {
-  background: linear-gradient(145deg,#203f61 0%,#1d3958 48%,#24476a 100%) !important;
-  background-color:#203f61 !important;
-  border:1px solid #638bb2 !important;
-  box-shadow:0 18px 46px rgba(3,18,38,.22),inset 0 1px rgba(230,244,255,.12) !important;
-}
-/* پنل راهنما داخل قاب نیز با رنگ قاب هماهنگ باشد */
-html body.dark .container .seo-learning {
-  background:linear-gradient(145deg,#294d70 0%,#254768 55%,#2b5073 100%) !important;
-  background-color:#294d70 !important;
-  border:1px solid #638bb2 !important;
-  box-shadow:inset 0 1px rgba(235,247,255,.12),0 8px 20px rgba(3,18,38,.14) !important;
-}
-/* دکمه قلب علاقه‌مندی؛ همان مربع پشت قلب، آبی و هماهنگ با کارت */
-html body.dark .tool-card > button[title="افزودن به علاقه‌مندی‌ها"] {
-  align-self:flex-end !important;
-  width:30px !important;
-  height:30px !important;
-  display:grid !important;
-  place-items:center !important;
-  padding:0 !important;
-  border:1px solid #78a6cf !important;
-  border-radius:9px !important;
-  background:linear-gradient(145deg,#477da9,#35658f) !important;
-  color:#eaf5ff !important;
-  font-size:19px !important;
-  line-height:1 !important;
-  box-shadow:0 4px 10px rgba(3,20,40,.2),inset 0 1px rgba(255,255,255,.18) !important;
-}
-html body.dark .tool-card > button[title="افزودن به علاقه‌مندی‌ها"]:hover {
-  background:linear-gradient(145deg,#5b91bd,#4078a5) !important;
-  border-color:#a5d4fa !important;
-}
-
-/* اصلاح نهایی هماهنگی پنل‌های داخلی و دکمه علاقه‌مندی */
-html body.dark main.container #home > .seo-learning,
-html body.dark main.container #home > .feedback-panel,
-html body.dark main.container #home > .home-footer,
-html body.dark main.container .feature-panel,
-html body.dark main.container .utility-panel,
-html body.dark main.container .extra-panel {
-  background: linear-gradient(145deg,#294d70 0%,#254768 52%,#2b5073 100%) !important;
-  background-color:#294d70 !important;
-  border:1px solid #638bb2 !important;
-  border-radius:22px !important;
-  color:#edf6ff !important;
-  box-shadow:inset 0 1px rgba(235,247,255,.12),0 9px 22px rgba(3,18,38,.16) !important;
-}
-html body.dark main.container #home > .seo-learning h2,
-html body.dark main.container #home > .feedback-panel h3 {
-  color:#c4e3ff !important;
-}
-html body.dark main.container #home > .seo-learning p,
-html body.dark main.container #home > .feedback-panel p {
-  color:#d2e3f4 !important;
-}
-/* قلب در یک کادر مستطیلیِ گرد و هم‌رنگ کارت؛ نه مربع */
-html body.dark .tool-card > button[title="افزودن به علاقه‌مندی‌ها"],
-html body.dark .tool-card > button[title="حذف از علاقه‌مندی‌ها"] {
-  width:42px !important;
-  min-width:42px !important;
-  height:34px !important;
-  padding:0 10px !important;
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  border:1px solid rgba(170,211,244,.48) !important;
-  border-radius:12px !important;
-  background:linear-gradient(145deg,#3d719c 0%,#2c557b 100%) !important;
-  color:#f0f8ff !important;
-  font-size:20px !important;
-  line-height:1 !important;
-  box-shadow:inset 0 1px rgba(255,255,255,.16),0 4px 10px rgba(3,20,40,.18) !important;
-}
-html body.dark .tool-card > button[title="افزودن به علاقه‌مندی‌ها"]:hover,
-html body.dark .tool-card > button[title="حذف از علاقه‌مندی‌ها"]:hover {
-  background:linear-gradient(145deg,#568bb6 0%,#3c709b 100%) !important;
-  border-color:#b5dcfa !important;
-}
-
-</style>
-
-<style id="remove-black-page-layer">
-/* لایه مشکی پشت کارت‌ها از قانون قدیمی .page می‌آمد، نه از خود کارت‌ها */
+<style id="site-final-theme">
 html body.dark {
-  background:
-    radial-gradient(ellipse at 12% 8%, rgba(91,170,232,.30), transparent 38%),
-    radial-gradient(ellipse at 88% 78%, rgba(70,137,205,.24), transparent 38%),
-    linear-gradient(135deg,#23496d 0%,#1b3b5d 48%,#285078 100%) !important;
-  background-color:#23496d !important;
-  background-attachment:fixed !important;
-}
-html body.dark main.container {
-  background:linear-gradient(145deg,#294d70 0%,#315b80 50%,#294d70 100%) !important;
-  border-color:#7199bd !important;
-}
-html body.dark main.container > .page,
-html body.dark main.container > .page.active,
-html body.dark main.container #home.page,
-html body.dark main.container #home.page.active {
-  background:transparent !important;
-  background-color:transparent !important;
-  background-image:none !important;
-  color:#edf6ff !important;
-}
-html body.dark main.container #home .tool-toolbar,
-html body.dark main.container #home .category-row,
-html body.dark main.container #home .home-heading {
-  background:transparent !important;
-  background-color:transparent !important;
-}
-</style>
-
-
-<style id="contrast-and-heart-cleanup">
-/* تضاد ملایم بین پس‌زمینه، قاب اصلی و کارت‌ها */
-html body.dark {
-  background: linear-gradient(145deg,#101d30 0%,#14263d 52%,#0d1a2b 100%) !important;
-  background-color:#101d30 !important;
-}
-html body.dark main.container,
-html body.dark .container {
-  background:linear-gradient(145deg,#1b3048 0%,#203a55 55%,#192d44 100%) !important;
-  background-color:#1b3048 !important;
-  border-color:#547493 !important;
-}
-html body.dark main.container .page,
-html body.dark main.container .page.active {
-  background:transparent !important;
-  background-color:transparent !important;
-}
-html body.dark .tool-card {
-  background:linear-gradient(145deg,#345d80 0%,#2d5274 55%,#284967 100%) !important;
-  border:1px solid #668caf !important;
-  box-shadow:inset 0 1px rgba(255,255,255,.13),0 8px 18px rgba(0,8,22,.25) !important;
-}
-html body.dark main.container #home > .seo-learning,
-html body.dark main.container #home > .feedback-panel,
-html body.dark main.container #home > .home-footer,
-html body.dark main.container .feature-panel,
-html body.dark main.container .utility-panel,
-html body.dark main.container .extra-panel {
-  background:linear-gradient(145deg,#243f5b 0%,#294967 100%) !important;
-  background-color:#243f5b !important;
-  border-color:#587b9c !important;
-}
-/* قلب فقط؛ بدون کادر، پس‌زمینه یا سایه */
-html body.dark .tool-card > button[title="افزودن به علاقه‌مندی‌ها"],
-html body.dark .tool-card > button[title="حذف از علاقه‌مندی‌ها"],
-html body.dark .tool-card > button[aria-label="افزودن به علاقه‌مندی‌ها"],
-html body.dark .tool-card > button[aria-label="حذف از علاقه‌مندی‌ها"] {
-  width:auto !important;
-  min-width:0 !important;
-  height:auto !important;
-  min-height:0 !important;
-  padding:2px 8px !important;
-  border:0 !important;
-  border-radius:0 !important;
-  outline:0 !important;
-  background:transparent !important;
-  background-color:transparent !important;
-  box-shadow:none !important;
-  color:#ff91b7 !important;
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  line-height:1 !important;
-}
-html body.dark .tool-card > button[title="افزودن به علاقه‌مندی‌ها"]:hover,
-html body.dark .tool-card > button[title="حذف از علاقه‌مندی‌ها"]:hover,
-html body.dark .tool-card > button[aria-label="افزودن به علاقه‌مندی‌ها"]:hover,
-html body.dark .tool-card > button[aria-label="حذف از علاقه‌مندی‌ها"]:hover {
-  border:0 !important;
-  background:transparent !important;
-  background-color:transparent !important;
-  box-shadow:none !important;
-  color:#ffc0d5 !important;
-  transform:scale(1.12);
-}
-</style>
-
-
-<style id="strong-contrast-and-bare-heart">
-/* پالت تیره با رنگ‌های متنوع و اختلاف روشنایی واضح */
-html body.dark {
-  background:
-    radial-gradient(ellipse at 12% 5%,rgba(91,65,145,.22),transparent 38%),
-    linear-gradient(145deg,#10131f 0%,#171d2b 55%,#101722 100%) !important;
+  background:radial-gradient(ellipse at 12% 5%,rgba(91,65,145,.22),transparent 38%),linear-gradient(145deg,#10131f 0%,#171d2b 55%,#101722 100%) !important;
   background-color:#10131f !important;
 }
 html body.dark main.container,
 html body.dark .container {
   background:linear-gradient(145deg,#222b3b 0%,#293548 55%,#202a39 100%) !important;
   background-color:#222b3b !important;
-  border-color:#58677c !important;
+  border:1px solid #58677c !important;
+  box-shadow:0 18px 48px rgba(0,9,24,.28),inset 0 1px rgba(220,240,255,.08) !important;
 }
 html body.dark main.container .page,
 html body.dark main.container .page.active {
   background:transparent !important;
   background-color:transparent !important;
 }
-/* کارت‌ها رنگ‌های جداگانه داشته باشند */
-html body.dark main.container #home .tool-card.card-purple {
-  background:linear-gradient(145deg,#493b70 0%,#392e5d 100%) !important;
-  border-color:#806cae !important;
-}
-html body.dark main.container #home .tool-card.card-blue {
-  background:linear-gradient(145deg,#285b78 0%,#20465f 100%) !important;
-  border-color:#5790ad !important;
-}
-html body.dark main.container #home .tool-card.card-green {
-  background:linear-gradient(145deg,#285e55 0%,#20483f 100%) !important;
-  border-color:#579486 !important;
-}
-html body.dark main.container #home .tool-card.card-orange {
-  background:linear-gradient(145deg,#76502e 0%,#5d3d26 100%) !important;
-  border-color:#b18455 !important;
-}
-html body.dark main.container #home .tool-card {
-  box-shadow:inset 0 1px rgba(255,255,255,.16),0 10px 22px rgba(0,0,0,.32) !important;
-}
-html body.dark main.container #home > .seo-learning,
-html body.dark main.container #home > .feedback-panel,
-html body.dark main.container #home > .home-footer,
-html body.dark main.container .feature-panel,
-html body.dark main.container .utility-panel,
-html body.dark main.container .extra-panel {
-  background:linear-gradient(145deg,#303c4e 0%,#293547 100%) !important;
-  background-color:#303c4e !important;
-  border-color:#65768b !important;
-}
-/* قانون قبلیِ پُراختصاصی روی دکمه قلب را خنثی می‌کند */
-html body.dark main.container #home .tool-card > button:first-child:not(.tool-open),
-html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):hover,
-html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):focus,
-html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):focus-visible {
-  position:absolute !important;
-  top:9px !important;
-  left:9px !important;
-  width:auto !important;
-  min-width:0 !important;
-  height:auto !important;
-  min-height:0 !important;
-  padding:0 !important;
-  border:0 !important;
-  border-width:0 !important;
-  border-style:none !important;
-  border-radius:0 !important;
-  outline:0 !important;
-  background:none !important;
-  background-color:transparent !important;
-  box-shadow:none !important;
-  color:#ff9fca !important;
-  font-size:23px !important;
-  line-height:1 !important;
-  appearance:none !important;
-  -webkit-appearance:none !important;
-}
-html body.dark main.container #home .tool-card > button:first-child:not(.tool-open)::before,
-html body.dark main.container #home .tool-card > button:first-child:not(.tool-open)::after {
-  content:none !important;
-  display:none !important;
-  border:0 !important;
-  background:none !important;
-  box-shadow:none !important;
-}
-</style>
 
-
-<style id="restore-uniform-blue-cards-and-panel-borders">
-/* کارت‌های اصلی: آبی یکدست با عمق و سایه */
-/* Reapplied card depth styles in a fresh commit */
+/* کارت‌های ابزار: آبی یکدست با عمق */
 html body.dark main.container #home .tool-card,
 html body.dark main.container #home .tool-card.card-purple,
 html body.dark main.container #home .tool-card.card-blue,
@@ -4720,22 +4137,57 @@ html body.dark main.container #home .tool-card:hover {
   border-color:#91b8da !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.24),0 5px 10px rgba(0,8,22,.22),0 17px 30px rgba(0,8,22,.36) !important;
 }
-/* قلب‌ها آبی روشن، بدون قاب و پس‌زمینه */
+html body.dark .tool-card::before,
+html body.dark .tool-card::after { content:none !important; display:none !important; }
+html body.dark main.container #home .tool-card .tool-icon {
+  background:linear-gradient(145deg,#4779a5 0%,#35658e 55%,#2c557d 100%) !important;
+  color:#f2f8ff !important;
+  border:1px solid #79a5ca !important;
+  border-radius:14px !important;
+  box-shadow:0 5px 13px rgba(5,20,38,.22),inset 0 1px rgba(255,255,255,.2) !important;
+}
+html body.dark main.container #home .tool-card .tool-title {
+  color:#f4f8ff !important;
+  text-shadow:0 1px 8px rgba(0,0,0,.18) !important;
+}
+html body.dark main.container #home .tool-card .tool-open {
+  background:linear-gradient(100deg,#438bc5,#3475b5) !important;
+  border:1px solid #82b9e5 !important;
+  color:#fff !important;
+  box-shadow:0 5px 12px rgba(4,25,50,.24),inset 0 1px rgba(255,255,255,.22) !important;
+}
+
+/* قلب علاقه‌مندی بدون قاب */
 html body.dark main.container #home .tool-card > button:first-child:not(.tool-open),
 html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):hover,
 html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):focus,
 html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):focus-visible {
-  color:#a9dcff !important;
-  text-shadow:0 1px 5px rgba(105,190,255,.28) !important;
-  background:transparent !important;
+  position:absolute !important;
+  top:9px !important;
+  left:9px !important;
+  width:auto !important;
+  min-width:0 !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:0 !important;
   border:0 !important;
+  border-radius:0 !important;
+  outline:0 !important;
+  background:transparent !important;
   box-shadow:none !important;
+  color:#a9dcff !important;
+  font-size:23px !important;
+  line-height:1 !important;
+  text-shadow:0 1px 5px rgba(105,190,255,.28) !important;
+  appearance:none !important;
+  -webkit-appearance:none !important;
 }
 html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):hover {
   color:#d2edff !important;
   transform:scale(1.13) !important;
 }
-/* پنل تنظیمات، تاریخچه و پنل‌های هم‌خانواده دقیقاً با رنگ سایر پنل‌های سایت */
+
+/* پنل‌های داخلی */
 html body.dark main.container #home .feature-panel,
 html body.dark main.container #home #historyPanel,
 html body.dark main.container #home #prefsPanel,
@@ -4748,17 +4200,51 @@ html body.dark main.container #home .home-footer {
   background-color:#303c4e !important;
   border:1px solid #65768b !important;
   border-radius:22px !important;
+  color:#edf6ff !important;
   box-shadow:inset 0 1px rgba(255,255,255,.08),0 9px 20px rgba(0,8,22,.22) !important;
 }
-/* عنوان و متن پنل‌ها خوانا بمانند */
 html body.dark main.container #home .feature-panel h3,
 html body.dark main.container #home #historyPanel h3,
-html body.dark main.container #home #prefsPanel h3 {
-  color:#c8d9eb !important;
+html body.dark main.container #home #prefsPanel h3 { color:#c8d9eb !important; }
+
+/* اجزای راهنمای سایت */
+html body.dark main.container #home .seo-learning .guide-item,
+html body.dark main.container #home .seo-learning article {
+  background:linear-gradient(135deg,#2b5073,#27496a) !important;
+  border:1px solid #5b82a6 !important;
+  border-radius:14px !important;
 }
-@media (prefers-reduced-motion: reduce) {
-  html body.dark main.container #home .tool-card { transition:none !important; }
-  html body.dark main.container #home .tool-card:hover { transform:none !important; }
+html body.dark main.container #home .seo-learning .guide-toggle {
+  background:linear-gradient(100deg,#355f85,#31577c) !important;
+  border:1px solid #6a91b5 !important;
+  color:#f1f7ff !important;
+}
+html body.dark main.container #home .seo-learning .guide-item > p:not([hidden]) {
+  background:#1d3958 !important;
+  border:1px solid #385d82 !important;
+  border-radius:11px !important;
+  color:#dcecff !important;
+  padding:13px !important;
+  line-height:2 !important;
+}
+
+/* دکمه بازگشت: hover آبی، نه بنفش */
+html body.dark .back-button:hover {
+  background:#315f8c !important;
+  border-color:#91b8da !important;
+  color:#eef6ff !important;
+}
+html body:not(.dark) .back-button:hover {
+  background:#dbeafe !important;
+  border-color:#93c5fd !important;
+  color:#1d4ed8 !important;
+}
+@media (max-width:600px) {
+  html body.dark main.container #home .tool-card { min-height:148px !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html body.dark main.container #home .tool-card,
+  html body.dark main.container #home .tool-card:hover { transition:none !important; transform:none !important; }
 }
 </style>
 
