@@ -4258,7 +4258,7 @@ html body:not(.dark) .back-button:hover {
   html body.dark main.container #home .tool-card:hover { transition:none !important; transform:none !important; }
 }
 
-/* اندازه و چیدمان مشترک صفحه اصلی در هر دو تم */
+/* اندازه و چیدمان یکسان صفحه اصلی در هر دو تم */
 html body.dark main.container,
 html body:not(.dark) main.container {
   padding:clamp(14px,2.2vw,26px) !important;
@@ -4279,17 +4279,24 @@ html body:not(.dark) main.container #home .home-heading h2 {
 }
 html body.dark main.container #home .tool-grid,
 html body:not(.dark) main.container #home .tool-grid {
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
   gap:15px !important;
 }
 html body.dark main.container #home .tool-card,
 html body:not(.dark) main.container #home .tool-card {
+  box-sizing:border-box !important;
+  width:100% !important;
+  height:166px !important;
   min-height:166px !important;
+  max-height:166px !important;
   padding:16px !important;
   gap:10px !important;
   border-radius:21px !important;
 }
 html body.dark main.container #home .tool-card .tool-icon,
 html body:not(.dark) main.container #home .tool-card .tool-icon {
+  flex:0 0 43px !important;
   width:43px !important;
   height:43px !important;
   font-size:21px !important;
@@ -4318,6 +4325,12 @@ html body:not(.dark) .toolbar-button {
   font-size:14px !important;
   padding:10px 14px !important;
 }
+@media (max-width:780px) {
+  html body.dark main.container #home .tool-grid,
+  html body:not(.dark) main.container #home .tool-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
 @media (max-width:600px) {
   html body.dark main.container,
   html body:not(.dark) main.container { padding:12px !important; }
@@ -4325,17 +4338,41 @@ html body:not(.dark) .toolbar-button {
   html body:not(.dark) main.container #home .tool-grid { gap:10px !important; }
   html body.dark main.container #home .tool-card,
   html body:not(.dark) main.container #home .tool-card {
+    height:148px !important;
     min-height:148px !important;
+    max-height:148px !important;
     padding:12px !important;
   }
   html body.dark main.container #home .tool-card .tool-icon,
   html body:not(.dark) main.container #home .tool-card .tool-icon {
+    flex-basis:38px !important;
     width:38px !important;
     height:38px !important;
     font-size:19px !important;
   }
 }
- 
+html body.compact-ui main.container #home .tool-card {
+  height:150px !important;
+  min-height:150px !important;
+  max-height:150px !important;
+}
+@media (max-width:600px) {
+  html body.compact-ui main.container #home .tool-card {
+    height:136px !important;
+    min-height:136px !important;
+    max-height:136px !important;
+  }
+}
+html body.large-text main.container #home .tool-card {
+  height:auto !important;
+  min-height:180px !important;
+  max-height:none !important;
+}
+@media (max-width:600px) {
+  html body.large-text main.container #home .tool-card {
+    min-height:170px !important;
+  }
+}
 /* چک‌باکس‌های تنظیمات: حذف قاب و فاصله‌های ناخواستهٔ استایل عمومی input */
 html body #prefsPanel label {
   display:flex !important;
