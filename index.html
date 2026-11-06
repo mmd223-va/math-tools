@@ -4122,11 +4122,15 @@ html body.dark main.container .page.active {
 }
 
 /* کارت‌های ابزار: آبی یکدست با عمق */
+html body.dark main.container #home .tool-grid { gap:15px !important; }
 html body.dark main.container #home .tool-card,
 html body.dark main.container #home .tool-card.card-purple,
 html body.dark main.container #home .tool-card.card-blue,
 html body.dark main.container #home .tool-card.card-green,
 html body.dark main.container #home .tool-card.card-orange {
+  min-height:166px !important;
+  padding:16px !important;
+  border-radius:21px !important;
   background:linear-gradient(145deg,#3a668d 0%,#315a7e 52%,#284967 100%) !important;
   border:1px solid #7399bb !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.20),0 3px 7px rgba(0,8,22,.20),0 12px 24px rgba(0,8,22,.30) !important;
@@ -4140,6 +4144,9 @@ html body.dark main.container #home .tool-card:hover {
 html body.dark .tool-card::before,
 html body.dark .tool-card::after { content:none !important; display:none !important; }
 html body.dark main.container #home .tool-card .tool-icon {
+  width:43px !important;
+  height:43px !important;
+  font-size:21px !important;
   background:linear-gradient(145deg,#4779a5 0%,#35658e 55%,#2c557d 100%) !important;
   color:#f2f8ff !important;
   border:1px solid #79a5ca !important;
@@ -4148,12 +4155,17 @@ html body.dark main.container #home .tool-card .tool-icon {
 }
 html body.dark main.container #home .tool-card .tool-title {
   color:#f4f8ff !important;
+  font-size:14px !important;
+  font-weight:850 !important;
+  letter-spacing:-.15px !important;
   text-shadow:0 1px 8px rgba(0,0,0,.18) !important;
 }
 html body.dark main.container #home .tool-card .tool-open {
   background:linear-gradient(100deg,#438bc5,#3475b5) !important;
   border:1px solid #82b9e5 !important;
+  border-radius:10px !important;
   color:#fff !important;
+  z-index:1 !important;
   box-shadow:0 5px 12px rgba(4,25,50,.24),inset 0 1px rgba(255,255,255,.22) !important;
 }
 
@@ -4164,6 +4176,7 @@ html body.dark main.container #home .tool-card > button:first-child:not(.tool-op
 html body.dark main.container #home .tool-card > button:first-child:not(.tool-open):focus-visible {
   position:absolute !important;
   top:9px !important;
+  z-index:3 !important;
   left:9px !important;
   width:auto !important;
   min-width:0 !important;
@@ -4210,6 +4223,9 @@ html body.dark main.container #home #prefsPanel h3 { color:#c8d9eb !important; }
 /* اجزای راهنمای سایت */
 html body.dark main.container #home .seo-learning .guide-item,
 html body.dark main.container #home .seo-learning article {
+  padding:11px !important;
+  margin:11px 0 !important;
+  box-shadow:0 5px 14px rgba(4,18,36,.16) !important;
   background:linear-gradient(135deg,#2b5073,#27496a) !important;
   border:1px solid #5b82a6 !important;
   border-radius:14px !important;
@@ -4217,7 +4233,10 @@ html body.dark main.container #home .seo-learning article {
 html body.dark main.container #home .seo-learning .guide-toggle {
   background:linear-gradient(100deg,#355f85,#31577c) !important;
   border:1px solid #6a91b5 !important;
+  border-radius:11px !important;
+  min-height:44px !important;
   color:#f1f7ff !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.08) !important;
 }
 html body.dark main.container #home .seo-learning .guide-item > p:not([hidden]) {
   background:#1d3958 !important;
