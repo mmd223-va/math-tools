@@ -4522,7 +4522,20 @@ html[dir="ltr"] #themeButton{right:auto;left:18px}
     "تقسیم بر کسر صفر امکان‌پذیر نیست.":"Division by a zero fraction is not possible.",
     "اعداد خیلی بزرگ هستند؛ لطفاً اعداد کوچک‌تری وارد کن.":"The numbers are too large. Please enter smaller numbers.",
     "جواب نهایی":"Final answer",
-    "چطور کار می‌کند؟":"How does it work?","این ابزار چگونه کار می‌کند؟":"How does this tool work?",
+    "چطور کار می‌کند؟":"How does it work?",
+    "ابزاری پیدا نشد؛ عبارت دیگری امتحان کن.":"No tools found; try another search.",
+    "♥ نمایش همه ابزارها":"♥ Show all tools","افزودن به علاقه‌مندی‌ها":"Add to favorites",
+    "🕘 تاریخچه محاسبات":"🕘 Calculation history","⚙️ تنظیمات ظاهری":"⚙️ Appearance settings",
+    "محاسبه میانگین":"Calculate average","حل معادله درجه اول":"Linear equation solver",
+    "چطور درصد یک عدد را حساب کنیم؟":"How do you calculate a percentage of a number?",
+    "میانگین چند عدد چگونه به دست می‌آید؟":"How do you calculate the average of several numbers?",
+    "چطور معادله ax + b = c را حل کنیم؟":"How do you solve the equation ax + b = c?",
+    "درصد موردنظر را بر ۱۰۰ تقسیم کن و در عدد اصلی ضرب کن.":"Divide the percentage by 100 and multiply it by the original number.",
+    "همه عددها را جمع کن و حاصل را بر تعداد عددها تقسیم کن.":"Add all the numbers and divide the sum by how many numbers there are.",
+    "ابتدا b را از دو طرف کم کن، سپس دو طرف را بر a تقسیم کن؛ a نباید صفر باشد.":"First subtract b from both sides, then divide both sides by a. a must not be zero.",
+    "هر دو مقدار را وارد کن.":"Please enter both values.","چند عدد معتبر وارد کن و آن‌ها را با ویرگول جدا کن.":"Enter valid numbers separated by commas.",
+    "هر سه مقدار را وارد کن.":"Please enter all three values.","ضریب x نباید صفر باشد.":"The coefficient of x must not be zero.",
+    "جواب: ":"Answer: ","مراحل حل: ":"Solution steps: ","مجموع عددها: ":"Sum: ","؛ تعداد: ":"; Count: ","؛ میانگین = ":"; Average = ""این ابزار چگونه کار می‌کند؟":"How does this tool work?",
     "تاریخچه محاسبات":"Calculation history","پاک کردن تاریخچه":"Clear history",
     "هنوز محاسبه‌ای در تاریخچه ثبت نشده است.":"No calculations have been saved in the history yet.",
     "نتیجه:":"Result:","ثبت شد":"Saved",
@@ -4584,6 +4597,8 @@ html[dir="ltr"] #themeButton{right:auto;left:18px}
     }
   });
   observer.observe(document.querySelector("main"),{subtree:true,childList:true,characterData:true});
+  const themeButton=document.getElementById("themeButton");
+  if(themeButton)observer.observe(themeButton,{subtree:true,childList:true,characterData:true});
 })();
 </script>
 
