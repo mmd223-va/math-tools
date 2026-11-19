@@ -1,0 +1,21 @@
+/* Additions for the multi-page version */
+.sr-only{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.tool-title a{color:inherit;text-decoration:none}
+.tool-title a:hover,.tool-title a:focus-visible{text-decoration:underline}
+
+.tool-seo{max-width:980px;margin:18px auto 40px;padding:clamp(16px,2.4vw,26px);border-radius:22px;
+  border:1px solid rgba(100,120,160,.25);background:rgba(255,255,255,.78);color:#1f2a44;line-height:1.95;text-align:right}
+.tool-seo h2{margin:0 0 8px;font-size:1.25rem}
+.tool-seo h3{margin:20px 0 6px;font-size:1.05rem}
+.tool-seo p{margin:0 0 10px}
+.tool-seo ol{margin:0 0 6px;padding-inline-start:22px}
+.tool-seo details{border:1px solid rgba(100,120,160,.25);border-radius:12px;padding:8px 14px;margin:8px 0}
+.tool-seo summary{cursor:pointer;font-weight:700}
+.tool-seo details p{margin:8px 0 2px}
+.tool-related ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tool-related a{display:inline-block;padding:6px 14px;border-radius:999px;border:1px solid rgba(100,120,160,.35);color:inherit;text-decoration:none}
+.tool-related a:hover,.tool-related a:focus-visible{background:rgba(100,140,230,.15)}
+
+body.dark .tool-seo{background:#18243a;border-color:#2b3956;color:#e6edf8}
+body.dark .tool-seo details,body.dark .tool-related a{border-color:#35476b}
+body.dark .tool-related a:hover,body.dark .tool-related a:focus-visible{background:rgba(120,160,255,.18)}

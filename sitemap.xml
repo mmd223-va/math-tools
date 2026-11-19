@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://math-tools.ir/</loc>
-    </url>
+  <url><loc>https://math-tools.ir/</loc></url>
+  <url><loc>https://math-tools.ir/gcd-lcm/</loc></url>
+  <url><loc>https://math-tools.ir/prime-factorization/</loc></url>
+  <url><loc>https://math-tools.ir/prime-checker/</loc></url>
+  <url><loc>https://math-tools.ir/sieve-of-eratosthenes/</loc></url>
+  <url><loc>https://math-tools.ir/fractions/</loc></url>
+  <url><loc>https://math-tools.ir/percentage/</loc></url>
+  <url><loc>https://math-tools.ir/average/</loc></url>
+  <url><loc>https://math-tools.ir/calculator/</loc></url>
+  <url><loc>https://math-tools.ir/sequence-calculator/</loc></url>
 </urlset>

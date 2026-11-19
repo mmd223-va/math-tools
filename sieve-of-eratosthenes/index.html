@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="با غربال اراتستن همهٔ اعداد اول تا یک حد مشخص را آنلاین و رایگان پیدا کن و فرایند خط زدن مضرب‌ها را ببین.">
+<meta name="theme-color" content="#2457c5">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://math-tools.ir/sieve-of-eratosthenes/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:site_name" content="ابزارهای ریاضی آنلاین">
+<meta property="og:title" content="غربال اراتستن آنلاین؛ پیدا کردن اعداد اول | ابزارهای ریاضی">
+<meta property="og:description" content="با غربال اراتستن همهٔ اعداد اول تا یک حد مشخص را آنلاین و رایگان پیدا کن و فرایند خط زدن مضرب‌ها را ببین.">
+<meta property="og:url" content="https://math-tools.ir/sieve-of-eratosthenes/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="غربال اراتستن آنلاین؛ پیدا کردن اعداد اول | ابزارهای ریاضی">
+<meta name="twitter:description" content="با غربال اراتستن همهٔ اعداد اول تا یک حد مشخص را آنلاین و رایگان پیدا کن و فرایند خط زدن مضرب‌ها را ببین.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "غربال اراتستن آنلاین",
+  "url": "https://math-tools.ir/sieve-of-eratosthenes/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any",
+  "inLanguage": "fa",
+  "description": "با غربال اراتستن همهٔ اعداد اول تا یک حد مشخص را آنلاین و رایگان پیدا کن و فرایند خط زدن مضرب‌ها را ببین.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ابزارهای ریاضی آنلاین",
+      "item": "https://math-tools.ir/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "غربال اراتستن",
+      "item": "https://math-tools.ir/sieve-of-eratosthenes/"
+    }
+  ]
+}
+</script>
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+<title>غربال اراتستن آنلاین؛ پیدا کردن اعداد اول | ابزارهای ریاضی</title>
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/pages.css">
+</head>
+<body data-tool="sieve">
+<button id="themeButton" type="button" aria-label="تغییر حالت ظاهری">🌙 حالت تیره</button>
+
+
+<h1 class="sr-only">غربال اراتستن آنلاین</h1>
+<main class="container">
+
+
+<section id="home" class="page">
+
+  <header class="hero">
+    <div class="hero-label">✦ همراه هوشمند ریاضی تو</div>
+    <h1>ابزارهای ریاضی آنلاین؛ محاسبه آسان و رایگان</h1>
+    <p>
+      با ۹ ابزار رایگان ریاضی، محاسباتی مثل کسر و درصد، میانگین، ب.م.م و ک.م.م و پیدا کردن اعداد اول را آنلاین انجام بده؛ بدون نیاز به نصب برنامه.
+    </p>
+    <button class="hero-button" onclick="showPage('factorization')">
+      شروع با تجزیه اعداد
+      <span>←</span>
+    </button>
+    <div class="hero-decoration" aria-hidden="true">∑</div>
+  </header>
+
+  <div class="home-heading">
+    <div>
+      <h2>جعبه‌ابزار ریاضی</h2>
+      <p>ابزار موردنیازت را انتخاب کن.</p>
+    </div>
+    <span class="tool-count">9 ابزار</span>
+  </div>
+
+  <div class="tool-toolbar"><label class="search-wrap"><span>⌕</span><input id="toolSearch" type="search" placeholder="جست‌وجوی ابزار" aria-label="جست‌وجوی ابزار"></label><button id="favoritesToggle" class="toolbar-button" type="button" aria-pressed="false">♡ علاقه‌مندی‌ها</button></div><nav class="category-row"><button class="category-chip active" data-category="all" type="button">همه</button><button class="category-chip" data-category="basic" type="button">محاسبات پایه</button><button class="category-chip" data-category="number" type="button">نظریه اعداد</button></nav><div class="tool-grid">
+ <article class="tool-card card-purple" data-page="sequence-calculator"><span class="tool-icon">∑</span><span class="tool-title">ماشین‌حساب دنباله‌ای</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-purple" data-page="factorization"><span class="tool-icon">⑂</span><span class="tool-title">تجزیه عدد به عوامل اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-purple" data-page="calculator"><span class="tool-icon">＋</span><span class="tool-title">ماشین‌حساب</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-blue" data-page="fractions"><span class="tool-icon">½</span><span class="tool-title">محاسبه کسرها</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-green" data-page="gcd"><span class="tool-icon">÷</span><span class="tool-title">ب.م.م و ک.م.م</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-orange" data-page="prime"><span class="tool-icon">✓</span><span class="tool-title">تشخیص عدد اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-blue" data-page="sieve"><span class="tool-icon">#</span><span class="tool-title">غربال اراتستن</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-green" data-page="extra-percent"><span class="tool-icon">％</span><span class="tool-title">محاسبه درصد</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-orange" data-page="extra-average"><span class="tool-icon">x̄</span><span class="tool-title">میانگین</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+
+</div>
+
+  <section class="seo-learning" aria-labelledby="learning-heading">
+    <h2 id="learning-heading">راهنمای کوتاه ابزارهای ریاضی</h2>
+    <p>در این مجموعه می‌توانی محاسبات رایج ریاضی را آنلاین انجام بدهی و برای تمرین‌های درسی از ابزارهای رایگان استفاده کنی.</p>
+
+    <article class="guide-item">
+      <button class="guide-toggle" type="button" aria-expanded="false">ب.م.م و ک.م.م چیست؟</button>
+      <p hidden><strong>بزرگ‌ترین مقسوم‌علیه مشترک (ب.م.م)</strong> بزرگ‌ترین عددی است که دو عدد را بدون باقی‌مانده تقسیم می‌کند. <strong>کوچک‌ترین مضرب مشترک (ک.م.م)</strong> کوچک‌ترین مضرب مثبت مشترک دو عدد است. با ابزار ب.م.م و ک.م.م می‌توانی هر دو را محاسبه کنی.</p>
+    </article>
+
+    <article class="guide-item">
+      <button class="guide-toggle" type="button" aria-expanded="false">تجزیه عدد به عوامل اول</button>
+      <p hidden>در تجزیه به عوامل اول، یک عدد مرکب را به حاصل‌ضرب عددهای اول می‌نویسیم. برای نمونه، ۱۲ برابر با ۲ × ۲ × ۳ است. ابزار تجزیه، عوامل اول و درخت تجزیه عدد را نمایش می‌دهد.</p>
+    </article>
+
+    <article class="guide-item">
+      <button class="guide-toggle" type="button" aria-expanded="false">چطور بفهمیم یک عدد اول است؟</button>
+      <p hidden>عدد اول عدد صحیح بزرگ‌تر از ۱ است که فقط دو مقسوم‌علیه مثبت دارد: ۱ و خودش. از ابزار تشخیص عدد اول استفاده کن تا اول یا مرکب بودن عدد را بررسی کنی.</p>
+    </article>
+
+    <article class="guide-item">
+      <button class="guide-toggle" type="button" aria-expanded="false">غربال اراتستن چیست؟</button>
+      <p hidden>غربال اراتستن روشی برای پیدا کردن اعداد اول تا یک حد مشخص است. در این روش، مضرب‌های عددهای اول را خط می‌زنیم و عددهایی که باقی می‌مانند، اول هستند. ابزار غربال اراتستن این فرایند را به‌صورت دیداری نشان می‌دهد.</p>
+    </article>
+
+    <article class="guide-item">
+      <button class="guide-toggle" type="button" aria-expanded="false">محاسبه کسرها و چهار عمل اصلی</button>
+      <p hidden>با ماشین‌حساب می‌توانی جمع، تفریق، ضرب و تقسیم را انجام بدهی و با ابزار محاسبه کسرها، حاصل عملیات روی دو کسر را به دست بیاوری.</p>
+    </article>
+  </section>
+
+
+    <section class="feedback-panel" aria-labelledby="feedbackTitle">
+      <h3 id="feedbackTitle">💬 پیشنهادی داری؟ یا مشکلی پیدا کردی؟</h3>
+      <p>نظرت کمک می‌کند ابزارهای ریاضی را بهتر کنیم. برای ثبت پیشنهاد یا گزارش مشکل، یکی از گزینه‌ها را انتخاب کن.</p>
+      <div class="feedback-actions">
+        <a class="feedback-suggest" href="https://github.com/mmd223-va/math-tools/issues/new?title=%D9%BE%DB%8C%D8%B4%D9%86%D9%87%D8%A7%D8%AF%20%D8%A8%D8%B1%D8%A7%DB%8C%20%D8%B3%D8%A7%DB%8C%D8%AA" target="_blank" rel="noopener noreferrer">💡 ثبت پیشنهاد</a>
+        <a class="feedback-report" href="https://github.com/mmd223-va/math-tools/issues/new?title=%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4%20%D9%85%D8%B4%DA%A9%D9%84" target="_blank" rel="noopener noreferrer">🐞 گزارش مشکل</a>
+      </div>
+    </section>
+
+    <footer class="home-footer">
+    <span>ساخته‌شده برای یادگیری بهتر ریاضی</span>
+    <span>✦ یاد بگیر، محاسبه کن، پیشرفت کن</span>
+    <span class="github-link-wrap">
+      <a class="github-link" href="https://github.com/mmd223-va/math-tools" target="_blank" rel="noopener noreferrer" aria-label="مشاهده مخزن سایت در GitHub">
+        <svg class="github-mark" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path fill="currentColor" d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.08c-3.1.67-3.76-1.32-3.76-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 .1.75 2.4 3.14 1.7.1-.72.39-1.21.7-1.49-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.04-1.14 3.04-1.14.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.29-2.61 5.24-5.1 5.51.4.35.75 1.03.75 2.08V22c0 .29.2.63.77.52A11.1 11.1 0 0 0 12 .9Z"/>
+        </svg>
+        <span>my github</span>
+      </a>
+    </span>
+      <span class="creator-credit">
+      طراحی و توسعه توسط <strong>mmd223</strong> ❤️
+    </span>
+  </footer>
+
+</section>
+
+
+
+<section id="sequence-calculator" class="page">
+  <button class="back-button" type="button" onclick="showPage('home')">← بازگشت</button>
+  <h2>ماشین‌حساب دنباله‌ای</h2>
+  <p>عدد شروع، عدد پایان و فاصله را وارد کن؛ سپس عملیات موردنظرت را روی دنباله انجام بده.</p>
+  <label for="seqStart">عدد شروع</label>
+  <input id="seqStart" type="number" step="1" placeholder="مثلاً 4">
+  <label for="seqEnd">عدد پایان</label>
+  <input id="seqEnd" type="number" step="1" placeholder="مثلاً 10">
+  <label for="seqStep">فاصله بین عددها</label>
+  <input id="seqStep" type="number" step="1" min="1" placeholder="مثلاً 2">
+  <label for="seqOperation">نوع عملیات</label>
+  <select id="seqOperation">
+    <option value="add">جمع همه عددها</option>
+    <option value="subtract">تفریق پشت‌سرهم</option>
+    <option value="multiply">ضرب همه عددها</option>
+    <option value="divide">تقسیم پشت‌سرهم</option>
+    <option value="alternate-add">یکی‌درمیان، با جمع شروع شود</option>
+    <option value="alternate-subtract">یکی‌درمیان، با تفریق شروع شود</option>
+  </select>
+  <button class="action-button" type="button" onclick="calculateSequence()">محاسبه</button>
+  <div id="sequenceResult" class="result" hidden aria-live="polite"></div>
+</section>
+
+<section id="factorization" class="page">
+  <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
+  <h2>تجزیه عدد به عوامل اول</h2>
+  <p>یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.</p>
+  <input type="number" id="factorNumber" min="2" step="1" placeholder="مثلاً 60">
+  <button class="action-button" onclick="factorizeNumber()">تجزیه عدد</button>
+  <div id="factorResult" hidden></div>
+</section>
+
+<section id="fractions" class="page">
+  <button class="back-button" onclick="showPage('home')">
+    ← بازگشت به صفحه اصلی
+  </button>
+
+  <h2>محاسبه کسرها</h2>
+  <p>دو کسر وارد کن و عمل ریاضی موردنظرت رو انتخاب کن.</p>
+
+  <div class="input-group">
+    <label>کسر اول</label>
+    <div class="fraction-input">
+      <input id="fraction-num1" type="number" placeholder="صورت" />
+      <span>―</span>
+      <input id="fraction-den1" type="number" placeholder="مخرج" />
+    </div>
+  </div>
+
+  <div class="input-group">
+    <label>کسر دوم</label>
+    <div class="fraction-input">
+      <input id="fraction-num2" type="number" placeholder="صورت" />
+      <span>―</span>
+      <input id="fraction-den2" type="number" placeholder="مخرج" />
+    </div>
+  </div>
+
+  <div class="input-group">
+    <label for="fraction-operation">عملیات</label>
+    <select id="fraction-operation">
+      <option value="add">جمع (+)</option>
+      <option value="subtract">تفریق (−)</option>
+      <option value="multiply">ضرب (×)</option>
+      <option value="divide">تقسیم (÷)</option>
+    </select>
+  </div>
+
+  <button class="action-button" onclick="calculateFractions()">
+    محاسبه
+  </button>
+
+<div id="fraction-result" class="result" aria-live="polite" hidden></div>
+</section>
+
+<section id="sieve" class="page active">
+  <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
+  <h2>غربال اراتستن</h2>
+  <p>یک عدد صحیح بین ۲ تا ۱۰۰۰۰ وارد کن تا اعداد اول را پیدا کنیم.</p>
+  <input type="number" id="sieveLimit" min="2" max="10000" step="1" placeholder="مثلاً 30">
+  <button class="action-button" onclick="runSieve()">پیدا کردن اعداد اول</button>
+  <div id="sieveResult" class="result" hidden></div>
+  <div id="sieveGrid" class="prime-grid"></div>
+</section>
+
+<section id="gcd" class="page">
+  <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
+  <h2>محاسبه ب.م.م و ک.م.م</h2>
+  <p>دو عدد صحیح نامنفی وارد کن؛ حداقل یکی باید بزرگ‌تر از صفر باشد.</p>
+  <input type="number" id="num1" min="0" step="1" placeholder="عدد اول">
+  <input type="number" id="num2" min="0" step="1" placeholder="عدد دوم">
+  <button class="action-button" onclick="calculateGcdLcm()">محاسبه</button>
+  <div id="gcdResult" class="result" hidden></div>
+</section>
+
+<section id="prime" class="page">
+  <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
+  <h2>تشخیص عدد اول</h2>
+  <p>یک عدد صحیح بزرگ‌تر یا مساوی ۲ وارد کن.</p>
+  <input type="number" id="primeNumber" min="2" step="1" placeholder="مثلاً 17">
+  <button class="action-button" onclick="checkPrime()">بررسی عدد</button>
+  <div id="primeResult" class="result" hidden></div>
+</section>
+
+<section id="calculator" class="page">
+  <button class="back-button" onclick="showPage('home')">← بازگشت به صفحه اصلی</button>
+  <h2>ماشین‌حساب</h2>
+  <p>عبارت دلخواهت را با چند عدد، پرانتز و عملگرهای ریاضی وارد کن.</p>
+  <div class="calculator-shell">
+    <label for="calculatorDisplay">عبارت ریاضی</label>
+    <input id="calculatorDisplay" class="calculator-display" type="text" inputmode="decimal" autocomplete="off" placeholder="مثلاً (12 + 3) ÷ 2" aria-label="عبارت ریاضی" onkeydown="if(event.key==='Escape'){event.preventDefault();clearCalculator();} else if(event.key==='Enter'){event.preventDefault();calculateBasic();}" oninput="sanitizeCalculatorInput(this)">
+    <div class="calculator-keypad">
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('(')">(</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert(')')">)</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('%')">%</button>
+      <button type="button" class="calc-key calc-danger" onclick="calculatorBackspace()">⌫</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('7')">7</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('8')">8</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('9')">9</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('÷')">÷</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('4')">4</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('5')">5</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('6')">6</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('×')">×</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('1')">1</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('2')">2</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('3')">3</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('-')">−</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('sqrt(')">√</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('0')">0</button>
+      <button type="button" class="calc-key" onclick="calculatorInsert('.')">.</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('+')">+</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('²')">x²</button>
+      <button type="button" class="calc-key calc-function" onclick="calculatorInsert('^')">xʸ</button>
+      <button type="button" class="calc-key calc-danger" onclick="clearCalculator()">AC</button>
+      <button type="button" class="calc-key calc-equals" onclick="calculateBasic()">=</button>
+    </div>
+    <div id="calculatorResult" class="result" aria-live="polite" hidden></div>
+    <p class="calculator-help">چهار عمل اصلی، پرانتز، درصد، توان و جذر. با Enter محاسبه کن.</p>
+  </div>
+</section>
+
+</main>
+<section class="tool-seo" aria-labelledby="seo-about">
+  <h2 id="seo-about">درباره‌ی غربال اراتستن</h2>
+  <p>غربال اراتستن روشی قدیمی و ساده برای پیدا کردن همهٔ اعداد اول تا یک حد مشخص است. در این روش مضرب‌های هر عدد اول را خط می‌زنیم و عددهایی که باقی می‌مانند، اول هستند.</p><p>این ابزار عددهای بین ۲ تا ۱۰۰۰۰ را پشتیبانی می‌کند و اعداد اول را روی جدول نشان می‌دهد.</p>
+  <h3>روش محاسبه</h3>
+  <ol><li>عددهای ۲ تا حد مورد نظر را بنویس.</li><li>کوچک‌ترین عدد خط‌نخورده را بردار و همهٔ مضرب‌های آن را خط بزن.</li><li>این کار را تا جذر حد مورد نظر ادامه بده؛ عددهای باقی‌مانده اول هستند.</li></ol>
+  <h3>مثال</h3>
+  <p>برای حد ۳۰ کافی است مضرب‌های ۲، ۳ و ۵ را خط بزنیم (چون جذر ۳۰ حدود ۵٫۵ است). عددهای باقی‌مانده ۲، ۳، ۵، ۷، ۱۱، ۱۳، ۱۷، ۱۹، ۲۳ و ۲۹ هستند؛ یعنی ۱۰ عدد اول.</p>
+  <h3>سؤال‌های متداول</h3>
+  <details><summary>چرا فقط تا جذر عدد مضرب‌ها را خط می‌زنیم؟</summary><p>هر عدد مرکب کوچک‌تر یا مساوی حد، یک مقسوم‌علیه اول کوچک‌تر یا مساوی جذر حد دارد، پس تا همان‌جا کافی است.</p></details><details><summary>تا ۱۰۰ چند عدد اول وجود دارد؟</summary><p>۲۵ عدد اول.</p></details>
+  <nav class="tool-related" aria-label="ابزارهای مرتبط"><h3>ابزارهای مرتبط</h3><ul><li><a href="/prime-checker/">تشخیص عدد اول</a></li><li><a href="/prime-factorization/">تجزیه عدد به عوامل اول</a></li><li><a href="/gcd-lcm/">ب.م.م و ک.م.م</a></li><li><a href="/">همهٔ ابزارها</a></li></ul></nav>
+</section>
+<button id="languageToggle" type="button" aria-label="Switch language">English</button>
+<script src="/assets/app-main.js"></script>
+<script src="/assets/app-extras.js"></script>
+<script src="/assets/app-lang.js" id="language-switch-script"></script>
+<script src="/assets/routes.js"></script>
+</body>
+</html>
