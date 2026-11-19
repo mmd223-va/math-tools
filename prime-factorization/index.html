@@ -55,8 +55,11 @@
 </script>
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
 <title>تجزیه عدد به عوامل اول آنلاین | ابزارهای ریاضی</title>
+<link rel="preload" href="/assets/fonts/Vazirmatn-subset.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/style.css">
 <link rel="stylesheet" href="/assets/pages.css">
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="/assets/theme.css">
 </head>
 <body data-tool="factorization">
 <button id="themeButton" type="button" aria-label="تغییر حالت ظاهری">🌙 حالت تیره</button>
@@ -89,19 +92,19 @@
     <span class="tool-count">12 ابزار</span>
   </div>
 
-  <div class="tool-toolbar"><label class="search-wrap"><span>⌕</span><input id="toolSearch" type="search" placeholder="جست‌وجوی ابزار" aria-label="جست‌وجوی ابزار"></label><button id="favoritesToggle" class="toolbar-button" type="button" aria-pressed="false">♡ علاقه‌مندی‌ها</button></div><nav class="category-row"><button class="category-chip active" data-category="all" type="button">همه</button><button class="category-chip" data-category="basic" type="button">محاسبات پایه</button><button class="category-chip" data-category="number" type="button">نظریه اعداد</button></nav><div class="tool-grid">
- <article class="tool-card card-purple" data-page="sequence-calculator"><span class="tool-icon">∑</span><span class="tool-title">ماشین‌حساب دنباله‌ای</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-purple" data-page="factorization"><span class="tool-icon">⑂</span><span class="tool-title">تجزیه عدد به عوامل اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-purple" data-page="calculator"><span class="tool-icon">＋</span><span class="tool-title">ماشین‌حساب</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-blue" data-page="fractions"><span class="tool-icon">½</span><span class="tool-title">محاسبه کسرها</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-green" data-page="gcd"><span class="tool-icon">÷</span><span class="tool-title">ب.م.م و ک.م.م</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-orange" data-page="prime"><span class="tool-icon">✓</span><span class="tool-title">تشخیص عدد اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-blue" data-page="sieve"><span class="tool-icon">#</span><span class="tool-title">غربال اراتستن</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-green" data-page="extra-percent"><span class="tool-icon">％</span><span class="tool-title">محاسبه درصد</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-orange" data-page="extra-average"><span class="tool-icon">x̄</span><span class="tool-title">میانگین</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-green" data-page="extra-equation"><span class="tool-icon">＝</span><span class="tool-title">حل معادله درجه اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-blue" data-page="extra-quadratic"><span class="tool-icon">x²</span><span class="tool-title">حل معادله درجه دوم</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
- <article class="tool-card card-purple" data-page="extra-base"><span class="tool-icon">⇄</span><span class="tool-title">تبدیل مبنای اعداد</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+  <div class="tool-toolbar"><label class="search-wrap"><span class="search-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><input id="toolSearch" type="search" placeholder="جست‌وجوی ابزار" aria-label="جست‌وجوی ابزار"></label><button id="favoritesToggle" class="toolbar-button" type="button" aria-pressed="false">♡ علاقه‌مندی‌ها</button></div><nav class="category-row"><button class="category-chip active" data-category="all" type="button">همه</button><button class="category-chip" data-category="basic" type="button">محاسبات پایه</button><button class="category-chip" data-category="number" type="button">نظریه اعداد</button></nav><div class="tool-grid">
+ <article class="tool-card card-purple" data-page="sequence-calculator"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5H7l6 7-6 7h11"/></svg></span><span class="tool-title">ماشین‌حساب دنباله‌ای</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-purple" data-page="factorization"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v6M12 10l-5 5M12 10l5 5M7 15v4M17 15v4"/><circle cx="12" cy="4" r="1"/><circle cx="7" cy="19" r="1"/><circle cx="17" cy="19" r="1"/></svg></span><span class="tool-title">تجزیه عدد به عوامل اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-purple" data-page="calculator"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/></svg></span><span class="tool-title">ماشین‌حساب</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-blue" data-page="fractions"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><circle cx="12" cy="6.5" r="1.2"/><circle cx="12" cy="17.5" r="1.2"/></svg></span><span class="tool-title">محاسبه کسرها</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-green" data-page="gcd"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg></span><span class="tool-title">ب.م.م و ک.م.م</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-orange" data-page="prime"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="tool-title">تشخیص عدد اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-blue" data-page="sieve"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h.01M12 6h.01M18 6h.01M6 12h.01M12 12h.01M18 12h.01M6 18h.01M12 18h.01M18 18h.01" stroke-width="3.2"/></svg></span><span class="tool-title">غربال اراتستن</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-green" data-page="extra-percent"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="2.2"/><circle cx="17" cy="17" r="2.2"/><path d="M18 6L6 18"/></svg></span><span class="tool-title">محاسبه درصد</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-orange" data-page="extra-average"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4.5h8M8 10l8 9.5M16 10l-8 9.5"/></svg></span><span class="tool-title">میانگین</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-green" data-page="extra-equation"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h14M5 15h14"/></svg></span><span class="tool-title">حل معادله درجه اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-blue" data-page="extra-quadratic"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5c2 15 14 15 16 0"/></svg></span><span class="tool-title">حل معادله درجه دوم</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-purple" data-page="extra-base"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h13l-3-3M19 15H6l3 3"/></svg></span><span class="tool-title">تبدیل مبنای اعداد</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
 
 </div>
 
