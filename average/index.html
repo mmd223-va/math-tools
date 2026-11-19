@@ -72,7 +72,7 @@
     <div class="hero-label">✦ همراه هوشمند ریاضی تو</div>
     <h1>ابزارهای ریاضی آنلاین؛ محاسبه آسان و رایگان</h1>
     <p>
-      با ۹ ابزار رایگان ریاضی، محاسباتی مثل کسر و درصد، میانگین، ب.م.م و ک.م.م و پیدا کردن اعداد اول را آنلاین انجام بده؛ بدون نیاز به نصب برنامه.
+      با ۱۲ ابزار رایگان ریاضی، محاسباتی مثل کسر و درصد، میانگین، ب.م.م و ک.م.م و پیدا کردن اعداد اول را آنلاین انجام بده؛ بدون نیاز به نصب برنامه.
     </p>
     <button class="hero-button" onclick="showPage('factorization')">
       شروع با تجزیه اعداد
@@ -86,7 +86,7 @@
       <h2>جعبه‌ابزار ریاضی</h2>
       <p>ابزار موردنیازت را انتخاب کن.</p>
     </div>
-    <span class="tool-count">9 ابزار</span>
+    <span class="tool-count">12 ابزار</span>
   </div>
 
   <div class="tool-toolbar"><label class="search-wrap"><span>⌕</span><input id="toolSearch" type="search" placeholder="جست‌وجوی ابزار" aria-label="جست‌وجوی ابزار"></label><button id="favoritesToggle" class="toolbar-button" type="button" aria-pressed="false">♡ علاقه‌مندی‌ها</button></div><nav class="category-row"><button class="category-chip active" data-category="all" type="button">همه</button><button class="category-chip" data-category="basic" type="button">محاسبات پایه</button><button class="category-chip" data-category="number" type="button">نظریه اعداد</button></nav><div class="tool-grid">
@@ -99,6 +99,9 @@
  <article class="tool-card card-blue" data-page="sieve"><span class="tool-icon">#</span><span class="tool-title">غربال اراتستن</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
  <article class="tool-card card-green" data-page="extra-percent"><span class="tool-icon">％</span><span class="tool-title">محاسبه درصد</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
  <article class="tool-card card-orange" data-page="extra-average"><span class="tool-icon">x̄</span><span class="tool-title">میانگین</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-green" data-page="extra-equation"><span class="tool-icon">＝</span><span class="tool-title">حل معادله درجه اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-blue" data-page="extra-quadratic"><span class="tool-icon">x²</span><span class="tool-title">حل معادله درجه دوم</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-purple" data-page="extra-base"><span class="tool-icon">⇄</span><span class="tool-title">تبدیل مبنای اعداد</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
 
 </div>
 
@@ -320,6 +323,7 @@
 <script src="/assets/app-main.js"></script>
 <script src="/assets/app-extras.js"></script>
 <script src="/assets/app-lang.js" id="language-switch-script"></script>
+<script src="/assets/extra-tools.js"></script>
 <script src="/assets/routes.js"></script>
 </body>
 </html>

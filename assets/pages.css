@@ -19,3 +19,12 @@
 body.dark .tool-seo{background:#18243a;border-color:#2b3956;color:#e6edf8}
 body.dark .tool-seo details,body.dark .tool-related a{border-color:#35476b}
 body.dark .tool-related a:hover,body.dark .tool-related a:focus-visible{background:rgba(120,160,255,.18)}
+
+/* the explanatory text is Persian only; hide it while the English UI is on */
+html[lang="en"] .tool-seo{display:none}
+.tool-icon{font-variant-numeric:normal}
+
+/* The old rule centred the last card because there were 9 (odd) cards.
+   With an even number of cards the last one should sit in its normal cell. */
+html body main.container #home .tool-grid > .tool-card:last-child:nth-child(even){
+  grid-column:auto!important;width:auto!important;justify-self:stretch!important}

@@ -10,7 +10,10 @@
     'prime': '/prime-checker/',
     'sieve': '/sieve-of-eratosthenes/',
     'extra-percent': '/percentage/',
-    'extra-average': '/average/'
+    'extra-average': '/average/',
+    'extra-equation': '/linear-equation/',
+    'extra-quadratic': '/quadratic-equation/',
+    'extra-base': '/number-base-converter/'
   };
   var here = document.body.getAttribute('data-tool') || 'home';
   var origShow = window.showPage;
@@ -32,4 +35,7 @@
   // Pages for the two generated tools (percentage, average) are built by JS.
   if (here === 'extra-percent') origExtra('percent');
   if (here === 'extra-average') origExtra('average');
+  if (here === 'extra-equation') origExtra('equation');
+  if (here === 'extra-quadratic') window.openMathTool('quadratic');
+  if (here === 'extra-base') window.openMathTool('base');
 })();
