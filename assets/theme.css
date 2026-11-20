@@ -205,3 +205,50 @@ html body:not(#a):not(#b) main.container .hero h1{font-size:clamp(1.6rem,3.4vw,2
 /* the old layout reserved a full screen height; let content decide */
 html body:not(#a):not(#b) main.container,
 html body:not(#a):not(#b) main.container > section.page:not(#home){min-height:0!important;height:auto!important}
+
+/* ---------- fixes found on the live site ---------- */
+/* the two toggle buttons scroll away with the page instead of covering text */
+html body:not(#a):not(#b) #themeButton,
+html body:not(#a):not(#b) #languageToggle{position:absolute!important}
+
+/* guide accordion: one clean frame, answer separated by a thin line */
+html body:not(#a):not(#b) main.container .guide-item{padding:0!important;overflow:hidden;margin:0 0 10px!important}
+html body:not(#a):not(#b) main.container .seo-learning .guide-toggle{
+  width:100%;text-align:start;padding:14px 16px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:var(--text)!important}
+html body:not(#a):not(#b) main.container .seo-learning .guide-toggle:hover{background:var(--primary-soft)!important}
+html body:not(#a):not(#b) main.container .seo-learning .guide-item > p:not([hidden]){
+  background:transparent!important;border:0!important;border-top:1px solid var(--line)!important;border-radius:0!important;
+  box-shadow:none!important;color:var(--muted)!important;margin:0!important;padding:12px 16px 16px!important}
+
+/* history / appearance panels: one frame, not nested frames */
+html body:not(#a):not(#b) main.container section.feature-panel{
+  background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius)!important;box-shadow:var(--shadow)!important;padding:14px!important}
+html body:not(#a):not(#b) main.container .feature-panel .feature-panel,
+html body:not(#a):not(#b) main.container #historyPanel,
+html body:not(#a):not(#b) main.container #prefsPanel{background:transparent!important;border:0!important;box-shadow:none!important;padding:6px 2px 0!important;color:var(--text)!important}
+html body:not(#a):not(#b) main.container .feature-row button{
+  background:var(--surface-2)!important;color:var(--text)!important;border:1px solid var(--line)!important;border-radius:14px!important;box-shadow:none!important;font-weight:700!important;font-family:inherit!important}
+html body:not(#a):not(#b) main.container .feature-row button:hover{border-color:var(--primary)!important;color:var(--primary)!important}
+html body:not(#a):not(#b) main.container .feature-panel h3{color:var(--text)!important}
+html body:not(#a):not(#b) main.container .feature-panel label{color:var(--text)!important}
+html body:not(#a):not(#b) main.container .feature-panel input[type=checkbox]{accent-color:var(--primary);width:18px;height:18px}
+html body:not(#a):not(#b) main.container .feature-panel p,
+html body:not(#a):not(#b) main.container .feature-panel li{color:var(--muted)!important}
+
+/* make sure the [hidden] attribute always wins */
+[hidden]{display:none!important}
+
+/* search, category and favourites filters set the hidden attribute on cards; an older
+   "display:flex!important" rule used to keep every card visible, so filtering did nothing */
+html body:not(#a):not(#b) main.container .tool-grid > .tool-card[hidden],
+html body:not(#a):not(#b) main.container .tool-card[hidden]{display:none!important}
+
+/* prime factorization result: follow the theme in light and dark mode */
+html body:not(#a):not(#b) main.container #factorResult .factor-final,
+html body:not(#a):not(#b) main.container #factorResult .factor-tree{
+  background:var(--surface-2)!important;border:1px solid var(--line)!important;border-radius:18px!important;box-shadow:none!important;color:var(--text)!important}
+html body:not(#a):not(#b) main.container #factorResult .factor-final h3,
+html body:not(#a):not(#b) main.container #factorResult .factor-tree h3{background:var(--primary-soft)!important;color:var(--primary)!important;border:0!important}
+html body:not(#a):not(#b) main.container #factorResult .factor-equation{background:var(--surface)!important;color:var(--text)!important;border:1px solid var(--line)!important;box-shadow:none!important}
+html body:not(#a):not(#b) main.container #factorResult .tree-canvas svg line,
+html body:not(#a):not(#b) main.container #factorResult .tree-canvas svg path{stroke:var(--line-strong)!important}
