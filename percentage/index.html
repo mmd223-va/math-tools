@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta name="site-build" content="63acb804">
+<meta name="site-build" content="93f1ca06">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="درصد یک عدد را آنلاین و رایگان حساب کن و مراحل حل را ببین؛ همراه با فرمول و مثال.">
@@ -59,7 +59,7 @@
 <link rel="preload" href="/assets/fonts/Vazirmatn-subset.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/style.css?v=1c56422e">
 <link rel="stylesheet" href="/assets/pages.css?v=0387cc6f">
-<link rel="stylesheet" href="/assets/theme.css?v=4ba8ea7a">
+<link rel="stylesheet" href="/assets/theme.css?v=3abee9c7">
 </head>
 <body data-tool="extra-percent">
 <button id="themeButton" type="button" aria-label="تغییر حالت ظاهری">🌙 حالت تیره</button>
@@ -143,8 +143,8 @@
       <h3 id="feedbackTitle">💬 پیشنهادی داری؟ یا مشکلی پیدا کردی؟</h3>
       <p>نظرت کمک می‌کند ابزارهای ریاضی را بهتر کنیم. برای ثبت پیشنهاد یا گزارش مشکل، یکی از گزینه‌ها را انتخاب کن.</p>
       <div class="feedback-actions">
-        <a class="feedback-suggest" href="https://github.com/mmd223-va/math-tools/issues/new?title=%D9%BE%DB%8C%D8%B4%D9%86%D9%87%D8%A7%D8%AF%20%D8%A8%D8%B1%D8%A7%DB%8C%20%D8%B3%D8%A7%DB%8C%D8%AA" target="_blank" rel="noopener noreferrer">💡 ثبت پیشنهاد</a>
-        <a class="feedback-report" href="https://github.com/mmd223-va/math-tools/issues/new?title=%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4%20%D9%85%D8%B4%DA%A9%D9%84" target="_blank" rel="noopener noreferrer">🐞 گزارش مشکل</a>
+        <a class="feedback-suggest" href="https://t.me/mmdd_223" data-feedback="suggestion" target="_blank" rel="noopener noreferrer">💡 ثبت پیشنهاد</a>
+        <a class="feedback-report" href="https://t.me/mmdd_223" data-feedback="report" target="_blank" rel="noopener noreferrer">🐞 گزارش مشکل</a>
       </div>
     </section>
 
@@ -322,11 +322,25 @@
   <details><summary>چطور بفهمیم یک عدد چند درصد عدد دیگر است؟</summary><p>عدد کوچک‌تر را بر عدد اصلی تقسیم و در ۱۰۰ ضرب کن. مثلاً ۳۰ از ۱۵۰ برابر (۳۰ ÷ ۱۵۰) × ۱۰۰ = ۲۰٪ است.</p></details><details><summary>٪ یعنی چه؟</summary><p>علامت ٪ یعنی «از صد»؛ مثلاً ۲۰٪ یعنی ۲۰ از ۱۰۰.</p></details>
   <nav class="tool-related" aria-label="ابزارهای مرتبط"><h3>ابزارهای مرتبط</h3><ul><li><a href="/average/">میانگین</a></li><li><a href="/fractions/">محاسبه کسرها</a></li><li><a href="/calculator/">ماشین‌حساب</a></li><li><a href="/">همهٔ ابزارها</a></li></ul></nav>
 </section>
+<dialog id="feedbackDialog" class="feedback-dialog" aria-labelledby="fbTitle">
+<div class="fb-card">
+<div class="fb-head"><h3 id="fbTitle">ثبت پیشنهاد</h3><button type="button" class="fb-close" id="fbClose" aria-label="بستن">×</button></div>
+<p id="fbText">پیشنهادت را در یکی از پیام‌رسان‌های زیر برای من بفرست.</p>
+<div class="fb-links">
+<a class="fb-link fb-telegram" href="https://t.me/mmdd_223" target="_blank" rel="noopener noreferrer"><span>تلگرام</span><bdi>@mmdd_223</bdi></a>
+<a class="fb-link fb-bale" href="https://ble.ir/mmdd_223" target="_blank" rel="noopener noreferrer"><span>بله</span><bdi>@mmdd_223</bdi></a>
+<a class="fb-link fb-eitaa" href="https://eitaa.com/mmdd_223" target="_blank" rel="noopener noreferrer"><span>ایتا</span><bdi>@mmdd_223</bdi></a>
+</div>
+<div class="fb-copyrow"><span id="fbIdLabel">آیدی من در هر سه:</span><bdi class="fb-id">@mmdd_223</bdi><button type="button" class="fb-copy" id="fbCopy">کپی آیدی</button></div>
+<p class="fb-note" id="fbNote"></p>
+</div>
+</dialog>
 <button id="languageToggle" type="button" aria-label="Switch language">English</button>
 <script src="/assets/app-main.js?v=809d5daf"></script>
 <script src="/assets/app-extras.js?v=f40b15c5"></script>
 <script src="/assets/app-lang.js?v=a4576153" id="language-switch-script"></script>
 <script src="/assets/extra-tools.js?v=b7d6634b"></script>
+<script src="/assets/feedback.js?v=0e7f31ad"></script>
 <script src="/assets/routes.js?v=525be52a"></script>
 </body>
 </html>
