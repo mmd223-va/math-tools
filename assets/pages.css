@@ -28,3 +28,6 @@ html[lang="en"] .tool-seo{display:none}
    With an even number of cards the last one should sit in its normal cell. */
 html body main.container #home .tool-grid > .tool-card:last-child:nth-child(even){
   grid-column:auto!important;width:auto!important;justify-self:stretch!important}
+
+/* number fields are now text fields (so Persian digits can be typed); keep the old number-field look */
+input[data-digits="number"]{direction:ltr;text-align:right}
