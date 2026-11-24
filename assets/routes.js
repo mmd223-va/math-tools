@@ -13,7 +13,13 @@
     'extra-average': '/average/',
     'extra-equation': '/linear-equation/',
     'extra-quadratic': '/quadratic-equation/',
-    'extra-base': '/number-base-converter/'
+    'extra-base': '/number-base-converter/',
+    'extra-line': '/line-equation/',
+    'extra-simplify': '/simplify-fraction/',
+    'extra-geometry': '/area-perimeter/',
+    'extra-comb': '/permutation-combination/',
+    'extra-ratio': '/rule-of-three/',
+    'extra-system': '/linear-system/'
   };
   var here = document.body.getAttribute('data-tool') || 'home';
   var origShow = window.showPage;
@@ -38,4 +44,19 @@
   if (here === 'extra-equation') origExtra('equation');
   if (here === 'extra-quadratic') window.openMathTool('quadratic');
   if (here === 'extra-base') window.openMathTool('base');
+  ['line', 'simplify', 'geometry', 'comb', 'ratio', 'system'].forEach(function (k) {
+    if (here === 'extra-' + k) window.openMathTool(k);
+  });
+})();
+
+/* brand name follows the language toggle */
+(function () {
+  function brand() {
+    var b = document.querySelector('.brand-name');
+    if (b) b.textContent = document.documentElement.lang === 'en' ? 'Math Tools' : 'ابزارهای ریاضی';
+  }
+  brand();
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.id === 'languageToggle') setTimeout(brand, 80);
+  });
 })();

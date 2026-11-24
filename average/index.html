@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta name="site-build" content="04a4fc5c">
+<meta name="site-build" content="f6d94930">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="میانگین چند عدد را آنلاین و رایگان حساب کن و مراحل حل را ببین؛ همراه با فرمول و مثال.">
@@ -59,12 +59,14 @@
 <link rel="preload" href="/assets/fonts/Vazirmatn-subset.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/style.css?v=1c56422e">
 <link rel="stylesheet" href="/assets/pages.css?v=348cdd32">
-<link rel="stylesheet" href="/assets/theme.css?v=3abee9c7">
+<link rel="stylesheet" href="/assets/theme.css?v=00fea705">
+<link rel="stylesheet" href="/assets/feedback.css?v=137f2fc3">
 </head>
 <body data-tool="extra-average">
 <button id="themeButton" type="button" aria-label="تغییر حالت ظاهری">🌙 حالت تیره</button>
 
 
+<a class="site-brand" href="/" aria-label="ابزارهای ریاضی؛ صفحهٔ اصلی"><span class="brand-mark" aria-hidden="true">∑</span><span class="brand-name">ابزارهای ریاضی</span></a>
 <h1 class="sr-only">محاسبه میانگین آنلاین</h1>
 <main class="container">
 
@@ -75,8 +77,9 @@
     <div class="hero-label">✦ همراه هوشمند ریاضی تو</div>
     <h2>ابزارهای ریاضی آنلاین؛ محاسبه آسان و رایگان</h2>
     <p>
-      با ۱۲ ابزار رایگان ریاضی، محاسباتی مثل کسر و درصد، میانگین، ب.م.م و ک.م.م و پیدا کردن اعداد اول را آنلاین انجام بده؛ بدون نیاز به نصب برنامه.
+      با ۱۸ ابزار رایگان ریاضی، محاسباتی مثل کسر و درصد، میانگین، ب.م.م و ک.م.م و پیدا کردن اعداد اول را آنلاین انجام بده؛ بدون نیاز به نصب برنامه.
     </p>
+    <ul class="hero-pills"><li>✓ رایگان</li><li>✓ بدون ثبت‌نام</li><li>✓ همراه با مراحل حل</li><li>✓ فارسی و English</li></ul>
     <button class="hero-button" onclick="showPage('factorization')">
       شروع با تجزیه اعداد
       <span>←</span>
@@ -89,7 +92,7 @@
       <h2>جعبه‌ابزار ریاضی</h2>
       <p>ابزار موردنیازت را انتخاب کن.</p>
     </div>
-    <span class="tool-count">12 ابزار</span>
+    <span class="tool-count">18 ابزار</span>
   </div>
 
   <div class="tool-toolbar"><label class="search-wrap"><span class="search-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><input id="toolSearch" type="search" placeholder="جست‌وجوی ابزار" aria-label="جست‌وجوی ابزار"></label><button id="favoritesToggle" class="toolbar-button" type="button" aria-pressed="false">♡ علاقه‌مندی‌ها</button></div><nav class="category-row"><button class="category-chip active" data-category="all" type="button">همه</button><button class="category-chip" data-category="basic" type="button">محاسبات پایه</button><button class="category-chip" data-category="number" type="button">نظریه اعداد</button></nav><div class="tool-grid">
@@ -105,6 +108,12 @@
  <article class="tool-card card-green" data-page="extra-equation"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h14M5 15h14"/></svg></span><span class="tool-title">حل معادله درجه اول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
  <article class="tool-card card-blue" data-page="extra-quadratic"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5c2 15 14 15 16 0"/></svg></span><span class="tool-title">حل معادله درجه دوم</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
  <article class="tool-card card-purple" data-page="extra-base"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h13l-3-3M19 15H6l3 3"/></svg></span><span class="tool-title">تبدیل مبنای اعداد</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-orange" data-page="extra-line"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M7.6 16.4l8.8-8.8"/></svg></span><span class="tool-title">معادله خط</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-green" data-page="extra-simplify"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h10M9 6.5h2M9 17.5h2M19 8l-3 4 3 4"/></svg></span><span class="tool-title">ساده کردن کسر</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-blue" data-page="extra-geometry"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h9L8.5 9z"/><rect x="14" y="11" width="6" height="8" rx="1"/></svg></span><span class="tool-title">مساحت و محیط اشکال</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-purple" data-page="extra-comb"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V6l6 13V6M16 6v8M16 18v.01"/></svg></span><span class="tool-title">فاکتوریل، جایگشت و ترکیب</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-orange" data-page="extra-ratio"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h6M4 16h6M14 8h6M14 16h3"/></svg></span><span class="tool-title">قاعده سه‌تایی</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
+ <article class="tool-card card-green" data-page="extra-system"><span class="tool-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7l16 10M4 17L20 7"/></svg></span><span class="tool-title">حل دستگاه دو معادله دو مجهول</span><button class="tool-open" type="button">باز کردن ابزار ←</button></article>
 
 </div>
 
@@ -139,12 +148,15 @@
   </section>
 
 
-    <section class="feedback-panel" aria-labelledby="feedbackTitle">
-      <h3 id="feedbackTitle">💬 پیشنهادی داری؟ یا مشکلی پیدا کردی؟</h3>
-      <p>نظرت کمک می‌کند ابزارهای ریاضی را بهتر کنیم. برای ثبت پیشنهاد یا گزارش مشکل، یکی از گزینه‌ها را انتخاب کن.</p>
-      <div class="feedback-actions">
-        <a class="feedback-suggest" href="https://t.me/mmdd_223" data-feedback="suggestion" target="_blank" rel="noopener noreferrer">💡 ثبت پیشنهاد</a>
-        <a class="feedback-report" href="https://t.me/mmdd_223" data-feedback="report" target="_blank" rel="noopener noreferrer">🐞 گزارش مشکل</a>
+    <section class="fbx" aria-labelledby="fbxTitle">
+      <div class="fbx-icon" aria-hidden="true">💬</div>
+      <div class="fbx-body">
+        <h3 id="fbxTitle">نظرت برای ما مهم است</h3>
+        <p>ایده‌ای برای یک ابزار جدید داری یا چیزی درست کار نمی‌کند؟ به من خبر بده تا سایت را بهتر کنم.</p>
+        <div class="fbx-actions">
+          <a class="fbx-card fbx-suggest" href="https://t.me/mmdd_223" data-feedback="suggestion" target="_blank" rel="noopener noreferrer"><span class="fbx-ico" aria-hidden="true">💡</span><span class="fbx-text"><strong>ثبت پیشنهاد</strong><small>ایده برای ابزار یا بهبود سایت</small></span><span class="fbx-arrow" aria-hidden="true">←</span></a>
+          <a class="fbx-card fbx-report" href="https://t.me/mmdd_223" data-feedback="report" target="_blank" rel="noopener noreferrer"><span class="fbx-ico" aria-hidden="true">🐞</span><span class="fbx-text"><strong>گزارش مشکل</strong><small>چیزی درست کار نمی‌کند؟</small></span><span class="fbx-arrow" aria-hidden="true">←</span></a>
+        </div>
       </div>
     </section>
 
@@ -324,24 +336,29 @@
 </section>
 <dialog id="feedbackDialog" class="feedback-dialog" aria-labelledby="fbTitle">
 <div class="fb-card">
-<div class="fb-head"><h3 id="fbTitle">ثبت پیشنهاد</h3><button type="button" class="fb-close" id="fbClose" aria-label="بستن">×</button></div>
-<p id="fbText">پیشنهادت را در یکی از پیام‌رسان‌های زیر برای من بفرست.</p>
+<div class="fb-top"><div class="fb-badge" id="fbBadge" aria-hidden="true">💡</div><div class="fb-titles"><h3 id="fbTitle">ثبت پیشنهاد</h3><p id="fbText">ایده‌ات را بنویس؛ از هر پیشنهادی ممنون می‌شوم.</p></div><button type="button" class="fb-close" id="fbClose" aria-label="بستن">×</button></div>
+<div class="fb-tabs" role="tablist"><button type="button" role="tab" class="fb-tab" id="fbTabS" data-kind="suggestion" aria-selected="true">💡 پیشنهاد</button><button type="button" role="tab" class="fb-tab" id="fbTabR" data-kind="report" aria-selected="false">🐞 مشکل</button></div>
+<label class="fb-label" id="fbMsgLabel" for="fbMessage">۱. پیامت را بنویس</label>
+<textarea id="fbMessage" rows="4" maxlength="1500" placeholder="مثلاً: ابزار تبدیل واحد هم اضافه شود…"></textarea>
+<label class="fb-check"><input type="checkbox" id="fbTech" checked><span id="fbTechLabel">اطلاعات فنی (آدرس صفحه، مرورگر و اندازهٔ صفحه) هم ضمیمه شود</span></label>
+<div class="fb-label" id="fbStep">۲. پیام‌رسانت را انتخاب کن؛ متن خودکار کپی می‌شود و کافی است در گفتگو Paste کنی.</div>
 <div class="fb-links">
-<a class="fb-link fb-telegram" href="https://t.me/mmdd_223" target="_blank" rel="noopener noreferrer"><span>تلگرام</span><bdi>@mmdd_223</bdi></a>
-<a class="fb-link fb-bale" href="https://ble.ir/mmdd_223" target="_blank" rel="noopener noreferrer"><span>بله</span><bdi>@mmdd_223</bdi></a>
-<a class="fb-link fb-eitaa" href="https://eitaa.com/mmdd_223" target="_blank" rel="noopener noreferrer"><span>ایتا</span><bdi>@mmdd_223</bdi></a>
+<a class="fb-link fb-telegram" href="https://t.me/mmdd_223" target="_blank" rel="noopener noreferrer"><span class="fb-dot"></span><span class="fb-name">تلگرام</span><bdi>@mmdd_223</bdi></a>
+<a class="fb-link fb-bale" href="https://ble.ir/mmdd_223" target="_blank" rel="noopener noreferrer"><span class="fb-dot"></span><span class="fb-name">بله</span><bdi>@mmdd_223</bdi></a>
+<a class="fb-link fb-eitaa" href="https://eitaa.com/mmdd_223" target="_blank" rel="noopener noreferrer"><span class="fb-dot"></span><span class="fb-name">ایتا</span><bdi>@mmdd_223</bdi></a>
 </div>
-<div class="fb-copyrow"><span id="fbIdLabel">آیدی من در هر سه:</span><bdi class="fb-id">@mmdd_223</bdi><button type="button" class="fb-copy" id="fbCopy">کپی آیدی</button></div>
-<p class="fb-note" id="fbNote"></p>
+<div class="fb-foot"><span id="fbIdLabel">آیدی من در هر سه:</span><bdi class="fb-id">@mmdd_223</bdi><button type="button" class="fb-copy" id="fbCopy">کپی آیدی</button></div>
+<div class="fb-toast" id="fbToast" role="status" aria-live="polite" hidden></div>
 </div>
 </dialog>
 <button id="languageToggle" type="button" aria-label="Switch language">English</button>
 <script src="/assets/digits.js?v=e01b8ce1"></script>
 <script src="/assets/app-main.js?v=809d5daf"></script>
 <script src="/assets/app-extras.js?v=f40b15c5"></script>
-<script src="/assets/app-lang.js?v=a4576153" id="language-switch-script"></script>
-<script src="/assets/extra-tools.js?v=b7d6634b"></script>
-<script src="/assets/feedback.js?v=0e7f31ad"></script>
-<script src="/assets/routes.js?v=525be52a"></script>
+<script src="/assets/app-lang.js?v=f51aa4c4" id="language-switch-script"></script>
+<script src="/assets/extra-tools.js?v=526370c8"></script>
+<script src="/assets/feedback.js?v=485fc643"></script>
+<script src="/assets/bidi.js?v=7ff4e08b"></script>
+<script src="/assets/routes.js?v=36c7dfec"></script>
 </body>
 </html>

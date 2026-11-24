@@ -284,26 +284,26 @@ html body:not(#a):not(#b) main.container .calc-key.calc-danger{color:#c62828!imp
 html body.dark:not(#a):not(#b) main.container .calc-key.calc-danger{color:#ff9a9a!important;background:rgba(239,68,68,.18)!important}
 html body:not(#a):not(#b) main.container .calculator-help{color:var(--muted)!important}
 
-/* ---------- feedback popup ---------- */
-.feedback-dialog{border:0;padding:0;margin:auto;background:transparent;color:var(--text);max-width:none;width:min(420px,calc(100% - 28px));overflow:visible}
-.feedback-dialog::backdrop{background:rgba(8,12,28,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
-.feedback-dialog[open]{animation:fbIn .18s ease-out}
-@keyframes fbIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
-.fb-card{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55);padding:20px 20px 18px;font-family:Vazirmatn,Tahoma,Arial,sans-serif;line-height:1.8}
-.fb-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
-.fb-head h3{margin:0;font-size:1.15rem;font-weight:800;color:var(--text)}
-.fb-close{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);color:var(--text);font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0}
-.fb-close:hover{border-color:var(--primary);color:var(--primary)}
-.fb-card p{margin:0 0 12px;color:var(--muted)}
-.fb-links{display:grid;gap:8px;margin-bottom:12px}
-.fb-link{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);color:var(--text);text-decoration:none;font-weight:800;transition:transform .12s,border-color .12s,background .12s}
-.fb-link:hover{transform:translateY(-1px);border-color:var(--primary)}
-.fb-link span{display:flex;align-items:center;gap:8px}
-.fb-link span::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--dot,var(--primary))}
-.fb-telegram{--dot:#229ed9}.fb-bale{--dot:#1fb86a}.fb-eitaa{--dot:#f26d2c}
-.fb-link bdi{direction:ltr;color:var(--muted);font-weight:700;font-size:.92rem}
-.fb-copyrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:.92rem;margin-bottom:8px}
-.fb-id{direction:ltr;color:var(--text);font-weight:800}
-.fb-copy{margin-inline-start:auto;border:1px solid var(--line);background:var(--primary-soft);color:var(--primary);border-radius:999px;padding:5px 14px;font:700 .86rem Vazirmatn,Tahoma,Arial,sans-serif;cursor:pointer}
-.fb-copy:hover{background:var(--primary);color:var(--primary-ink)}
-.fb-card .fb-note{font-size:.88rem;margin:0}
+
+/* ---------- brand link, hero pills, card spacing ---------- */
+.site-brand{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:9px;
+  padding:6px 14px 6px 8px;border-radius:999px;text-decoration:none;color:var(--text);font-weight:900;font-size:.95rem;
+  background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);white-space:nowrap;transition:transform .15s,border-color .15s}
+.site-brand:hover{transform:translateX(-50%) translateY(-1px);border-color:var(--primary)}
+.brand-mark{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:17px;line-height:1;
+  background:linear-gradient(135deg,#4f46e5,#0ea5e9)}
+@media (max-width:560px){.brand-name{display:none}.site-brand{padding:5px}}
+
+html body:not(#a):not(#b) main.container .hero-pills{list-style:none;margin:16px 0 4px!important;padding:0!important;display:flex;flex-wrap:wrap;gap:8px}
+html body:not(#a):not(#b) main.container .hero-pills li{padding:5px 13px;border-radius:999px;font-size:.84rem;font-weight:700;color:#fff;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3)}
+
+/* the "open tool" button used to touch the bottom edge of the card: give the card real bottom padding */
+html body:not(#a):not(#b) main.container .tool-card{padding:18px 18px 20px!important;gap:10px!important}
+html body:not(#a):not(#b) main.container .tool-card .tool-open{margin:6px 0 0!important}
+html body:not(#a):not(#b) main.container .tool-grid{gap:16px!important}
+
+/* root cause of the clipped "open tool" button: a legacy max-height:166px on the cards */
+html body:not(#a):not(#b) main.container .tool-card{max-height:none!important;height:auto!important}
+html body:not(#a):not(#b) main.container .tool-grid{grid-auto-rows:auto!important;align-items:stretch}
+html body:not(#a):not(#b) main.container .hero-button{margin-top:16px!important}

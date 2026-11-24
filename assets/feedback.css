@@ -1,0 +1,89 @@
+/* ==========================================================================
+   Feedback: the section on the home page and the popup (dialog)
+   ========================================================================== */
+
+/* ---------- home section ---------- */
+html body:not(#a):not(#b) main.container .fbx{
+  position:relative;display:flex;gap:18px;align-items:flex-start;overflow:hidden;
+  margin:26px 0 8px!important;padding:clamp(18px,3vw,28px)!important;border-radius:26px!important;
+  background:linear-gradient(135deg,var(--surface) 0%,var(--primary-soft) 100%)!important;
+  border:1px solid var(--line)!important;box-shadow:var(--shadow)!important;color:var(--text)!important}
+html body:not(#a):not(#b) main.container .fbx::before{
+  content:"";position:absolute;inset-inline-end:-60px;top:-70px;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,var(--bg-glow-1),transparent 70%);pointer-events:none}
+.fbx-icon{flex:none;width:54px;height:54px;border-radius:18px;display:grid;place-items:center;font-size:26px;
+  background:linear-gradient(135deg,#6366f1,#0ea5e9);box-shadow:0 12px 24px -12px #4f46e5}
+.fbx-body{flex:1;min-width:0;position:relative}
+html body:not(#a):not(#b) main.container .fbx h3{margin:0 0 4px!important;font-size:1.2rem!important;font-weight:900!important;color:var(--text)!important}
+html body:not(#a):not(#b) main.container .fbx p{margin:0 0 16px!important;color:var(--muted)!important;max-width:60ch}
+.fbx-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fbx-card{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:18px;text-decoration:none;
+  background:var(--surface);border:1px solid var(--line);color:var(--text);box-shadow:0 1px 2px rgba(20,32,58,.05);
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.fbx-card:hover,.fbx-card:focus-visible{transform:translateY(-3px);border-color:var(--primary);box-shadow:var(--shadow-lift)}
+.fbx-ico{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:21px;background:var(--primary-soft)}
+.fbx-report .fbx-ico{background:rgba(239,68,68,.12)}
+.fbx-text{display:flex;flex-direction:column;min-width:0;line-height:1.5}
+.fbx-text strong{font-size:1rem;font-weight:800}
+.fbx-text small{color:var(--muted);font-size:.82rem;margin-top:2px}
+.fbx-arrow{margin-inline-start:auto;color:var(--primary);font-weight:900;transition:transform .16s}
+.fbx-card:hover .fbx-arrow{transform:translateX(-4px)}
+@media (max-width:640px){.fbx{flex-direction:column;gap:12px}.fbx-actions{grid-template-columns:1fr}}
+
+/* ---------- popup ---------- */
+.feedback-dialog{border:0;padding:0;margin:auto;background:transparent;color:var(--text);max-width:none;
+  width:min(460px,calc(100% - 24px));max-height:calc(100dvh - 24px);overflow:visible}
+.feedback-dialog::backdrop{background:rgba(8,12,28,.58);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.feedback-dialog[open]{animation:fbIn .2s cubic-bezier(.2,.8,.2,1)}
+@keyframes fbIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+.fb-card{position:relative;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:28px;
+  box-shadow:0 40px 80px -24px rgba(0,0,0,.6);padding:20px;font-family:Vazirmatn,Tahoma,Arial,sans-serif;line-height:1.8;
+  max-height:calc(100dvh - 24px);overflow:auto}
+.fb-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.fb-badge{flex:none;width:48px;height:48px;border-radius:16px;display:grid;place-items:center;font-size:23px;
+  background:linear-gradient(135deg,#6366f1,#0ea5e9);box-shadow:0 10px 22px -10px #4f46e5}
+.fb-titles{flex:1;min-width:0}
+.fb-titles h3{margin:0;font-size:1.15rem;font-weight:900;color:var(--text);line-height:1.5}
+.fb-titles p{margin:0;font-size:.86rem;color:var(--muted);line-height:1.6}
+.fb-close{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);color:var(--text);
+  font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0;transition:border-color .12s,color .12s}
+.fb-close:hover{border-color:var(--primary);color:var(--primary)}
+
+.fb-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line);margin-bottom:14px}
+.fb-tab{border:0;border-radius:12px;padding:9px 10px;background:transparent;color:var(--muted);font:700 .92rem Vazirmatn,Tahoma,Arial,sans-serif;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.fb-tab:hover{color:var(--text)}
+.fb-tab[aria-selected="true"]{background:var(--surface);color:var(--primary);box-shadow:0 1px 3px rgba(20,32,58,.18)}
+
+.fb-label{display:block;margin:0 0 6px;font-size:.88rem;font-weight:800;color:var(--text)}
+#fbMessage{display:block;width:100%;box-sizing:border-box;resize:vertical;min-height:96px;max-height:220px;margin:0 0 10px;padding:12px 14px;
+  border-radius:16px;border:1.5px solid var(--line);background:var(--surface-2);color:var(--text);font:inherit;font-size:.98rem;line-height:1.8;
+  transition:border-color .15s,box-shadow .15s,background .15s}
+#fbMessage::placeholder{color:var(--muted);opacity:.85}
+#fbMessage:focus{outline:none;border-color:var(--primary);background:var(--surface);box-shadow:var(--ring)}
+.fb-check{display:flex;align-items:flex-start;gap:9px;margin:0 0 14px;font-size:.84rem;color:var(--muted);cursor:pointer;line-height:1.6}
+.fb-check input{flex:none;width:18px;height:18px;margin-top:3px;accent-color:var(--primary)}
+
+.fb-links{display:grid;gap:8px;margin:0 0 12px}
+.fb-link{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2);
+  color:var(--text);text-decoration:none;font-weight:800;transition:transform .12s,border-color .12s,background .12s,box-shadow .12s}
+.fb-link:hover,.fb-link:focus-visible{transform:translateY(-2px);border-color:var(--c,var(--primary));background:var(--surface);box-shadow:0 10px 22px -14px var(--c,var(--primary))}
+.fb-dot{flex:none;width:12px;height:12px;border-radius:50%;background:var(--c,var(--primary));box-shadow:0 0 0 4px color-mix(in srgb,var(--c,var(--primary)) 22%,transparent)}
+.fb-name{flex:1}
+.fb-link bdi{direction:ltr;color:var(--muted);font-weight:700;font-size:.9rem}
+.fb-telegram{--c:#229ed9}.fb-bale{--c:#1fb86a}.fb-eitaa{--c:#f26d2c}
+
+.fb-foot{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:.86rem}
+.fb-id{direction:ltr;color:var(--text);font-weight:800}
+.fb-copy{margin-inline-start:auto;border:1px solid var(--line);background:var(--primary-soft);color:var(--primary);border-radius:999px;padding:5px 14px;
+  font:700 .84rem Vazirmatn,Tahoma,Arial,sans-serif;cursor:pointer;transition:background .12s,color .12s}
+.fb-copy:hover{background:var(--primary);color:var(--primary-ink)}
+.fb-toast{margin-top:12px;padding:10px 14px;border-radius:14px;background:rgba(16,185,129,.14);color:#0f8a63;font-size:.86rem;font-weight:700;line-height:1.6}
+body.dark .fb-toast{color:#5eead4;background:rgba(45,212,191,.14)}
+.fb-toast[hidden]{display:none}
+@media (max-width:480px){.feedback-dialog{margin-bottom:12px}.fb-card{border-radius:24px;padding:16px}}
+
+/* legacy generic input rules made the checkbox a tall box */
+html body:not(#a):not(#b) .fb-check input[type=checkbox]{
+  width:18px!important;height:18px!important;min-height:0!important;padding:0!important;margin:4px 0 0!important;
+  border:0!important;background:none!important;box-shadow:none!important;border-radius:4px!important;flex:none}
+html body:not(#a):not(#b) .fb-check{align-items:flex-start;background:none!important;border:0!important;padding:0!important}
