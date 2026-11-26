@@ -307,3 +307,16 @@ html body:not(#a):not(#b) main.container .tool-grid{gap:16px!important}
 html body:not(#a):not(#b) main.container .tool-card{max-height:none!important;height:auto!important}
 html body:not(#a):not(#b) main.container .tool-grid{grid-auto-rows:auto!important;align-items:stretch}
 html body:not(#a):not(#b) main.container .hero-button{margin-top:16px!important}
+
+/* ---------- no ambient glow outside the hero ----------
+   The page used to carry a purple/blue haze at the top (background glows, a fixed dot pattern,
+   a coloured hero shadow, a blurred blob in the feedback card) that looked like the hero's shadow
+   spreading over the whole site. The page background is now one flat colour. */
+html{background:#f4f6fc!important;background-image:none!important}
+html:has(body.dark){background:#0a0f1e!important}
+html body:not(#a):not(#b){background:var(--bg)!important;background-image:none!important}
+html body::before,html body::after{display:none!important;content:none!important}
+html body:not(#a):not(#b) main.container .hero{box-shadow:0 14px 30px -18px rgba(30,40,110,.38)!important}
+html body.dark:not(#a):not(#b) main.container .hero{box-shadow:0 14px 30px -18px rgba(0,0,0,.6)!important}
+html body:not(#a):not(#b) main.container .fbx::before{display:none!important}
+html body:not(#a):not(#b) main.container .hero-decoration{opacity:.5!important}
